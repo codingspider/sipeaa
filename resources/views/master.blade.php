@@ -168,11 +168,12 @@
 							<h5 class="wgs-title ucap">Services</h5>
 							<div class="wgs-content">
 								<ul class="menu">
-									<li><a href="#">Buy Bitcoins</a></li>
-									<li><a href="#">Buy Ethereum</a></li>
-									<li><a href="#">Sell Bitcoins</a></li>
-									<li><a href="#">Bitcoin Trading</a></li>
-									<li><a href="#">Margin Trading</a></li>
+									<li><a href="#">DEMO</a></li>
+									<li><a href="#">DEMO</a></li>
+									<li><a href="#">DEMO</a></li>
+									<li><a href="#">DEMO</a></li>
+									<li><a href="#">DEMO</a></li>
+							
 								</ul>
 							</div>
 						</div>
@@ -245,7 +246,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="site-copy col-sm-7">
-						<p>Copyright &copy; 2018 CryptoCoin. Template Made by <a href="https://themeforest.net/user/softnio/portfolio?ref=softnio">Softnio</a></p>
+						<p>Copyright &copy; Softnio</a></p>
 					</div>
 					<div class="col-sm-5 text-right mobile-left">
 						<ul class="social">
@@ -271,7 +272,9 @@
 		<script src="{{ asset('assets/js/jquery.bundle.js') }}"></script>
         <script src="{{ asset('assets/js/script.js') }}"></script>
         <script src="{{ asset('assets/js/jquery.slim.min.js') }}"></script>
-        
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+				
 		
 	
 	</body>

@@ -10,13 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/home', function () {
-    return view('pages.intro');
-});
+
 
 
 Route::get('/', 'EventController@index');
-//Route::get('/home', 'EventController@index');
+
+Route::get('/home', 'EventController@index');
+Route::get('/events/details/page/{id}', 'EventController@events_details');
 
 Route::get('/registration/pages', 'RegistrationController@member_index');
 Route::get('/registration/pages/employee', 'RegistrationController@employee_index');
@@ -28,6 +28,14 @@ Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 Route::get('/logout', 'Auth\LoginController@logout');
+
+Route::get('/user/approval', 'RegistrationController@member_approve');
+
+
+Route::get('/unactive_user/{id}', 'UsersController@unactive');
+Route::get('/active_user/{id}', 'UsersController@active');
+Route::post('/user/delete/{id}', 'UsersController@delete');
+
 
 
 

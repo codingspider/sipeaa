@@ -804,7 +804,7 @@ div[class*="wide-"] + div[class*="row-column"]:not([class*="mg"]):not([class*="m
   .mobile-center { text-align: center; }
   body, .navigation { min-width: 300px; } }
 /* 05.0 Header/Navbar == */
-.site-header .navbar { border-radius: 0; border: 0 none; min-width: 300px; padding: 12px 0 0; color: #36454e; background: #fff; margin: 0; z-index: 9; }
+.site-header .navbar { border-radius: 0; border: 0 none; min-width: 200px; padding: 12px 0 0; color: #36454e; background: #fff; margin: 0; z-index: 9; }
 .site-header .navbar .container .navbar-brand { margin-left: 0; }
 .site-header .navbar-brand { height: auto; padding: 0; }
 .site-header .navbar-brand img { width: auto; max-width: 100%; max-height: 100px; }
@@ -1281,8 +1281,7 @@ div[class*="wide-"] + div[class*="row-column"]:not([class*="mg"]):not([class*="m
 .team-member .team-info .team-title { color: #fff; }
 
 .testimonial-item.testimonial-box { padding: 40px; margin: 0 30px; }
-.testimonial-item .client-photo { height: 150px; width: 150px; margin: 0 auto; position: relative; }
-.testimonial-item .client-photo img { border-radius: 50%; }
+.testimonial-item .client-photo { height: 300px; width: 400px; margin: 0 auto; position: relative; }
 .testimonial-item .client-photo .fa { position: absolute; left: 50%; color: #f7921a; bottom: -25px; font-size: 50px; line-height: 50px; width: 50px; margin-left: -25px; }
 .testimonial-item .client-info h6 { margin-bottom: 5px; }
 .testimonial-item .client-info span { font-size: .875em; }

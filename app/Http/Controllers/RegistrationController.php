@@ -75,7 +75,7 @@ class RegistrationController extends Controller
         $data = array();
         $data['name'] = $request->first_name;
         $data['email'] = $request->user_id;
-        $data['password'] = md5($request->password);
+        $data['password'] = Hash::make($request->password);
 
         $customer_id = DB::table('users')
         ->insertGetId($data);
@@ -101,5 +101,11 @@ class RegistrationController extends Controller
         Session::put('customer_id', $customer_id);
         Session::put('name', $name);
         return redirect::to('/registration/pages')->with('message', 'You have successfully registered. Please wait for activate your account');
+    }
+
+
+    public function member_approve(){
+
+        return view('pages.member_approve');
     }
 }

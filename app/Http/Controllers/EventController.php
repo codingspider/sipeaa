@@ -41,7 +41,16 @@ class EventController extends Controller
     $calendar = Calendar::addEvents($events);
 
 
-      return view('master', compact('calendar'));
 
+      return view('pages.intro', compact('calendar'));
+
+    }
+
+    public function events_details($id){
+
+        $data = DB::table('events')->where('id', $id)->get();
+
+
+        return view('pages.event_details', compact('data'));
     }
 }
