@@ -60,7 +60,7 @@ $events = DB::table('events')->get();
                        <div class="row row-vm">
                            <div class="col-md-5">
                             <div class="text-block">
-                                    <div class="panel-heading">Full Calendar Example</div>
+                                    <div class="panel-heading">Upcoming events on calender</div>
  
                                     <div class="panel-body">
                                         {!! $calendar->calendar() !!}

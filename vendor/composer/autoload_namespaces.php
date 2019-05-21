@@ -14,5 +14,6 @@ return array(
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
     'MaddHatter\\LaravelFullcalendar' => array($vendorDir . '/maddhatter/laravel-fullcalendar/src'),
     'Maatwebsite\\Excel\\' => array($vendorDir . '/maatwebsite/excel/src'),
+    'Laravelium\\Feed' => array($vendorDir . '/laravelium/feed/src'),
     'Doctrine\\Common\\Lexer\\' => array($vendorDir . '/doctrine/lexer/lib'),
 );

@@ -36,6 +36,11 @@ Route::get('/unactive_user/{id}', 'UsersController@unactive');
 Route::get('/active_user/{id}', 'UsersController@active');
 Route::post('/user/delete/{id}', 'UsersController@delete');
 
+Route::get('/sipeaa/blog', 'BlogController@index');
+Route::get('/sipeaa/blog/post', 'BlogController@blog_post');
+
+Route::get('/about', 'BlogController@about');
+
 
 
 

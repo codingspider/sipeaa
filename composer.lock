@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "140b3c9441f5c4074904d86faf97604a",
+    "content-hash": "c3164b1042cb724b126b326a297e59f6",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -63,6 +63,71 @@
             "time": "2019-02-26T18:07:43+00:00"
         },
         {
+            "name": "cocur/slugify",
+            "version": "v3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cocur/slugify.git",
+                "reference": "d41701efe58ba2df9cae029c3d21e1518cc6780e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cocur/slugify/zipball/d41701efe58ba2df9cae029c3d21e1518cc6780e",
+                "reference": "d41701efe58ba2df9cae029c3d21e1518cc6780e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "laravel/framework": "~5.1",
+                "latte/latte": "~2.2",
+                "league/container": "^2.2.0",
+                "mikey179/vfsstream": "~1.6",
+                "mockery/mockery": "~0.9",
+                "nette/di": "~2.2",
+                "phpunit/phpunit": "~4.8.36|~5.2",
+                "pimple/pimple": "~1.1",
+                "plumphp/plum": "~0.1",
+                "silex/silex": "~1.3",
+                "symfony/config": "~2.4|~3.0|~4.0",
+                "symfony/dependency-injection": "~2.4|~3.0|~4.0",
+                "symfony/http-kernel": "~2.4|~3.0|~4.0",
+                "twig/twig": "~1.26|~2.0",
+                "zendframework/zend-modulemanager": "~2.2",
+                "zendframework/zend-servicemanager": "~2.2",
+                "zendframework/zend-view": "~2.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cocur\\Slugify\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivo Bathke",
+                    "email": "ivo.bathke@gmail.com"
+                },
+                {
+                    "name": "Florian Eckerstorfer",
+                    "email": "florian@eckerstorfer.co",
+                    "homepage": "https://florian.ec"
+                }
+            ],
+            "description": "Converts a string into a slug.",
+            "keywords": [
+                "slug",
+                "slugify"
+            ],
+            "time": "2019-01-31T20:38:55+00:00"
+        },
+        {
             "name": "crocodicstudio/crudbooster",
             "version": "v5.4.19",
             "source": {
@@ -113,6 +178,69 @@
                 "laravel"
             ],
             "time": "2018-12-04T06:32:09+00:00"
+        },
+        {
+            "name": "cviebrock/eloquent-sluggable",
+            "version": "4.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cviebrock/eloquent-sluggable.git",
+                "reference": "62ea99dbdd383697433add4f90a62a96a196578b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cviebrock/eloquent-sluggable/zipball/62ea99dbdd383697433add4f90a62a96a196578b",
+                "reference": "62ea99dbdd383697433add4f90a62a96a196578b",
+                "shasum": ""
+            },
+            "require": {
+                "cocur/slugify": "^3.1",
+                "illuminate/config": "~5.6.0",
+                "illuminate/database": "~5.6.0",
+                "illuminate/support": "~5.6.0",
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "codedungeon/phpunit-result-printer": "^0.19.6",
+                "mockery/mockery": "^0.9.4",
+                "orchestra/database": "~3.6.0",
+                "orchestra/testbench": "~3.6.0",
+                "phpunit/phpunit": "~7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Cviebrock\\EloquentSluggable\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Cviebrock\\EloquentSluggable\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Colin Viebrock",
+                    "email": "colin@viebrock.ca"
+                }
+            ],
+            "description": "Easy creation of slugs for your Eloquent models in Laravel 5.",
+            "homepage": "https://github.com/cviebrock/eloquent-sluggable",
+            "keywords": [
+                "eloquent",
+                "eloquent-sluggable",
+                "laravel",
+                "lumen",
+                "slug",
+                "sluggable"
+            ],
+            "time": "2018-05-22T02:37:31+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1499,6 +1627,68 @@
             "time": "2018-10-12T19:39:35+00:00"
         },
         {
+            "name": "laravelium/feed",
+            "version": "v2.12.3",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/Laravelium/Feed.git",
+                "reference": "bbdcfa1424816da053d1527017b1c79b5d961f4c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/Laravelium%2FFeed/repository/archive.zip?sha=bbdcfa1424816da053d1527017b1c79b5d961f4c",
+                "reference": "bbdcfa1424816da053d1527017b1c79b5d961f4c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.6.*",
+                "php": ">=7.1.3"
+            },
+            "require-dev": {
+                "orchestra/testbench": "3.6.*",
+                "phpunit/phpunit": "~7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laravelium\\Feed\\FeedServiceProvider"
+                    ],
+                    "aliases": {
+                        "Feed": "Laravelium\\Feed\\Feed"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Laravelium\\Feed": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roumen Damianoff",
+                    "email": "roumen@damianoff.com",
+                    "homepage": "https://damianoff.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravelium Feed package for Laravel.",
+            "homepage": "https://laravelium.com",
+            "keywords": [
+                "atom",
+                "feed",
+                "generator",
+                "laravel",
+                "laravelium",
+                "rss"
+            ],
+            "time": "2019-02-28T10:26:28+00:00"
+        },
+        {
             "name": "league/flysystem",
             "version": "1.0.51",
             "source": {
@@ -2569,6 +2759,56 @@
                 "mailer"
             ],
             "time": "2019-04-21T09:21:45+00:00"
+        },
+        {
+            "name": "swisnl/laravel-fulltext",
+            "version": "0.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swisnl/laravel-fulltext.git",
+                "reference": "e3043b28a5e13d1b3426bed30320ac9c4d1b315d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swisnl/laravel-fulltext/zipball/e3043b28a5e13d1b3426bed30320ac9c4d1b315d",
+                "reference": "e3043b28a5e13d1b3426bed30320ac9c4d1b315d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "~5.1|5.2|5.3",
+                "illuminate/database": "~5.1|5.2|5.3",
+                "illuminate/support": "~5.1|5.2|5.3",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.5",
+                "phpunit/phpunit": "^5.6"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Swis\\LaravelFulltext\\FulltextServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Swis\\LaravelFulltext\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Björn Brala",
+                    "email": "bjorn@swis.nl"
+                }
+            ],
+            "description": "Fulltext indexing and searching for Laravel",
+            "time": "2018-08-30T10:03:08+00:00"
         },
         {
             "name": "symfony/console",
@@ -3916,6 +4156,75 @@
                 "environment"
             ],
             "time": "2019-01-29T11:11:52+00:00"
+        },
+        {
+            "name": "webdevetc/blogetc",
+            "version": "v3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WebDevEtc/BlogEtc.git",
+                "reference": "a1da138e0a95416799a13f81968c8f9920b98794"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WebDevEtc/BlogEtc/zipball/a1da138e0a95416799a13f81968c8f9920b98794",
+                "reference": "a1da138e0a95416799a13f81968c8f9920b98794",
+                "shasum": ""
+            },
+            "require": {
+                "cviebrock/eloquent-sluggable": "4.5.*|4.6.*",
+                "illuminate/database": "~5.5.0|~5.6.0|~5.7.0",
+                "illuminate/support": "~5.5.0|~5.6.0|~5.7.0",
+                "intervention/image": "2.*",
+                "laravelium/feed": "~2.12.0|~3.0.0",
+                "swisnl/laravel-fulltext": "0.13.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "WebDevEtc\\BlogEtc\\BlogEtcServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "WebDevEtc\\BlogEtc\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "WebDevEtc",
+                    "email": "packages@webdevetc.com",
+                    "homepage": "https://webdevetc.com/",
+                    "role": "developer"
+                }
+            ],
+            "description": "Simple blog (with admin panel) for Laravel from https://webdevetc.com/",
+            "keywords": [
+                "admin",
+                "blog",
+                "feed",
+                "laravel",
+                "news",
+                "package",
+                "panel",
+                "posts",
+                "rss",
+                "update",
+                "webdev",
+                "webdevetc",
+                "write"
+            ],
+            "time": "2018-11-15T12:46:03+00:00"
         }
     ],
     "packages-dev": [

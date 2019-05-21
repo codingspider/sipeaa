@@ -43,6 +43,7 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
         array (
             'Whoops\\' => 7,
             'Webmozart\\Assert\\' => 17,
+            'WebDevEtc\\BlogEtc\\' => 18,
         ),
         'U' => 
         array (
@@ -74,6 +75,7 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
             'Symfony\\Component\\Debug\\' => 24,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
+            'Swis\\LaravelFulltext\\' => 21,
             'SuperClosure\\' => 13,
         ),
         'R' => 
@@ -142,7 +144,9 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
         ),
         'C' => 
         array (
+            'Cviebrock\\EloquentSluggable\\' => 28,
             'Cron\\' => 5,
+            'Cocur\\Slugify\\' => 14,
             'Carbon\\' => 7,
         ),
         'B' => 
@@ -177,6 +181,10 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'WebDevEtc\\BlogEtc\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/webdevetc/blogetc/src',
         ),
         'Unisharp\\Laravelfilemanager\\' => 
         array (
@@ -265,6 +273,10 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
         'Symfony\\Component\\Console\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
+        ),
+        'Swis\\LaravelFulltext\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/swisnl/laravel-fulltext/src',
         ),
         'SuperClosure\\' => 
         array (
@@ -395,9 +407,17 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
+        'Cviebrock\\EloquentSluggable\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cviebrock/eloquent-sluggable/src',
+        ),
         'Cron\\' => 
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
+        ),
+        'Cocur\\Slugify\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cocur/slugify/src',
         ),
         'Carbon\\' => 
         array (
@@ -455,6 +475,13 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
                 0 => __DIR__ . '/..' . '/maatwebsite/excel/src',
             ),
         ),
+        'L' => 
+        array (
+            'Laravelium\\Feed' => 
+            array (
+                0 => __DIR__ . '/..' . '/laravelium/feed/src',
+            ),
+        ),
         'D' => 
         array (
             'Doctrine\\Common\\Lexer\\' => 
@@ -469,7 +496,10 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
         'App\\Event' => __DIR__ . '/../..' . '/app/Event.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdminCmsUsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminCmsUsersController.php',
+        'App\\Http\\Controllers\\AdminEmployeSectionController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminEmployeSectionController.php',
         'App\\Http\\Controllers\\AdminEvents13Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminEvents13Controller.php',
+        'App\\Http\\Controllers\\AdminJobCategoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminJobCategoriesController.php',
+        'App\\Http\\Controllers\\AdminJobLocationController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminJobLocationController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
@@ -479,7 +509,9 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
         'App\\Http\\Controllers\\EventController' => __DIR__ . '/../..' . '/app/Http/Controllers/EventController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\RegistrationController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegistrationController.php',
+        'App\\Http\\Controllers\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsersController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
+        'App\\Http\\Middleware\\CheckApproved' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckApproved.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
@@ -506,6 +538,27 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
         'Cms_privileges_rolesSeeder' => __DIR__ . '/../..' . '/database/seeds/CBSeeder.php',
         'Cms_settingsSeeder' => __DIR__ . '/../..' . '/database/seeds/CBSeeder.php',
         'Cms_usersSeeder' => __DIR__ . '/../..' . '/database/seeds/CBSeeder.php',
+        'Cocur\\Slugify\\Bridge\\Laravel\\SlugifyFacade' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Laravel/SlugifyFacade.php',
+        'Cocur\\Slugify\\Bridge\\Laravel\\SlugifyServiceProvider' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Laravel/SlugifyServiceProvider.php',
+        'Cocur\\Slugify\\Bridge\\Latte\\SlugifyHelper' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Latte/SlugifyHelper.php',
+        'Cocur\\Slugify\\Bridge\\League\\SlugifyServiceProvider' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/League/SlugifyServiceProvider.php',
+        'Cocur\\Slugify\\Bridge\\Nette\\SlugifyExtension' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Nette/SlugifyExtension.php',
+        'Cocur\\Slugify\\Bridge\\Plum\\SlugifyConverter' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Plum/SlugifyConverter.php',
+        'Cocur\\Slugify\\Bridge\\Silex2\\SlugifyServiceProvider' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Silex2/SlugifyServiceProvider.php',
+        'Cocur\\Slugify\\Bridge\\Silex\\SlugifyServiceProvider' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Silex/SlugifyServiceProvider.php',
+        'Cocur\\Slugify\\Bridge\\Symfony\\CocurSlugifyBundle' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Symfony/CocurSlugifyBundle.php',
+        'Cocur\\Slugify\\Bridge\\Symfony\\CocurSlugifyExtension' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Symfony/CocurSlugifyExtension.php',
+        'Cocur\\Slugify\\Bridge\\Symfony\\Configuration' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Symfony/Configuration.php',
+        'Cocur\\Slugify\\Bridge\\Twig\\SlugifyExtension' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/Twig/SlugifyExtension.php',
+        'Cocur\\Slugify\\Bridge\\ZF2\\Module' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/ZF2/Module.php',
+        'Cocur\\Slugify\\Bridge\\ZF2\\SlugifyService' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/ZF2/SlugifyService.php',
+        'Cocur\\Slugify\\Bridge\\ZF2\\SlugifyViewHelper' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/ZF2/SlugifyViewHelper.php',
+        'Cocur\\Slugify\\Bridge\\ZF2\\SlugifyViewHelperFactory' => __DIR__ . '/..' . '/cocur/slugify/src/Bridge/ZF2/SlugifyViewHelperFactory.php',
+        'Cocur\\Slugify\\RuleProvider\\DefaultRuleProvider' => __DIR__ . '/..' . '/cocur/slugify/src/RuleProvider/DefaultRuleProvider.php',
+        'Cocur\\Slugify\\RuleProvider\\FileRuleProvider' => __DIR__ . '/..' . '/cocur/slugify/src/RuleProvider/FileRuleProvider.php',
+        'Cocur\\Slugify\\RuleProvider\\RuleProviderInterface' => __DIR__ . '/..' . '/cocur/slugify/src/RuleProvider/RuleProviderInterface.php',
+        'Cocur\\Slugify\\Slugify' => __DIR__ . '/..' . '/cocur/slugify/src/Slugify.php',
+        'Cocur\\Slugify\\SlugifyInterface' => __DIR__ . '/..' . '/cocur/slugify/src/SlugifyInterface.php',
         'Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
@@ -516,6 +569,11 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
         'Cron\\HoursField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/HoursField.php',
         'Cron\\MinutesField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
+        'Cviebrock\\EloquentSluggable\\ServiceProvider' => __DIR__ . '/..' . '/cviebrock/eloquent-sluggable/src/ServiceProvider.php',
+        'Cviebrock\\EloquentSluggable\\Services\\SlugService' => __DIR__ . '/..' . '/cviebrock/eloquent-sluggable/src/Services/SlugService.php',
+        'Cviebrock\\EloquentSluggable\\Sluggable' => __DIR__ . '/..' . '/cviebrock/eloquent-sluggable/src/Sluggable.php',
+        'Cviebrock\\EloquentSluggable\\SluggableObserver' => __DIR__ . '/..' . '/cviebrock/eloquent-sluggable/src/SluggableObserver.php',
+        'Cviebrock\\EloquentSluggable\\SluggableScopeHelpers' => __DIR__ . '/..' . '/cviebrock/eloquent-sluggable/src/SluggableScopeHelpers.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
@@ -2545,6 +2603,8 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',
         'Laravel\\Tinker\\TinkerServiceProvider' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerServiceProvider.php',
+        'Laravelium\\Feed\\Feed' => __DIR__ . '/..' . '/laravelium/feed/src/Laravelium/Feed/Feed.php',
+        'Laravelium\\Feed\\FeedServiceProvider' => __DIR__ . '/..' . '/laravelium/feed/src/Laravelium/Feed/FeedServiceProvider.php',
         'League\\Flysystem\\AdapterInterface' => __DIR__ . '/..' . '/league/flysystem/src/AdapterInterface.php',
         'League\\Flysystem\\Adapter\\AbstractAdapter' => __DIR__ . '/..' . '/league/flysystem/src/Adapter/AbstractAdapter.php',
         'League\\Flysystem\\Adapter\\AbstractFtpAdapter' => __DIR__ . '/..' . '/league/flysystem/src/Adapter/AbstractFtpAdapter.php',
@@ -4153,6 +4213,17 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
         'Svg\\Tag\\StyleTag' => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg/Tag/StyleTag.php',
         'Svg\\Tag\\Text' => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg/Tag/Text.php',
         'Svg\\Tag\\UseTag' => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg/Tag/UseTag.php',
+        'Swis\\LaravelFulltext\\Commands\\Index' => __DIR__ . '/..' . '/swisnl/laravel-fulltext/src/Commands/Index.php',
+        'Swis\\LaravelFulltext\\Commands\\IndexOne' => __DIR__ . '/..' . '/swisnl/laravel-fulltext/src/Commands/IndexOne.php',
+        'Swis\\LaravelFulltext\\Commands\\UnindexOne' => __DIR__ . '/..' . '/swisnl/laravel-fulltext/src/Commands/UnindexOne.php',
+        'Swis\\LaravelFulltext\\FulltextServiceProvider' => __DIR__ . '/..' . '/swisnl/laravel-fulltext/src/FulltextServiceProvider.php',
+        'Swis\\LaravelFulltext\\Indexable' => __DIR__ . '/..' . '/swisnl/laravel-fulltext/src/Indexable.php',
+        'Swis\\LaravelFulltext\\IndexedRecord' => __DIR__ . '/..' . '/swisnl/laravel-fulltext/src/IndexedRecord.php',
+        'Swis\\LaravelFulltext\\Indexer' => __DIR__ . '/..' . '/swisnl/laravel-fulltext/src/Indexer.php',
+        'Swis\\LaravelFulltext\\ModelObserver' => __DIR__ . '/..' . '/swisnl/laravel-fulltext/src/ModelObserver.php',
+        'Swis\\LaravelFulltext\\Search' => __DIR__ . '/..' . '/swisnl/laravel-fulltext/src/Search.php',
+        'Swis\\LaravelFulltext\\SearchInterface' => __DIR__ . '/..' . '/swisnl/laravel-fulltext/src/SearchInterface.php',
+        'Swis\\LaravelFulltext\\TermBuilder' => __DIR__ . '/..' . '/swisnl/laravel-fulltext/src/TermBuilder.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\CommandLoader\\CommandLoaderInterface' => __DIR__ . '/..' . '/symfony/console/CommandLoader/CommandLoaderInterface.php',
         'Symfony\\Component\\Console\\CommandLoader\\ContainerCommandLoader' => __DIR__ . '/..' . '/symfony/console/CommandLoader/ContainerCommandLoader.php',
@@ -4827,6 +4898,54 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
         'Unisharp\\Laravelfilemanager\\middlewares\\CreateDefaultFolder' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/middlewares/CreateDefaultFolder.php',
         'Unisharp\\Laravelfilemanager\\middlewares\\MultiUser' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/middlewares/MultiUser.php',
         'Unisharp\\Laravelfilemanager\\traits\\LfmHelpers' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/traits/LfmHelpers.php',
+        'WebDevEtc\\BlogEtc\\BlogEtcServiceProvider' => __DIR__ . '/..' . '/webdevetc/blogetc/src/BlogEtcServiceProvider.php',
+        'WebDevEtc\\BlogEtc\\Captcha\\Basic' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Captcha/Basic.php',
+        'WebDevEtc\\BlogEtc\\Captcha\\CaptchaAbstract' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Captcha/CaptchaAbstract.php',
+        'WebDevEtc\\BlogEtc\\Captcha\\UsesCaptcha' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Captcha/UsesCaptcha.php',
+        'WebDevEtc\\BlogEtc\\Controllers\\BlogEtcAdminController' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Controllers/BlogEtcAdminController.php',
+        'WebDevEtc\\BlogEtc\\Controllers\\BlogEtcCategoryAdminController' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Controllers/BlogEtcCategoryAdminController.php',
+        'WebDevEtc\\BlogEtc\\Controllers\\BlogEtcCommentWriterController' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Controllers/BlogEtcCommentWriterController.php',
+        'WebDevEtc\\BlogEtc\\Controllers\\BlogEtcCommentsAdminController' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Controllers/BlogEtcCommentsAdminController.php',
+        'WebDevEtc\\BlogEtc\\Controllers\\BlogEtcImageUploadController' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Controllers/BlogEtcImageUploadController.php',
+        'WebDevEtc\\BlogEtc\\Controllers\\BlogEtcReaderController' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Controllers/BlogEtcReaderController.php',
+        'WebDevEtc\\BlogEtc\\Controllers\\BlogEtcRssFeedController' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Controllers/BlogEtcRssFeedController.php',
+        'WebDevEtc\\BlogEtc\\Events\\BlogPostAdded' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Events/BlogPostAdded.php',
+        'WebDevEtc\\BlogEtc\\Events\\BlogPostEdited' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Events/BlogPostEdited.php',
+        'WebDevEtc\\BlogEtc\\Events\\BlogPostWillBeDeleted' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Events/BlogPostWillBeDeleted.php',
+        'WebDevEtc\\BlogEtc\\Events\\CategoryAdded' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Events/CategoryAdded.php',
+        'WebDevEtc\\BlogEtc\\Events\\CategoryEdited' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Events/CategoryEdited.php',
+        'WebDevEtc\\BlogEtc\\Events\\CategoryWillBeDeleted' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Events/CategoryWillBeDeleted.php',
+        'WebDevEtc\\BlogEtc\\Events\\CommentAdded' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Events/CommentAdded.php',
+        'WebDevEtc\\BlogEtc\\Events\\CommentApproved' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Events/CommentApproved.php',
+        'WebDevEtc\\BlogEtc\\Events\\CommentWillBeDeleted' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Events/CommentWillBeDeleted.php',
+        'WebDevEtc\\BlogEtc\\Events\\UploadedImage' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Events/UploadedImage.php',
+        'WebDevEtc\\BlogEtc\\Helpers' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Helpers.php',
+        'WebDevEtc\\BlogEtc\\Interfaces\\BaseRequestInterface' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Interfaces/BaseRequestInterface.php',
+        'WebDevEtc\\BlogEtc\\Interfaces\\CaptchaInterface' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Interfaces/CaptchaInterface.php',
+        'WebDevEtc\\BlogEtc\\Interfaces\\SearchResultInterface' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Interfaces/SearchResultInterface.php',
+        'WebDevEtc\\BlogEtc\\Middleware\\UserCanManageBlogPosts' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Middleware/UserCanManageBlogPosts.php',
+        'WebDevEtc\\BlogEtc\\Models\\BlogEtcCategory' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Models/BlogEtcCategory.php',
+        'WebDevEtc\\BlogEtc\\Models\\BlogEtcComment' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Models/BlogEtcComment.php',
+        'WebDevEtc\\BlogEtc\\Models\\BlogEtcPost' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Models/BlogEtcPost.php',
+        'WebDevEtc\\BlogEtc\\Models\\BlogEtcUploadedPhoto' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Models/BlogEtcUploadedPhoto.php',
+        'WebDevEtc\\BlogEtc\\Requests\\AddNewCommentRequest' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Requests/AddNewCommentRequest.php',
+        'WebDevEtc\\BlogEtc\\Requests\\BaseBlogEtcCategoryRequest' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Requests/BaseBlogEtcCategoryRequest.php',
+        'WebDevEtc\\BlogEtc\\Requests\\BaseBlogEtcPostRequest' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Requests/BaseBlogEtcPostRequest.php',
+        'WebDevEtc\\BlogEtc\\Requests\\BaseRequest' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Requests/BaseRequest.php',
+        'WebDevEtc\\BlogEtc\\Requests\\CreateBlogEtcPostRequest' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Requests/CreateBlogEtcPostRequest.php',
+        'WebDevEtc\\BlogEtc\\Requests\\DeleteBlogEtcCategoryRequest' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Requests/DeleteBlogEtcCategoryRequest.php',
+        'WebDevEtc\\BlogEtc\\Requests\\DeleteBlogEtcPostRequest' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Requests/DeleteBlogEtcPostRequest.php',
+        'WebDevEtc\\BlogEtc\\Requests\\FeedRequest' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Requests/FeedRequest.php',
+        'WebDevEtc\\BlogEtc\\Requests\\SearchRequest' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Requests/SearchRequest.php',
+        'WebDevEtc\\BlogEtc\\Requests\\StoreBlogEtcCategoryRequest' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Requests/StoreBlogEtcCategoryRequest.php',
+        'WebDevEtc\\BlogEtc\\Requests\\Traits\\HasCategoriesTrait' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Requests/Traits/HasCategoriesTrait.php',
+        'WebDevEtc\\BlogEtc\\Requests\\Traits\\HasImageUploadTrait' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Requests/Traits/HasImageUploadTrait.php',
+        'WebDevEtc\\BlogEtc\\Requests\\UpdateBlogEtcCategoryRequest' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Requests/UpdateBlogEtcCategoryRequest.php',
+        'WebDevEtc\\BlogEtc\\Requests\\UpdateBlogEtcPostRequest' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Requests/UpdateBlogEtcPostRequest.php',
+        'WebDevEtc\\BlogEtc\\Requests\\UploadImageRequest' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Requests/UploadImageRequest.php',
+        'WebDevEtc\\BlogEtc\\Scopes\\BlogCommentApprovedAndDefaultOrderScope' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Scopes/BlogCommentApprovedAndDefaultOrderScope.php',
+        'WebDevEtc\\BlogEtc\\Scopes\\BlogEtcPublishedScope' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Scopes/BlogEtcPublishedScope.php',
+        'WebDevEtc\\BlogEtc\\Traits\\UploadFileTrait' => __DIR__ . '/..' . '/webdevetc/blogetc/src/Traits/UploadFileTrait.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'Whoops\\Exception\\ErrorException' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/ErrorException.php',
         'Whoops\\Exception\\Formatter' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/Formatter.php',

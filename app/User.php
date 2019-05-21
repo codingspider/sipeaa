@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -26,4 +27,22 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function canManageBlogEtcPosts()
+    {
+        $id = Auth::user()->id;
+        $email = Auth::user()->email;
+
+        if ($this->id === $id && $this->email === $email){
+
+           // return true so this user CAN edit/post/delete
+           // blog posts (and post any HTML/JS)
+
+           return true;
+        }
+
+        
+
+        return false;
+    }
 }

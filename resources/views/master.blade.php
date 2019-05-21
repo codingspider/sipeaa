@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
-
+{!!\WebDevEtc\BlogEtc\Helpers::rss_html_tag()!!}
 <style>
 .carousel-item {
   height: 100vh;
@@ -98,13 +98,13 @@
 					<nav class="navbar-collapse collapse" id="mainnav">
 						<ul class="nav navbar-nav">
 						<li><a href="{{ URL::to('/home') }}"> Home </a></li>
-								<li><a href="buy-sell.html"> About Us </a></li>
+								<li><a href="{{ URL::to('/about') }}"> About Us </a></li>
 						
 							<li class="dropdown"><a href="#" class="dropdown-toggle">Blogs  <b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									
-									<li><a href="#">SIPEAA Articles </a></li>
-									<li><a href="#">Post Articles </a></li>
+								<li><a href="{{ URL::to('/sipeaa/blog') }}">SIPEAA Articles </a></li>
+								<li><a href="{{ URL::to('/blog_admin/add_post') }}">Post Articles </a></li>
 									<li><a href="#">Articles Board </a></li>
 								</ul>
 							</li>
