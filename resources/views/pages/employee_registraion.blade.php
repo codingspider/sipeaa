@@ -1,9 +1,11 @@
-@extends('master')
+@extends('layouts.app')
 
 @section('title', 'Employee Registration')
     
 @section('content')
-
+@php
+    $data = DB::table('job_categories')->get();
+@endphp
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<script src="editor.js"></script>
@@ -161,6 +163,19 @@
                                                                             </span>
                                                                         @endif
                                                                     </div>
+                                                                    <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Job Areas  ') }}</label>
+                            
+                                                        <div class="col-md-6">
+                                                            <select class="form-control" name="job_areas" data-required="no" data-type="select">
+
+                                                                <option value=""> - select -</option>
+                                            @foreach ($data as $item)
+                                                
+                                                            <option value="{{ $item->id }}">{{ $item->category_name }}</option>
+                                            @endforeach
+                                                                           
+                                                                </select>
+                                                        </div>
                                                                 </div>
                                                             <div class="form-group row">
                                                                 <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Description  ') }}</label>

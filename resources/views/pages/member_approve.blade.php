@@ -52,6 +52,8 @@
                     @else
                 <td><a class="btn btn-danger" href="{{ URL::to('/active_user', $item->id)}}"> <i class="fa fa-thumbs-down"></i></td>
                         @endif
+                <td><a class="btn btn-info" href="{{ URL::to('/user/profile/details', $item->id)}}"> <i class="fa fa-user"></i></td>
+
             <td>
             <form action="{{ URL::to('/user/delete', $item->id)}}" method="post">
                   @csrf

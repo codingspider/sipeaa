@@ -161,6 +161,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         crocodicstudio\crudbooster\CRUDBoosterServiceProvider::class,
         MaddHatter\LaravelFullcalendar\ServiceProvider::class,
+        Musonza\Groups\GroupsServiceProvider::class,
 
     ],
 
@@ -211,6 +212,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
+        'Groups' => Musonza\Groups\Facades\GroupsFacade::class,
 
     ],
 

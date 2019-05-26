@@ -1,4 +1,5 @@
-@extends("layouts.app",['title'=>$title])
+@extends("layouts.app")
+@section('title', 'Blog Page')
 @section("content")
 <div class='col-sm-6 blogetc_container'>
         @if(\Auth::check() && \Auth::user()->canManageBlogEtcPosts())

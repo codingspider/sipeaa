@@ -97,6 +97,7 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
         ),
         'M' => 
         array (
+            'Musonza\\Groups\\' => 15,
             'Monolog\\' => 8,
         ),
         'L' => 
@@ -314,6 +315,10 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
         array (
             0 => __DIR__ . '/..' . '/nunomaduro/collision/src',
         ),
+        'Musonza\\Groups\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/musonza/groups/src',
+        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
@@ -504,10 +509,13 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
+        'App\\Http\\Controllers\\BlogController' => __DIR__ . '/../..' . '/app/Http/Controllers/BlogController.php',
         'App\\Http\\Controllers\\CBHook' => __DIR__ . '/../..' . '/app/Http/Controllers/CBHook.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\EventController' => __DIR__ . '/../..' . '/app/Http/Controllers/EventController.php',
+        'App\\Http\\Controllers\\GroupController' => __DIR__ . '/../..' . '/app/Http/Controllers/GroupController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\JobController' => __DIR__ . '/../..' . '/app/Http/Controllers/JobController.php',
         'App\\Http\\Controllers\\RegistrationController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegistrationController.php',
         'App\\Http\\Controllers\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsersController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
@@ -1514,6 +1522,7 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
         'FontLib\\WOFF\\File' => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib/WOFF/File.php',
         'FontLib\\WOFF\\Header' => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib/WOFF/Header.php',
         'FontLib\\WOFF\\TableDirectoryEntry' => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib/WOFF/TableDirectoryEntry.php',
+        'GroupsTestCase' => __DIR__ . '/..' . '/musonza/groups/tests/GroupsTestCase.php',
         'GuzzleHttp\\Psr7\\AppendStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/AppendStream.php',
         'GuzzleHttp\\Psr7\\BufferStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/BufferStream.php',
         'GuzzleHttp\\Psr7\\CachingStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/CachingStream.php',
@@ -2867,6 +2876,21 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
         'Monolog\\ResettableInterface' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/ResettableInterface.php',
         'Monolog\\SignalHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/SignalHandler.php',
         'Monolog\\Utils' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Utils.php',
+        'Musonza\\Groups\\Facades\\GroupsFacade' => __DIR__ . '/..' . '/musonza/groups/src/Facades/GroupsFacade.php',
+        'Musonza\\Groups\\Groups' => __DIR__ . '/..' . '/musonza/groups/src/Groups.php',
+        'Musonza\\Groups\\GroupsServiceProvider' => __DIR__ . '/..' . '/musonza/groups/src/GroupsServiceProvider.php',
+        'Musonza\\Groups\\Models\\Comment' => __DIR__ . '/..' . '/musonza/groups/src/Models/Comment.php',
+        'Musonza\\Groups\\Models\\Group' => __DIR__ . '/..' . '/musonza/groups/src/Models/Group.php',
+        'Musonza\\Groups\\Models\\GroupPost' => __DIR__ . '/..' . '/musonza/groups/src/Models/GroupPost.php',
+        'Musonza\\Groups\\Models\\GroupRequest' => __DIR__ . '/..' . '/musonza/groups/src/Models/GroupRequest.php',
+        'Musonza\\Groups\\Models\\GroupUser' => __DIR__ . '/..' . '/musonza/groups/src/Models/GroupUser.php',
+        'Musonza\\Groups\\Models\\Like' => __DIR__ . '/..' . '/musonza/groups/src/Models/Like.php',
+        'Musonza\\Groups\\Models\\Post' => __DIR__ . '/..' . '/musonza/groups/src/Models/Post.php',
+        'Musonza\\Groups\\Models\\Report' => __DIR__ . '/..' . '/musonza/groups/src/Models/Report.php',
+        'Musonza\\Groups\\Models\\User' => __DIR__ . '/..' . '/musonza/groups/src/Models/User.php',
+        'Musonza\\Groups\\Traits\\Likes' => __DIR__ . '/..' . '/musonza/groups/src/Traits/Likes.php',
+        'Musonza\\Groups\\Traits\\Reporting' => __DIR__ . '/..' . '/musonza/groups/src/Traits/Reporting.php',
+        'Musonza\\Groups\\User' => __DIR__ . '/..' . '/musonza/groups/src/User.php',
         'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Laravel/CollisionServiceProvider.php',
         'NunoMaduro\\Collision\\Adapters\\Laravel\\ExceptionHandler' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Laravel/ExceptionHandler.php',
         'NunoMaduro\\Collision\\Adapters\\Laravel\\Inspector' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Laravel/Inspector.php',

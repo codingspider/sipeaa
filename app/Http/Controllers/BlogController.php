@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-
+use DB;
 
 class BlogController extends Controller
 {
@@ -24,5 +24,11 @@ class BlogController extends Controller
     public function about(){
 
         return view('pages.about_us');
+    }
+    public function article_board(){
+
+        $data= DB::table('cms_users')->first();
+
+        return view('pages.article_board', compact('data')); 
     }
 }

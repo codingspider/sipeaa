@@ -40,7 +40,7 @@ class RegistrationController extends Controller
         $data['email'] = $request->user_id;
         $data['password'] = Hash::make($request->password);
 
-        $customer_id = DB::table('users')
+        $users = DB::table('users')
         ->insertGetId($data);
 
         $data = array();
@@ -50,6 +50,8 @@ class RegistrationController extends Controller
         $data['contact_person_mobile'] = $request->phone;
         $data['contact_person_email'] = $request->email;
         $data['description'] = $request->description; 
+        $data['job_area_id'] = $request->job_areas; 
+        $data['user_id'] = $users; 
 
         $customer_id = DB::table('employee')
         ->insertGetId($data);
@@ -77,7 +79,7 @@ class RegistrationController extends Controller
         $data['email'] = $request->user_id;
         $data['password'] = Hash::make($request->password);
 
-        $customer_id = DB::table('users')
+        $user_id = DB::table('users')
         ->insertGetId($data);
 
         $data = array();
@@ -91,8 +93,8 @@ class RegistrationController extends Controller
         $data['reg_no'] = $request->reg_no; 
         $data['batch_no'] = $request->batch_no; 
         $data['experience_year'] = $request->exp_year; 
-        $data['job_area'] = $request->job_areas; 
-        $data['job_skill'] = $request->job_skill; 
+        $data['job_area_id'] = $request->job_areas; 
+        $data['users_id'] = $user_id; 
 
         $customer_id = DB::table('members')
         ->insertGetId($data);
@@ -105,6 +107,19 @@ class RegistrationController extends Controller
 
 
     public function member_approve(){
+
+        return view('pages.member_approve');
+    }
+    public function user_profile($id){
+
+        $users = DB::table('users')
+             ->join('employee', 'employee.user_id', '=', 'users.id')
+            // ->join('members', 'members.users_id', '=', 'users.id')
+            ->select('users.*', 'employee.*')
+            ->where('employee.user_id', $id)
+            //->where('members.users_id', $id)
+            ->first();
+        dd($users);
 
         return view('pages.member_approve');
     }

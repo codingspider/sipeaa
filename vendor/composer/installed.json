@@ -2321,6 +2321,66 @@
         ]
     },
     {
+        "name": "musonza/groups",
+        "version": "v1.0.3",
+        "version_normalized": "1.0.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/musonza/groups.git",
+            "reference": "7755505bdf5462b75c189827ed90b6c6c626f886"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/musonza/groups/zipball/7755505bdf5462b75c189827ed90b6c6c626f886",
+            "reference": "7755505bdf5462b75c189827ed90b6c6c626f886",
+            "shasum": ""
+        },
+        "require": {
+            "laravel/framework": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
+            "php": ">=7.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "^1.0.0",
+            "orchestra/database": "~3.3.0|~3.4.2|^3.5.0|~3.7.0",
+            "orchestra/testbench": "~3.3.0|~3.4.2|^3.5.0|~3.7.0",
+            "phpunit/phpunit": "^5.7|6.2|^7.0"
+        },
+        "time": "2019-04-09T03:54:27+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "Musonza\\Groups\\GroupsServiceProvider"
+                ]
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Musonza\\Groups\\": "src/"
+            },
+            "classmap": [
+                "tests/GroupsTestCase.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Tinashe Musonza",
+                "email": "tinashemusonza@gmail.com"
+            }
+        ],
+        "description": "Laravel 5 user groups package",
+        "keywords": [
+            "conversations",
+            "groups",
+            "laravel"
+        ]
+    },
+    {
         "name": "myclabs/deep-copy",
         "version": "1.9.1",
         "version_normalized": "1.9.1.0",

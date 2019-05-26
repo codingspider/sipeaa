@@ -1,42 +1,33 @@
 <!DOCTYPE html>
 <html lang="zxx" class="js">
-	<head>
+		<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="">
+		<meta name="description" content="CryptoCoin is a powerful Bitcoin Crypto Currency Wallet and Mining Template with full of customization options and features">
 		<!-- Fav Icon  -->
-	<link rel="shortcut icon" href="{{ asset('images/cropped-Logo-Final-Masum.png') }}">
+		<link rel="shortcut icon" href="{{ asset('images/cropped-Logo-Final-Masum.png') }}">
 		<!-- Site Title  -->
 		<title>@yield('title', 'SIPEAA | Home')</title>
+		<!-- Vendor Bundle CSS -->
 		<!-- Vendor Bundle CSS -->
 		<link rel="stylesheet" href="{{ asset('assets/css/vendor.bundle.css') }}" >
 		<!-- Custom styles for this template -->
 		<link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 		<link href="{{ asset('assets/css/theme.css') }}" rel="stylesheet">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
 
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
-{!!\WebDevEtc\BlogEtc\Helpers::rss_html_tag()!!}
-<style>
-.carousel-item {
-  height: 100vh;
-  min-height: 350px;
-  background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-</style>
-
-
+		
 	</head>
 	<body>
+			@php
+			use Illuminate\Support\Facades\Auth;
+			$data = Auth::id();
+	@endphp
 	
-		<!-- Header --> 
 		<header class="site-header header-s1 is-sticky">
 			<!-- Topbar -->
 			<div class="topbar">
@@ -50,35 +41,32 @@
 								<li><a href="#"><em class="fa fa-google-plus"></em></a></li>
 							</ul>
 						</div>
-						@php
-								$data = Auth::id();
-						@endphp
 						<div class="col-sm-6 al-right">
 							<ul class="top-nav">
-							@if($data != NULL )
-							<li class="nav-item dropdown">
-									<a id="navbarDropdown" class="btn btn-info" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-											{{ Auth::user()->email }} 
-									</a>
-
+								@if($data != NULL )
+								<li class="nav-item dropdown">
+										<a id="navbarDropdown" class="btn btn-info" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+												{{ Auth::user()->email }} 
+										</a>
+	
+									
+												<a class="btn btn-danger" href="{{ route('logout') }}"
+													 onclick="event.preventDefault();
+																				 document.getElementById('logout-form').submit();">
+														{{ __('Logout') }}
+												</a>
+	
+												<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+														@csrf
+												</form>
+								</li>
+								@else 
+								<li><a class="btn btn-warning" href="{{ URL::to('/login')}}">Login</a></li>
+								<li><a class="btn btn-primary" href="{{ URL::to('/registration/pages') }}">Members Register</a></li>
+								<li><a class="btn btn-info" href="{{ URL::to('/registration/pages/employee') }}">Employees Register</a></li>
 								
-											<a class="btn btn-danger" href="{{ route('logout') }}"
-												 onclick="event.preventDefault();
-																			 document.getElementById('logout-form').submit();">
-													{{ __('Logout') }}
-											</a>
-
-											<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-													@csrf
-											</form>
-							</li>
-							@else 
-							<li><a class="btn btn-warning" href="{{ URL::to('/login')}}">Login</a></li>
-							<li><a class="btn btn-primary" href="{{ URL::to('/registration/pages') }}">Members Register</a></li>
-							<li><a class="btn btn-info" href="{{ URL::to('/registration/pages/employee') }}">Employees Register</a></li>
-							
-
-							@endif 
+	
+								@endif 
 							</ul>
 						</div>
 					</div>
@@ -93,7 +81,15 @@
 						<img class="logo logo-dark" alt="logo" src="{{ asset('images/cropped-Logo-Final-Masum.png') }}" height="120" width="100%">
 					</a>
 					<!-- #end Logo -->
-				
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainnav" aria-expanded="false">
+							<span class="sr-only">Menu</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<div class="quote-btn"><a class="btn" href="contact.html"><span>get started</span></a></div>
+					</div>
 					<!-- MainNav -->
 					<nav class="navbar-collapse collapse" id="mainnav">
 						<ul class="nav navbar-nav">
@@ -105,14 +101,14 @@
 									
 								<li><a href="{{ URL::to('/sipeaa/blog') }}">SIPEAA Articles </a></li>
 									<li><a href="{{ URL::to('/blog_admin/add_post') }}">Post Articles </a></li>
-									<li><a href="#">Articles Board </a></li>
+								<li><a href="{{ URL::to('/article/borad') }}">Articles Board </a></li>
 								</ul>
 							</li>
 							<li class="dropdown"><a href="#" class="dropdown-toggle">Jobs  <b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									
-									<li><a href="#">All Jobs </a></li>
-									<li><a href="#">Job Posting </a></li>
+								<li><a href="{{ URL::to('/all/jobs') }}">All Jobs </a></li>
+								<li><a href="{{URL::to('/post/jobs') }}">Job Posting </a></li>
 									<li><a href="#">Job Posting Board </a></li>
 								</ul>
 							</li>
@@ -151,10 +147,11 @@
 					<!-- #end MainNav -->
 				</div>
 			</div>
-            <!-- End Navbar -->
-            
-    @yield('content')
+			<!-- End Navbar -->
+			
+		</header>
 		
+		@yield('content')
        	<!-- Section Footer -->
 		<div class="footer-section section section-pad-md light bg-footer">
 			<div class="imagebg footerbg">
@@ -276,6 +273,8 @@
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
 				
 		
-	
+	<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ce6db569e86a489"></script>
+
 	</body>
 </html>

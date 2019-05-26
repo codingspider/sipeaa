@@ -1,9 +1,8 @@
-@extends('master')
+@extends('layouts.app')
 
 @section('content')
 @section('style')
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
+    
 @endsection
 
 @php
@@ -96,94 +95,105 @@ $events = DB::table('events')->get();
                    </div>
                </div>
                <!--End Section -->
-               
-               <!--Section -->
                <div class="section section-pad">
-                   <div class="container">
-                       <div class="section-head">
-                        <div class="row text-center">
-                            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-                                <h2 class="heading-section">Why choose Us</h2>
-                                <p>Sed ut perspi ciatis unde omnis iste natus error sit volup tatem accusa ntium dolor emque lauda ntium, totam rem aperiam</p>
-                            </div>
-                        </div>
-                       </div>
-                       <div class="gaps size-3x"></div>
-                    <div class="row text-center row-vm">
-                        <div class="col-md-4 res-m-bttm-lg">
-                            <div class="box-alt">
-                                <span class="pe pe-7s-server"></span>
-                                <h4>Payment Options</h4>
-                                <p>Morbi eget varius risus, ut venenatis libero Pellentesque in porta dui.</p>
-                            </div>
-                            <div class="box-alt">
-                                <span class="pe pe-7s-note"></span>
-                                <h4>Legal Compliance</h4>
-                                <p>Morbi eget varius risus, ut venenatis libero Pellentesque in porta dui.</p>
-                            </div>
-                            <div class="box-alt">
-                                <span class="pe pe-7s-airplay"></span>
-                                <h4>Cross-Platform Trading</h4>
-                                <p>Morbi eget varius risus, ut venenatis libero Pellentesque in porta dui.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 res-m-bttm-lg">
-                            <div class="box-alt">
-                                <span class="pe pe-7s-lock"></span>
-                                <h4>Strong Security</h4>
-                                <p>Morbi eget varius risus, ut venenatis libero Pellentesque in porta dui.</p>
-                            </div>
-                            <div class="box-alt img">
-                                <img src="images/square-md-a.png" alt="square">
-                            </div>
-                            <div class="box-alt">
-                                <span class="pe pe-7s-cash"></span>
-                                <h4>Competitive Commissions</h4>
-                                <p>Morbi eget varius risus, ut venenatis libero Pellentesque in porta dui.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="box-alt">
-                                <span class="pe pe-7s-global"></span>
-                                <h4>World Coverage</h4>
-                                <p>Morbi eget varius risus, ut venenatis libero Pellentesque in porta dui.</p>
-                            </div>
-                            <div class="box-alt">
-                                <span class="pe pe-7s-graph"></span>
-                                <h4>Advanced Reporting</h4>
-                                <p>Morbi eget varius risus, ut venenatis libero Pellentesque in porta dui.</p>
-                            </div>
-                            <div class="box-alt">
-                                <span class="pe pe-7s-graph1"></span>
-                                <h4>Margin Trading</h4>
-                                <p>Morbi eget varius risus, ut venenatis libero Pellentesque in porta dui.</p>
-                            </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 res-m-bttm">
+                             <div class="row text-center">
+                                 <div class="col-sm-6">
+                                     <div class="blog-post shadow round">
+                                         <div class="post-thumb"><a href="blog-single.html"><img src="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1980519/1400/997/m1/fpnw/wm0/job-point-logo-01-.jpg?1518326143&s=2e6928862f4abd9f041efb57385aa87e" alt="post"></a></div>
+                                         <div class="post-entry">
+                                             <div class="post-meta"><span>Posted 03 Dec, 2017</span></div>
+                                             <h5><a href="blog-single.html">Working Hard to Keep Pace with very heigh Demand</a></h5>
+                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidi dunt ut labore.</p>
+                                             <a href="blog-single.html" class="btn-icon"><span class="pe pe-7s-angle-right"></span></a>
+                                         </div>
+                                     </div>
+                                     <div class="gaps size-3x"></div>
+                                 </div>
+                                 <div class="col-sm-6">
+                                     <div class="blog-post shadow round">
+                                         <div class="post-thumb"><a href="blog-single.html"><img src="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1980519/1400/997/m1/fpnw/wm0/job-point-logo-01-.jpg?1518326143&s=2e6928862f4abd9f041efb57385aa87e" alt="post"></a></div>
+                                         <div class="post-entry">
+                                             <div class="post-meta"><span>Posted 03 Dec, 2017</span></div>
+                                             <h5><a href="blog-single.html">Black Friday: Bitcoins the biggest deal on from today</a></h5>
+                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidi dunt ut labore.</p>
+                                             <a href="blog-single.html" class="btn-icon"><span class="pe pe-7s-angle-right"></span></a>
+                                         </div>
+                                     </div>
+                                     <div class="gaps size-3x"></div>
+                                 </div>
+                            
+                             </div>
+                             
+                         </div>
+                         <div class="col-md-3 col-md-offset-1">
+                             <div class="sidebar-right wgs-box">
+                                 <div class="wgs-search">
+                                     <div class="wgs-content">
+                                         <div class="form-group">
+                                             <input type="text" class="form-control"  placeholder="Search...">
+                                             <button class="search-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                         </div>
+                                     </div>
+                                     <div class="gaps size-1x"></div>
+                                 </div>
+                                 <!-- Each Widget -->
+                                 <div class="wgs-post">
+                                     <h5 class="wgs-title">New Jobs </h5>
+                                     <div class="wgs-content">
+                                         <div class="wgs-post-single">
+                                             <div class="wgs-post-thumb">
+                                                 <img src="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1980519/1400/997/m1/fpnw/wm0/job-point-logo-01-.jpg?1518326143&s=2e6928862f4abd9f041efb57385aa87e" alt="post-thumb">
+                                             </div>
+                                             <div class="wgs-post-entry">
+                                                 <h6 class="wgs-post-title"><a href="blog-single.html">Working Hard to Keep Pace with Demand </a></h6>
+                                                 <span class="wgs-post-meta">December 19, 2017</span>
+                                             </div>
+                                         </div>
+                                         <div class="wgs-post-single">
+                                             <div class="wgs-post-thumb">
+                                                 <img src="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1980519/1400/997/m1/fpnw/wm0/job-point-logo-01-.jpg?1518326143&s=2e6928862f4abd9f041efb57385aa87e" alt="post-thumb">
+                                             </div>
+                                             <div class="wgs-post-entry">
+                                                 <h6 class="wgs-post-title"><a href="blog-single.html">Working Hard to Keep Pace with Demand </a></h6>
+                                                 <span class="wgs-post-meta">December 19, 2017</span>
+                                             </div>
+                                         </div>
+                                         <div class="wgs-post-single">
+                                             <div class="wgs-post-thumb">
+                                                 <img src="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1980519/1400/997/m1/fpnw/wm0/job-point-logo-01-.jpg?1518326143&s=2e6928862f4abd9f041efb57385aa87e" alt="post-thumb">
+                                             </div>
+                                             <div class="wgs-post-entry">
+                                                 <h6 class="wgs-post-title"><a href="blog-single.html">Working Hard to Keep Pace with Demand </a></h6>
+                                                 <span class="wgs-post-meta">December 19, 2017</span>
+                                             </div>
+                                         </div>
+                                         <div class="wgs-post-single">
+                                             <div class="wgs-post-thumb">
+                                                 <img src="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1980519/1400/997/m1/fpnw/wm0/job-point-logo-01-.jpg?1518326143&s=2e6928862f4abd9f041efb57385aa87e" alt="post-thumb">
+                                             </div>
+                                             <div class="wgs-post-entry">
+                                                 <h6 class="wgs-post-title"><a href="blog-single.html">Working Hard to Keep Pace with Demand </a></h6>
+                                                 <span class="wgs-post-meta">December 19, 2017</span>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="gaps size-2x"></div>
+                                 </div>
+                                 <!-- End Widget -->
+                                 
+                                
+                                 
+                             </div>
+                         </div>
                         </div>
                     </div>
-                   </div>
-               </div>
-               <!--End Section -->
+                </div>
+                <!--End Section -->
                
-
             
-              
-               <!-- Section -->
-            <div class="section section-pad-md bg-grey">
-                <div class="container">
-                    <div class="content row">
-                        <div class="owl-carousel has-carousel no-dots"  data-items="6" data-loop="true" data-dots="false" data-auto="false">
-                            <div class="logo-item"><img alt="" width="190" height="82" src="images/cl-logo1.png"></div>
-                            <div class="logo-item"><img alt="" width="190" height="82" src="images/cl-logo2.png"></div>
-                            <div class="logo-item"><img alt="" width="190" height="82" src="images/cl-logo3.png"></div>
-                            <div class="logo-item"><img alt="" width="190" height="82" src="images/cl-logo4.png"></div>
-                            <div class="logo-item"><img alt="" width="190" height="82" src="images/cl-logo5.png"></div>
-                            <div class="logo-item"><img alt="" width="190" height="82" src="images/cl-logo6.png"></div>
-                        </div>
-    
-                    </div>
-                </div>	
-            </div>
-            <!-- End Section -->
-
+            
             {!! $calendar->script() !!}
 @endsection
