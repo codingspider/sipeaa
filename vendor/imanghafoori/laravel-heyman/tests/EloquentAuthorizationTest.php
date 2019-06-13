@@ -17,6 +17,19 @@ class EloquentAuthorizationTest extends TestCase
         event('eloquent.creating: App\User', new \App\User());
     }
 
+    public function testCreatingCanBeAliased()
+    {
+        \HeyMan::aliasSituation('whenYouCreate', 'salam');
+        \HeyMan::salam('\App\User')->always()->weDenyAccess();
+        \HeyMan::salam('\App\User2')->always()->weDenyAccess();
+
+        app(StartGuarding::class)->start();
+
+        $this->expectException(AuthorizationException::class);
+
+        event('eloquent.creating: App\User', new \App\User());
+    }
+
     public function testUpdatingModelsIsAuthorized()
     {
         Gate::shouldReceive('allows')->with('heyman.youShouldHaveRole', ['writer', 'payload'])->andReturn(true);

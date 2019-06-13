@@ -18,4 +18,15 @@ class EventSituationProvider
     {
         return 'eventChecks';
     }
+
+    /**
+     * @return array
+     */
+    public function getMethods(): array
+    {
+        return [
+            'whenEventHappens',
+            'whenYouReachCheckPoint',
+        ];
+    }
 }

@@ -6,33 +6,32 @@ use Imanghafoori\HeyMan\YouShouldHave;
 
 final class Situations
 {
-    public static $situations = [];
+    private static $methodAliases = [];
 
-    public static function add($situation): void
+    private static $methods = [];
+
+    public static function add($listenerClass, $situation, $methods): void
     {
-        self::$situations[] = $situation;
+        foreach ($methods as $method) {
+            self::$methods[$method] = [$listenerClass, $situation];
+        }
     }
 
     public static function call($method, $args)
     {
+        $method = self::$methodAliases[$method] ?? $method;
         $args = is_array($args[0]) ? $args[0] : $args;
-        foreach (self::$situations as $className) {
-            if (self::methodExists($method, $className)) {
-                resolve($className)->$method(...$args);
+        [$listenerClass, $situation] = self::$methods[$method];
 
-                return resolve(YouShouldHave::class);
-            }
-        }
+        resolve('heyman.chains')->init(
+            $listenerClass, ...resolve($situation)->normalize($method, $args)
+        );
+
+        return resolve(YouShouldHave::class);
     }
 
-    /**
-     * @param string $method
-     * @param string $className
-     *
-     * @return bool
-     */
-    private static function methodExists(string $method, string $className): bool
+    public static function aliasMethod($currentName, $newName)
     {
-        return method_exists($className, $method) || resolve($className)->hasMethod($method);
+        self::$methodAliases[$newName] = $currentName;
     }
 }

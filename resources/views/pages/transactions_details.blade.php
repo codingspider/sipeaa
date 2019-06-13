@@ -2,12 +2,16 @@
 @extends('crudbooster::admin_template')
 @section('content')
 
-@if(session()->has('message'))
-    <div class="alert alert-success">
-        {{ session()->get('message') }}
-    </div>
-@endif
-
+<p class="alert-success">
+        <?php
+            
+        $message = Session::get('successfull', null);
+        if($message){
+            echo $message;
+            Session::put('successfull', null);
+        }
+            
+            ?>
 <table class="table">
   <thead>
     <tr>

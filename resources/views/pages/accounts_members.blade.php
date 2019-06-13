@@ -3,9 +3,9 @@
 
 @section('content')
 
-@if(session()->has('successfull'))
+@if(session()->has('message'))
     <div class="alert alert-success">
-        {{ session()->get('successfull') }}
+        {{ session()->get('message') }}
     </div>
 @endif
 
@@ -47,11 +47,11 @@
 		<p>Payment Type:</p>
 	      <select name="payment_type" class="col-md-8">
 		  <option selected>Select</option>
-		  <option value="1">Bank Transfer</option>
-		  <option value="2">Cheque</option>
-		  <option value="2">Cash</option>
-		  <option value="2">Invoice</option>
-		  <option value="2">Paypal</option>
+		  <option value="bank_transfer">Bank Transfer</option>
+		  <option value="cheque">Cheque</option>
+		  <option value="cash">Cash</option>
+		  <option value="invoice">Invoice</option>
+		  <option value="paypal">Paypal</option>
 		</select>
 		<br>
 		<br>
@@ -93,12 +93,13 @@
     <div class="form-group col-md-6">
       <label for="inputEmail4">Acount Head Name</label>
       <input type="text" name="name" class="form-control" id="inputEmail4" placeholder="name">
+      <br>
+      <br>
+       <button type="submit" class="btn btn-primary">Add Head</button>
     </div>
     
   </div>
-  <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Save changes</button>
-      </div>
+
   </form>
   <br>
   <br>
@@ -116,9 +117,15 @@
     <tr>
       <th scope="row">{{ $data->id }}</th>
       <th scope="row">{{ $data->name }}</th>
-      <th><a class="btn btn-success" href="{{ URL::to('/unactive_product', $item->id)}}"> <i class="fa fa-pen"></i></th>
                    
-      <th><a class="btn btn-danger" href="{{ URL::to('/active_product', $item->id)}}"> <i class="fa fa-trash-alt"></i></th>
+              <th><a href="{{ URL::to('/edit/head',$data->id)}}" class="btn btn-primary">Edit</a></th>
+            <th>
+                <form action="{{ URL::to('/delete/head', $data->id)}}" method="GET">
+                  @csrf
+                  @method('DELETE')
+                  <input type="submit" name="delete" value="Delete" class="btn btn-danger"></input>
+                </form>
+            </th>
       
     </tr>
     @endforeach
@@ -126,13 +133,50 @@
 </table>
     </div>
     <div id="menu2" class="tab-pane fade">
-      <h3>Menu 2</h3>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+       <div class="container">
+        <div class="row">
+               <div class="container">
+   <br>
+   <div class="row">
+    <div class="form-group col-md-6">
+    <h5>Start Date <span class="text-danger"></span></h5>
+    <div class="controls">
+        <input type="date" name="start_date" id="start_date" class="form-control datepicker-autoclose" placeholder="Please select start date"> <div class="help-block"></div></div>
     </div>
-    <div id="menu3" class="tab-pane fade">
-      <h3>Menu 3</h3>
-      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    <div class="form-group col-md-6">
+    <h5>End Date <span class="text-danger"></span></h5>
+    <div class="controls">
+        <input type="date" name="end_date" id="end_date" class="form-control datepicker-autoclose" placeholder="Please select end date"> <div class="help-block"></div></div>
     </div>
+    <div class="text-left" style="
+    margin-left: 15px;
+    ">
+    <button type="text" id="btnFiterSubmitSearch" class="btn btn-info">Submit</button>
+    </div>
+    </div>
+    <br>
+ <div>
+      <table class="datatable table-condensed" id="laravel_datatable">
+       <thead>
+          <tr>
+             <th> Transaction Id</th>
+             <th> Payment Head Name</th>
+             <th>Payment Amount</th>
+             <th>Created at</th>
+          </tr>
+       </thead>
+    </table>
+ </div>
+   
+   <div align="center">
+    <button class="btn pull-right btn-primary" type="submit">Print Item</button>
+    <a href="{{ URL::to('/export/excel') }}" class="btn btn-success">Export to Excel</a>
+   </div>
+ </div>  
+        </div>
+    </div>
+    </div>
+
   </div>
 </div>
 <br>
@@ -169,5 +213,53 @@
   </div>
 </div>
 
+<script>
+ $(document).ready( function () {
+     $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+  $('#laravel_datatable').DataTable({
+         processing: true,
+         serverSide: true,
+         ajax: {
+          url: "{{ url('/report/details') }}",
+          type: 'GET',
+          data: function (d) {
+          d.start_date = $('#start_date').val();
+          d.end_date = $('#end_date').val();
+          }
+         },
+         columns: [
+                  { data: 'transactions_id', name: 'transactions_id' },
+                  { data: 'payment_type', name: 'payment_type' },
+                  { data: 'transactions_amount', name: 'transactions_amount' },
+                  { data: 'created_at', name: 'created_at' }
+               ]
+      });
+   });
+
+  $('#btnFiterSubmitSearch').click(function(){
+     $('#laravel_datatable').DataTable().draw(true);
+  });
+</script>
+
+<script type="text/javascript">
+  $(function () {
+    $('button[type="submit"]').click(function () {
+        var pageTitle = 'Transaction Report',
+            stylesheet = '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css',
+            win = window.open('', 'Print', 'width=900,height=600');
+        win.document.write('<html><head><title>' + pageTitle + '</title>' +
+            '<link rel="stylesheet" href="' + stylesheet + '">' +
+            '</head><body>' + $('.datatable')[0].outerHTML + '</body></html>');
+        win.document.close();
+        win.print();
+        win.close();
+        return false;
+    });
+});
+</script>
 @endsection
 

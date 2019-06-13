@@ -74,8 +74,30 @@ Route::get('/transaction/manage', 'AccountsController@transactions_control');
 
 Route::get('/transactions/details/{id}', 'AccountsController@transactions_details');
 
+
+
+
 Route::get('/success/{id}', 'AccountsController@transactions_success');
 Route::get('/cancel/{id}', 'AccountsController@transactions_cancel');
+
+Route::get('/report/details', 'ReportController@reports_date_wise'); 
+
+
+Route::get('/export_excel', 'ExportExcelController@index');
+
+Route::get('/export/excel', 'ExportExcelController@excel');
+
+
+
+
+Route::get('/edit/head/{id}', 'ShareController@edit');
+
+
+Route::post('/head/update', 'ShareController@update');
+
+
+Route::get('/delete/head/{id}', 'ShareController@delete');
+
 
 
 

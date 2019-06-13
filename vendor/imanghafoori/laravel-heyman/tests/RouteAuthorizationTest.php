@@ -274,6 +274,17 @@ class RouteAuthorizationTest extends TestCase
         MakeSure::that($this)->sendingGetRequest('/welcome')->isOk();
     }
 
+    public function testRouteNameConditionCanBeAliased()
+    {
+        Route::get('/welcome', 'HomeController@index')->name('welcome.name');
+
+        HeyMan::aliasSituation('whenYouHitRouteName', 'salam');
+
+        HeyMan::salam('welcome.name')->always()->weDenyAccess();
+        app(StartGuarding::class)->start();
+        $this->get('/welcome')->assertStatus(403);
+    }
+
     public function testControllerActionIsAuthorized2()
     {
         Route::get('/welcome', 'HomeController@index')->name('welcome.name');
