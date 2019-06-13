@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManagerStatic as Image;
 use DB;
 use Illuminate\Support\Facades\Redirect;
 use Session;
@@ -20,13 +21,17 @@ class JobController extends Controller
     }
     public function add_new_job(Request $request)
     {
-        request()->validate([
-            'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-  
-        $imageName = time().'.'.request()->images->getClientOriginalExtension();
-  
-        request()->images->move(public_path('images'), $imageName);
+        if($request->hasFile('images')) {
+
+            $image       = $request->file('images');
+            $filename    = $image->getClientOriginalName();
+        
+            $image_resize = Image::make($image->getRealPath());              
+            $image_resize->resize(200, 200);
+            $image_resize->save(public_path('images/' .$filename));
+
+        
+        }
 
         $data = array();
         $data['user_id'] = $request->user_id;
@@ -34,7 +39,7 @@ class JobController extends Controller
         $data['title'] = $request->job_title;
         $data['job_position'] = $request->job_position;
         $data['no_vacancy'] = $request->no_vacancy;
-        $data['company_image'] = $imageName;
+        $data['company_image'] = $filename;
         $data['job_category_id'] = $request->job_category;
         $data['job_location_id'] = $request->job_location;
         $data['job_details'] = $request->job_details;
@@ -58,7 +63,8 @@ class JobController extends Controller
             'category_name' => 'required|max:255',
             'expected_salary' => 'required|max:255',
             'user_id' => 'required|numeric',
-            'status' => ''
+            'status' => '',
+            'job_id' => '',
         ]);
 
         $jobs_applied = DB::table('job_applies')->insert($validatedData);
@@ -75,13 +81,12 @@ class JobController extends Controller
 
     public function job_details($id){
 
-        $data['products'] = DB::table('jobs')
-            ->join('job_categories', 'job_categories.id', '=', 'jobs.job_category_id')
-            ->select('jobs.*', 'job_categories.*')
-        
-            ->where('jobs.id', $id)->first();
+        $data= DB::table('jobs')->where('jobs.id', $id)
+        ->join('job_categories', 'job_categories.id', '=', 'jobs.job_category_id')
+        ->select('jobs.*', 'job_categories.category_name')->first();
 
-        return view ('pages.job_details', $data);
+
+        return view ('pages.job_details',compact('data'));
     }
 
     public function search_employees(Request $request){

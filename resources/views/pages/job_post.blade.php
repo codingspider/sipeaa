@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 @section('title', 'Job Posts')
 
 @section('content')
@@ -89,12 +89,12 @@
      
     </select>
     <br>
-    <div class="col-md-6">
+    <div class="col-md-8">
             <label for="sel1">Salary Range *</label>
             <!-- Last name -->
             <input type="text" name="salary" class="form-control" placeholder="Salary Range" required>
         </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
             <label for="sel1">Application Deadline *</label>
             <!-- Last name -->
             <input type="date" name="app_deadline" class="form-control" placeholder="Application Deadline" required>

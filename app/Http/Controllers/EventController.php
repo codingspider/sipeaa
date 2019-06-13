@@ -43,7 +43,7 @@ class EventController extends Controller
 
 
 
-      return view('pages.intro', compact('calendar'));
+      return view('pages.intro2', compact('calendar'));
 
     }
 

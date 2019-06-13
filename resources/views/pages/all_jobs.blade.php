@@ -1,11 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 @section('title', 'All Jobs')
 @section('content')
 
 @php
     $location = DB::table('job_location')->orderBy('id', 'DESC')->get();
 @endphp
-
+<br>
+<br>
 <div class="section section-pad">
         <div class="container">
             <div class="row">

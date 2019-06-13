@@ -21,10 +21,7 @@ class BlogController extends Controller
 
         return redirect::to('/blog_admin/add_post');
     }
-    public function about(){
-
-        return view('pages.about_us');
-    }
+  
     public function article_board(){
 
         $data= DB::table('cms_users')->first();

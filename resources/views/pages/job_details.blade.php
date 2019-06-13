@@ -1,10 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 @section('title', 'Job Details')
 @section('content')
 
 @php
-$data_jobs = DB::table('job_categories')->get();
-    
+$data_jobs = DB::table('jobs')->get();
+foreach ($data_jobs as  $jobs) {
+  # code...
+}
+   
 @endphp
 
 @if(session()->has('message'))
@@ -12,38 +15,37 @@ $data_jobs = DB::table('job_categories')->get();
         {{ session()->get('message') }}
     </div>
 @endif
-
+<br>
 
 <div class="section section-pad">
         <div class="container">
             <div class="row">
-                <div class="col-md-7 res-m-bttm">
+                <div class="col-md-8 res-m-bttm">
 
                     <div class="post post-single">
                         <div class="post-thumb">
-                            <img alt="" src="{{ URL::asset("images/{$products->company_image}") }}" height="300" width="450px">
+                            <img alt="" src="{{ URL::asset("images/{$data->company_image}") }}" height="300" width="450px">
                         </div>
                         <div class="post-meta">
-                            <span class="pub-date"><em class="fa fa-calendar" aria-hidden="true"></em>Job Posted at  {{ $products->created_at }} </span>
+                            <span class="pub-date text-danger"><em class="fa fa-calendar" aria-hidden="true"></em>  Job Posted at  {{ $data->created_at }} </span>
                         </div>
                         <br>
                         <div class="post-entry">
-                        <h3>Job Title: {{ $products->title }}</h3>
+                        <h3>Job Title: {{ $data->title }}</h3>
                         <br>
-                            <h4>Company: {{ $products->company_name }}</h4>
-                            <p> <strong> Description: </strong> {{ $products->job_details }} </p>
-                            <p> <strong>  Vacancy: </strong> {{ $products->no_vacancy }} </p>
-                            <p> <strong>  Position: </strong> {{ $products->job_position }} </p>
-                            <p> <strong>  Category: </strong> {{ $products->category_name }} </p>
-                            <p> <strong>  Type: </strong> {{ $products->job_type }} </p>
-                            <p> <strong> Experience & Other Requirements: </strong> {{ $products->job_experience }} </p>
-                            <p> <strong> Salary Range : </strong> {{ $products->salary }} </p>
-                            <p class="btn btn-warning">Application Deadline : {{ $products->application_deadline }} </p>
+                            <h4>Company: {{ $data->company_name }}</h4>
+                            <p> <strong> Description: </strong> {{ $data->job_details }} </p>
+                            <p> <strong>  Vacancy: </strong> {{ $data->no_vacancy }} </p>
+                            <p> <strong>  Position: </strong> {{ $data->job_position }} </p>
+                            <p> <strong>  Category: </strong> {{ $data->category_name }} </p>
+                            <p> <strong>  Type: </strong> {{ $data->job_type }} </p>
+                            <p> <strong> Experience & Other Requirements: </strong> {{ $data->job_experience }} </p>
+                            <p> <strong> Salary Range : </strong> {{ $data->salary }} </p>
+                            <p class="btn btn-warning">Application Deadline : {{ $data->application_deadline }} </p>
                             <br>
                             <br>
-                            <p> <strong> Instruction :</strong> {{ $products->application_instruction }} </p>
+                            <p> <strong> Instruction :</strong> {{ $data->application_instruction }} </p>
                           
-                            
                         </div>
                     </div>
                     
@@ -52,23 +54,28 @@ $data_jobs = DB::table('job_categories')->get();
                 @php
                 use Illuminate\Support\Facades\Auth;
                             $id = Auth::id();
-                    $status =DB::table('job_applies')->where('job_title', $products->title)->count();
+                            
+
+                    $status = DB::table('job_applies')->get(); 
+                    foreach ($status as  $value) {
+                      # code...
+                    }
+                    
                 @endphp
 
-                <div class="col-md-3 col-md-offset-1">
+                <div class="col-md-4 col-md-offset-1">
                     <div class="sidebar-right wgs-box">
-                       @if($status == 0)
-                        <div class="wgs-post">
-                                <button type="button" class="btn btn-success center-block" data-toggle="modal" data-target="#exampleModal">
-                                        Apply Now 
-                                      </button>
-                        </div>
-                        
-                        <p class="text-center">or </p>
-                        <p class="text-center">Send Cv to admin@sipeaa.org </p>
-
+                       @if($value->user_id == $id && $value->status == 1 && $value->job_id == $data->id)
+                       <p class="btn btn-warning">You already applied to this job ! </p> 
                         @else 
-                        <p class="btn btn-warning">You already applied to this job ! </p>
+                        <p class="text-center">
+                          <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#exampleModal">
+                                  Apply Now 
+                          </button>
+                        </p>
+                  
+                  <p class="text-center">or </p>
+                  <p class="text-center">Send Cv to admin@sipeaa.org </p>
                         @endif 
 
                         <!-- End Widget -->
@@ -83,7 +90,7 @@ $data_jobs = DB::table('job_categories')->get();
                                     </div>
                                   <form action="{{ URL::to('/job/application/success') }}" method="POST">
                                     @csrf
-                                    <div class="modal-body">
+                                    <div class="modal-body col-md-12">
                                             <table class="table table-dark">
                                                     <thead>
                                                       <tr>
@@ -94,9 +101,9 @@ $data_jobs = DB::table('job_categories')->get();
                                                     </thead>
                                                     <tbody>
                                                       <tr>
-                                                        <td>{{ $products->company_name }}</td>
-                                                        <td>{{ $products->job_position }}</td>
-                                                        <td>{{ $products->category_name }} </td>
+                                                        <td>{{ $data->company_name }}</td>
+                                                        <td>{{ $data->job_position }}</td>
+                                                        <td>{{ $data->category_name }} </td>
                                                       </tr>
                                                       
                                                     </tbody>
@@ -106,12 +113,13 @@ $data_jobs = DB::table('job_categories')->get();
                                                   </label>
                                     </div>
 
-                                    <input type="hidden" name="company_name" value="{{ $products->company_name }}">
-                                    <input type="hidden" name="job_position" value="{{ $products->job_position }}">
-                                    <input type="hidden" name="category_name" value="{{ $products->category_name }}">
-                                    <input type="hidden" name="job_title" value="{{ $products->title }}">
+                                    <input type="hidden" name="company_name" value="{{ $data->company_name }}">
+                                    <input type="hidden" name="job_position" value="{{ $data->job_position }}">
+                                    <input type="hidden" name="category_name" value="{{ $data->category_name }}">
+                                    <input type="hidden" name="job_title" value="{{ $data->title }}">
                                     <input type="hidden" name="user_id" value="{{ $id }}">
                                     <input type="hidden" name="status" value="1">
+                                    <input type="hidden" name="job_id" value="{{ $data->id }}">
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                       <button type="submit" class="btn btn-success">Apply</button>
@@ -135,6 +143,7 @@ $data_jobs = DB::table('job_categories')->get();
                                         @endforeach
                                                     
                                           </select>
+                                          <br>
                                         <button type="submit" class="btn btn-primary">Search</button>
                             </div>
                         

@@ -1,4 +1,4 @@
-@extends("layouts.app",['title'=>$post->gen_seo_title()])
+@extends("layouts.app2",['title'=>$post->gen_seo_title()])
 @section("content")
 
 

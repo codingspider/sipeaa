@@ -1,4 +1,4 @@
-@extends("layouts.app")
+@extends("layouts.app2")
 @section('title', 'Blog Page')
 @section("content")
 <div class='col-sm-6 blogetc_container'>

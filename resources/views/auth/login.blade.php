@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 @section('title', 'Login')
 @section('content')
 <div class="container">
@@ -6,15 +6,10 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-md-8">
-                    <section class="section sign-in inner-right-xs">
+                <div class="col-md-12">
+                    <section class="section sign-in inner-right-xs text-center">
                         <h2 class="bordered">Sign In</h2>
-                        <br>
-                        <br>
-                        <br>
-
-                 
-
+                        
                         <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                             @csrf
     
@@ -47,8 +42,8 @@
                             </div>
     
                             <div class="form-group row">
-                                <div class="col-md-6 offset-md-4">
-                                    <div class="form-check pull-right">
+                                <div class="col-md-2 offset-md-4">
+                                    <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
     
                                         <label class="form-check-label " for="remember">
@@ -58,9 +53,9 @@
                                 </div>
                             </div>
     
-                            <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
                                 <div class="col-md-8 pull-right">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary center-block">
                                         {{ __('Login') }}
                                     </button>
     

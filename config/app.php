@@ -162,6 +162,7 @@ return [
         crocodicstudio\crudbooster\CRUDBoosterServiceProvider::class,
         MaddHatter\LaravelFullcalendar\ServiceProvider::class,
         Musonza\Groups\GroupsServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
     ],
 
@@ -213,6 +214,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
         'Groups' => Musonza\Groups\Facades\GroupsFacade::class,
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 
