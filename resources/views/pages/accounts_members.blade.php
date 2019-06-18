@@ -36,7 +36,7 @@
     	@csrf
       	<div>
       		<p>Transaction Type:</p>
-	      <select name="transaction_type" class="col-md-8">
+	      <select name="transaction_type" class="col-md-8" required>
 		  <option selected>Select</option>
 		  <option value="1">Income</option>
 		  <option value="2">Expences</option>
@@ -45,7 +45,7 @@
 		<br>
 	</div>
 		<p>Payment Type:</p>
-	      <select name="payment_type" class="col-md-8">
+	      <select name="payment_type" class="col-md-8" required>
 		  <option selected>Select</option>
 		  <option value="bank_transfer">Bank Transfer</option>
 		  <option value="cheque">Cheque</option>
@@ -56,7 +56,7 @@
 		<br>
 		<br>
 		<p>Acounts Lists:</p>
-	      <select name="head_name" class="col-md-8">
+	      <select name="head_name" class="col-md-8" required>
 		  <option selected>Select</option>
 		  @foreach($acounts as $value )
 		  <option value="{{ $value->id }}">{{ $value->name }}</option>
@@ -65,21 +65,21 @@
 		<br>
 		<br>
 		<p>Transaction Date: </p>
-		<input class="col-md-6" type="date" name="date"><br>
+		<input class="col-md-6" type="date" name="date" required=""><br>
 		<br>
 		<p>Transaction Amount: </p>
-		<input class="col-md-6" type="text" name="amount">
+		<input class="col-md-6" type="text" name="amount" required="">
 		<br>
 		<br>
 		<p>Transaction ID: </p>
 		<p style="color:red;">* First make your transaction and then give your transaction id below.</p>
-		<input class="col-md-6" type="text" name="transaction">
+		<input class="col-md-6" type="text" name="transaction" required="">
 		<br>
 		<input type="hidden" name="user_id" value="{{ $id }}">
 		<br>
 		<input type="hidden" name="status" value="0">
 		<br>
-		<button type="submit" class="btn btn-info center-block">Add Transaction</button>
+		<input type="submit" name="transaction" value="Add Payment" class="btn btn-primary"></input>
 		<div>
 			
 		</div>
@@ -92,10 +92,10 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Acount Head Name</label>
-      <input type="text" name="name" class="form-control" id="inputEmail4" placeholder="name">
+      <input type="text" name="name" class="form-control"  placeholder="name" required="">
       <br>
       <br>
-       <button type="submit" class="btn btn-primary">Add Head</button>
+       <input type="submit" name="delete" value="Add Head" class="btn btn-primary"></input>
     </div>
     
   </div>
@@ -156,21 +156,38 @@
     </div>
     <br>
  <div>
-      <table class="datatable table-condensed" id="laravel_datatable">
-       <thead>
-          <tr>
-             <th> Transaction Id</th>
-             <th> Payment Head Name</th>
-             <th>Payment Amount</th>
-             <th>Created at</th>
-          </tr>
-       </thead>
-    </table>
+
+  <table class="datatable table-condensed" id="laravel_datatable">
+    <thead>
+        <tr>
+            <td><b>Transaction Id</b>
+
+            </td>
+            <td><b>Payment Head Name</b>
+
+            </td>
+            <td><b>Payment Amount</b>
+
+            </td>
+            <td><b>Created at</b>
+
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>Transaction Id </tr>
+      <tr>Payment Head Name </tr>
+      <tr>Payment Amount </tr>
+      <tr>Created at </tr>
+    </tbody>
+</table>
+
+
  </div>
-   
+   <br>
    <div align="center">
     <button class="btn pull-right btn-primary" type="submit">Print Item</button>
-    <a href="{{ URL::to('/export/excel') }}" class="btn btn-success">Export to Excel</a>
+    <a href="#" class="btn btn-info" id="test">Export to Excel</a>
    </div>
  </div>  
         </div>
@@ -198,13 +215,13 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Acount Head Name</label>
-      <input type="text" name="name" class="form-control" id="inputEmail4" placeholder="name">
+      <input type="text" name="name" class="form-control" id="inputEmail4" placeholder="name" required="">
     </div>
     
   </div>
   <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <input type="submit" name="delete" value="Add Head" class="btn btn-primary"></input>
       </div>
   </form>
       </div>
@@ -260,6 +277,21 @@
         return false;
     });
 });
+
+  $("#test").click(function(){
+  $("#laravel_datatable").table2excel({
+    // exclude CSS class
+    exclude: ".noExl",
+    name: "Worksheet Name",
+    filename: "SomeFile", //do not include extension
+    fileext: ".xls" // file extension
+  }); 
+});
 </script>
+
+
+
+
+<script src="{{ asset('js/jquery.table2excel.js') }}"></script>
 @endsection
 

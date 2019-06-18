@@ -85,7 +85,7 @@ Route::get('/report/details', 'ReportController@reports_date_wise');
 
 Route::get('/export_excel', 'ExportExcelController@index');
 
-Route::get('/export/excel', 'ExportExcelController@excel');
+Route::get('/export/excel/report', 'ExportExcelController@excel');
 
 
 
@@ -98,11 +98,49 @@ Route::post('/head/update', 'ShareController@update');
 
 Route::get('/delete/head/{id}', 'ShareController@delete');
 
+Route::get('/alumni/contribution', 'ContributionController@index');
+Route::post('/make/contribution', 'ContributionController@make_contribution');
+
+Route::get('/add/library', 'LibraryController@index');
+Route::post('/upload/library', 'LibraryController@library_upload');
+
+
+Route::get('/training/post', 'TrainingController@index');
+Route::post('/training/post/success', 'TrainingController@add_training');
+
+Route::get('/training/demand', 'TrainingDemandController@index');
+Route::post('/training/demand/post', 'TrainingDemandController@training_demand');
+Route::get('/training/lists', 'TrainingDemandController@training_list');
+
+
+Route::get('training/course/details/{id}', 'TrainingCartController@details');
+
+
+//add to cart controller
+Route::post('/add/to/cart', 'CartController@add_to_cart');
+Route::get('/show/cart', 'CartController@showcart');
+Route::post('/update/cart', 'CartController@update_to_cart');
+Route::get('/delete/cart/prodotucs/{rowId}', 'CartController@delete_to_cart');
+
+Route::get('/course/posting/board', 'CoursePostinBoardController@index');
+
+Route::post('/coupon', 'CouponsController@store')->name('coupon.store');
+Route::delete('/coupon', 'CouponsController@destroy')->name('coupon.destroy');
+
+Route::get('/add/billings/address','CartController@add_billing');
+
+Route::post('/shipping/save/details','CartController@save_shipping');
+
+
+Route::get('payment/process','CartController@payment' );
+
+Route::post('bkash/payment/success', 'CartController@save_shipping');
 
 
 
 
 
+Route::get('/send/email', 'MailController@mail');
 
 
 

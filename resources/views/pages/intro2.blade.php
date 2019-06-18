@@ -5,6 +5,7 @@
 @php
 
 $events = DB::table('events')->get();
+$side_events = DB::table('side_slider_events')->get();
 
 $blog_etc_posts = DB::table('blog_etc_posts')->get();
     
@@ -28,7 +29,7 @@ $blog_etc_posts = DB::table('blog_etc_posts')->get();
                     <div class="col-md-6" data-appear-animation="fadeInRightShorter">
                       <div class="slider">
                         <div id="my_car">
-                            @foreach($events as $value)
+                            @foreach($side_events as $value)
                               <div class="item"><img src="{{$value->images}}" alt="Owl Image">
                                 <div class="carousel-caption">
                                 <a href="{{ URL::to('/events/details', $value->id )}}" target="_blank"><button type="button" class="btn btn-default">{{ $value->title }}</button></a>

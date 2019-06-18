@@ -40,7 +40,7 @@
              </div>
              @else
              <div class="col-sm-8">
-                      <h4> Your Have 0 Result !</h4>
+                      <h4> You Have 0 Result !</h4>
                      </div>
             @endif
             <br>

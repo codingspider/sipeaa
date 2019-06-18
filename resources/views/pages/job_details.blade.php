@@ -53,19 +53,12 @@ foreach ($data_jobs as  $jobs) {
 
                 @php
                 use Illuminate\Support\Facades\Auth;
-                            $id = Auth::id();
-                            
-
-                    $status = DB::table('job_applies')->get(); 
-                    foreach ($status as  $value) {
-                      # code...
-                    }
-                    
+                    $status = DB::table('job_applies')->select('user_id')->where('job_id',$data->id)->first(); 
                 @endphp
 
                 <div class="col-md-4 col-md-offset-1">
                     <div class="sidebar-right wgs-box">
-                       @if($value->user_id == $id && $value->status == 1 && $value->job_id == $data->id)
+                       @if($status->user_id == Auth::id())
                        <p class="btn btn-warning">You already applied to this job ! </p> 
                         @else 
                         <p class="text-center">
@@ -88,7 +81,8 @@ foreach ($data_jobs as  $jobs) {
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
-                                  <form action="{{ URL::to('/job/application/success') }}" method="POST">
+               <form action="{{ URL::to('/job/application/success') }}" method="POST" onsubmit="document.getElementById('myButton').disabled=true;
+document.getElementById('myButton').value='Submitting, please wait...';">
                                     @csrf
                                     <div class="modal-body col-md-12">
                                             <table class="table table-dark">
@@ -112,17 +106,10 @@ foreach ($data_jobs as  $jobs) {
                                                 <input type="text" name="expected_salary">
                                                   </label>
                                     </div>
-
-                                    <input type="hidden" name="company_name" value="{{ $data->company_name }}">
-                                    <input type="hidden" name="job_position" value="{{ $data->job_position }}">
-                                    <input type="hidden" name="category_name" value="{{ $data->category_name }}">
-                                    <input type="hidden" name="job_title" value="{{ $data->title }}">
-                                    <input type="hidden" name="user_id" value="{{ $id }}">
-                                    <input type="hidden" name="status" value="1">
                                     <input type="hidden" name="job_id" value="{{ $data->id }}">
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                      <button type="submit" class="btn btn-success">Apply</button>
+                                      <button type="submit" id="myButton" class="btn btn-success">Apply</button>
                                     </div>
                                   </form>
                                   </div>

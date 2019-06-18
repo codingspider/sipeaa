@@ -7,6 +7,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 use DB;
 use Illuminate\Support\Facades\Redirect;
 use Session;
+use Auth;
 
 class JobController extends Controller
 {
@@ -56,20 +57,15 @@ class JobController extends Controller
     }
 
     public function job_apply(Request $request){
-        $validatedData = $request->validate([
-            'job_title' => 'required|max:255',
-            'company_name' => 'required|max:255',
-            'job_position' => 'required|max:255',
-            'category_name' => 'required|max:255',
-            'expected_salary' => 'required|max:255',
-            'user_id' => 'required|numeric',
-            'status' => '',
-            'job_id' => '',
-        ]);
-
-        $jobs_applied = DB::table('job_applies')->insert($validatedData);
-   
-        return redirect()->back()->with('message', 'Job Applied successfully');
+       $data['job_id']=$request->job_id;
+       $data['user_id']=Auth::id();
+       $data['status']=1;
+        $success = DB::table('job_applies')->insert($data);
+        if($success){
+            return redirect()->back()->with('message', 'Job Applied successfully');
+        }else{
+             return redirect()->back()->with('message', 'Job Applied Failed');
+        }
     }
 
     public function all_job(){

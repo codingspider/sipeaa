@@ -1,0 +1,27 @@
+<html xmlns:x="urn:schemas-microsoft-com:office:excel"><head><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>Test Sheet</x:Name><x:WorksheetOptions><x:Panes></x:Panes></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml></head><body><table border='1px'><div class="dataTables_length" id="laravel_datatable_length"><label>Show <select name="laravel_datatable_length" aria-controls="laravel_datatable" class=""><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div><div id="laravel_datatable_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="laravel_datatable"></label></div><div id="laravel_datatable_processing" class="dataTables_processing" style="display: none;">Processing...</div><table class="datatable table-condensed dataTable no-footer" id="laravel_datatable" role="grid" aria-describedby="laravel_datatable_info" style="width: 0px;">
+    <thead>
+        <tr role="row"><td class="sorting_asc" tabindex="0" aria-controls="laravel_datatable" rowspan="1" colspan="1" style="width: 0px;" aria-sort="ascending" aria-label="Transaction Id
+
+            : activate to sort column descending"><b>Transaction Id</b>
+
+            </td><td class="sorting" tabindex="0" aria-controls="laravel_datatable" rowspan="1" colspan="1" style="width: 0px;" aria-label="Payment Head Name
+
+            : activate to sort column ascending"><b>Payment Head Name</b>
+
+            </td><td class="sorting" tabindex="0" aria-controls="laravel_datatable" rowspan="1" colspan="1" style="width: 0px;" aria-label="Payment Amount
+
+            : activate to sort column ascending"><b>Payment Amount</b>
+
+            </td><td class="sorting" tabindex="0" aria-controls="laravel_datatable" rowspan="1" colspan="1" style="width: 0px;" aria-label="Created at
+
+            : activate to sort column ascending"><b>Created at</b>
+
+            </td></tr>
+    </thead>
+    <tbody>
+      
+      
+      
+      
+    <tr role="row" class="odd"><td class="sorting_1">test paypal</td><td>paypal</td><td>$0 - $19146</td><td>2019-06-14 00:32:05</td></tr><tr role="row" class="even"><td class="sorting_1">test id</td><td>invoice</td><td>$224 - $1000</td><td>2019-06-13 23:56:32</td></tr><tr role="row" class="odd"><td class="sorting_1">test id</td><td>bank_transfer</td><td>$717 - $1000</td><td>2019-06-13 21:56:51</td></tr></tbody>
+</table><div class="dataTables_info" id="laravel_datatable_info" role="status" aria-live="polite">Showing 1 to 3 of 3 entries</div><div class="dataTables_paginate paging_simple_numbers" id="laravel_datatable_paginate"><a class="paginate_button previous disabled" aria-controls="laravel_datatable" data-dt-idx="0" tabindex="0" id="laravel_datatable_previous">Previous</a><span><a class="paginate_button current" aria-controls="laravel_datatable" data-dt-idx="1" tabindex="0">1</a></span><a class="paginate_button next disabled" aria-controls="laravel_datatable" data-dt-idx="2" tabindex="0" id="laravel_datatable_next">Next</a></div></table></body></html>

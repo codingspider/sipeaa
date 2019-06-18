@@ -116,6 +116,10 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
             'League\\Flysystem\\' => 17,
             'Laravel\\Tinker\\' => 15,
         ),
+        'K' => 
+        array (
+            'Khsing\\World\\' => 13,
+        ),
         'J' => 
         array (
             'JakubOnderka\\PhpConsoleHighlighter\\' => 35,
@@ -132,6 +136,7 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
+            'Gloudemans\\Shoppingcart\\' => 24,
         ),
         'F' => 
         array (
@@ -367,6 +372,10 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
         ),
+        'Khsing\\World\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/khsing/world/src',
+        ),
         'JakubOnderka\\PhpConsoleHighlighter\\' => 
         array (
             0 => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src',
@@ -399,6 +408,10 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
+        ),
+        'Gloudemans\\Shoppingcart\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/gloudemans/shoppingcart/src',
         ),
         'FontLib\\' => 
         array (
@@ -534,29 +547,44 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
 
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Coupon' => __DIR__ . '/../..' . '/app/Coupon.php',
         'App\\Event' => __DIR__ . '/../..' . '/app/Event.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AboutController' => __DIR__ . '/../..' . '/app/Http/Controllers/AboutController.php',
         'App\\Http\\Controllers\\AccountsController' => __DIR__ . '/../..' . '/app/Http/Controllers/AccountsController.php',
         'App\\Http\\Controllers\\AdminCmsUsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminCmsUsersController.php',
+        'App\\Http\\Controllers\\AdminCouponsController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminCouponsController.php',
         'App\\Http\\Controllers\\AdminEmployeSectionController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminEmployeSectionController.php',
         'App\\Http\\Controllers\\AdminEvents13Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminEvents13Controller.php',
         'App\\Http\\Controllers\\AdminJobCategoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminJobCategoriesController.php',
         'App\\Http\\Controllers\\AdminJobLocationController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminJobLocationController.php',
+        'App\\Http\\Controllers\\AdminSideSliderEventsController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminSideSliderEventsController.php',
+        'App\\Http\\Controllers\\AdminTrainingsCategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminTrainingsCategoryController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\BlogController' => __DIR__ . '/../..' . '/app/Http/Controllers/BlogController.php',
         'App\\Http\\Controllers\\CBHook' => __DIR__ . '/../..' . '/app/Http/Controllers/CBHook.php',
+        'App\\Http\\Controllers\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/CartController.php',
+        'App\\Http\\Controllers\\ContributionController' => __DIR__ . '/../..' . '/app/Http/Controllers/ContributionController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\CouponsController' => __DIR__ . '/../..' . '/app/Http/Controllers/CouponsController.php',
+        'App\\Http\\Controllers\\CoursePostinBoardController' => __DIR__ . '/../..' . '/app/Http/Controllers/CoursePostinBoardController.php',
         'App\\Http\\Controllers\\EventController' => __DIR__ . '/../..' . '/app/Http/Controllers/EventController.php',
+        'App\\Http\\Controllers\\ExportExcelController' => __DIR__ . '/../..' . '/app/Http/Controllers/ExportExcelController.php',
         'App\\Http\\Controllers\\GroupController' => __DIR__ . '/../..' . '/app/Http/Controllers/GroupController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\JobController' => __DIR__ . '/../..' . '/app/Http/Controllers/JobController.php',
+        'App\\Http\\Controllers\\LibraryController' => __DIR__ . '/../..' . '/app/Http/Controllers/LibraryController.php',
         'App\\Http\\Controllers\\MemberController' => __DIR__ . '/../..' . '/app/Http/Controllers/MemberController.php',
+        'App\\Http\\Controllers\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/PaymentController.php',
         'App\\Http\\Controllers\\RegistrationController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegistrationController.php',
         'App\\Http\\Controllers\\ReportController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReportController.php',
+        'App\\Http\\Controllers\\ShareController' => __DIR__ . '/../..' . '/app/Http/Controllers/ShareController.php',
+        'App\\Http\\Controllers\\TrainingCartController' => __DIR__ . '/../..' . '/app/Http/Controllers/TrainingCartController.php',
+        'App\\Http\\Controllers\\TrainingController' => __DIR__ . '/../..' . '/app/Http/Controllers/TrainingController.php',
+        'App\\Http\\Controllers\\TrainingDemandController' => __DIR__ . '/../..' . '/app/Http/Controllers/TrainingDemandController.php',
         'App\\Http\\Controllers\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsersController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\CheckApproved' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckApproved.php',
@@ -1564,6 +1592,16 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
         'FontLib\\WOFF\\File' => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib/WOFF/File.php',
         'FontLib\\WOFF\\Header' => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib/WOFF/Header.php',
         'FontLib\\WOFF\\TableDirectoryEntry' => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib/WOFF/TableDirectoryEntry.php',
+        'Gloudemans\\Shoppingcart\\CanBeBought' => __DIR__ . '/..' . '/gloudemans/shoppingcart/src/CanBeBought.php',
+        'Gloudemans\\Shoppingcart\\Cart' => __DIR__ . '/..' . '/gloudemans/shoppingcart/src/Cart.php',
+        'Gloudemans\\Shoppingcart\\CartItem' => __DIR__ . '/..' . '/gloudemans/shoppingcart/src/CartItem.php',
+        'Gloudemans\\Shoppingcart\\CartItemOptions' => __DIR__ . '/..' . '/gloudemans/shoppingcart/src/CartItemOptions.php',
+        'Gloudemans\\Shoppingcart\\Contracts\\Buyable' => __DIR__ . '/..' . '/gloudemans/shoppingcart/src/Contracts/Buyable.php',
+        'Gloudemans\\Shoppingcart\\Exceptions\\CartAlreadyStoredException' => __DIR__ . '/..' . '/gloudemans/shoppingcart/src/Exceptions/CartAlreadyStoredException.php',
+        'Gloudemans\\Shoppingcart\\Exceptions\\InvalidRowIDException' => __DIR__ . '/..' . '/gloudemans/shoppingcart/src/Exceptions/InvalidRowIDException.php',
+        'Gloudemans\\Shoppingcart\\Exceptions\\UnknownModelException' => __DIR__ . '/..' . '/gloudemans/shoppingcart/src/Exceptions/UnknownModelException.php',
+        'Gloudemans\\Shoppingcart\\Facades\\Cart' => __DIR__ . '/..' . '/gloudemans/shoppingcart/src/Facades/Cart.php',
+        'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider' => __DIR__ . '/..' . '/gloudemans/shoppingcart/src/ShoppingcartServiceProvider.php',
         'GroupsTestCase' => __DIR__ . '/..' . '/musonza/groups/tests/GroupsTestCase.php',
         'GuzzleHttp\\Psr7\\AppendStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/AppendStream.php',
         'GuzzleHttp\\Psr7\\BufferStream' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/BufferStream.php',
@@ -2651,6 +2689,19 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
         'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/InvalidStyleException.php',
         'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/Highlighter.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
+        'Khsing\\World\\Console\\InitCommand' => __DIR__ . '/..' . '/khsing/world/src/Console/InitCommand.php',
+        'Khsing\\World\\Exceptions\\InvalidCodeException' => __DIR__ . '/..' . '/khsing/world/src/Exceptions/InvalidCodeException.php',
+        'Khsing\\World\\Models\\City' => __DIR__ . '/..' . '/khsing/world/src/Models/City.php',
+        'Khsing\\World\\Models\\CityLocale' => __DIR__ . '/..' . '/khsing/world/src/Models/CityLocale.php',
+        'Khsing\\World\\Models\\Continent' => __DIR__ . '/..' . '/khsing/world/src/Models/Continent.php',
+        'Khsing\\World\\Models\\ContinentLocale' => __DIR__ . '/..' . '/khsing/world/src/Models/ContinentLocale.php',
+        'Khsing\\World\\Models\\Country' => __DIR__ . '/..' . '/khsing/world/src/Models/Country.php',
+        'Khsing\\World\\Models\\CountryLocale' => __DIR__ . '/..' . '/khsing/world/src/Models/CountryLocale.php',
+        'Khsing\\World\\Models\\Division' => __DIR__ . '/..' . '/khsing/world/src/Models/Division.php',
+        'Khsing\\World\\Models\\DivisionLocale' => __DIR__ . '/..' . '/khsing/world/src/Models/DivisionLocale.php',
+        'Khsing\\World\\World' => __DIR__ . '/..' . '/khsing/world/src/World.php',
+        'Khsing\\World\\WorldServiceProvider' => __DIR__ . '/..' . '/khsing/world/src/WorldServiceProvider.php',
+        'Khsing\\World\\WorldTrait' => __DIR__ . '/..' . '/khsing/world/src/WorldTrait.php',
         'Laravel\\Tinker\\ClassAliasAutoloader' => __DIR__ . '/..' . '/laravel/tinker/src/ClassAliasAutoloader.php',
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',
@@ -5104,6 +5155,15 @@ class ComposerStaticInit576ce60a4012d76ffdafe945d031f61f
         'Whoops\\Util\\Misc' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/Misc.php',
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
+        'WorldCitiesLocaleTableSeeder' => __DIR__ . '/../..' . '/database/seeds/WorldCitiesLocaleTableSeeder.php',
+        'WorldCitiesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/WorldCitiesTableSeeder.php',
+        'WorldContinentsLocaleTableSeeder' => __DIR__ . '/../..' . '/database/seeds/WorldContinentsLocaleTableSeeder.php',
+        'WorldContinentsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/WorldContinentsTableSeeder.php',
+        'WorldCountriesLocaleTableSeeder' => __DIR__ . '/../..' . '/database/seeds/WorldCountriesLocaleTableSeeder.php',
+        'WorldCountriesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/WorldCountriesTableSeeder.php',
+        'WorldDivisionsLocaleTableSeeder' => __DIR__ . '/../..' . '/database/seeds/WorldDivisionsLocaleTableSeeder.php',
+        'WorldDivisionsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/WorldDivisionsTableSeeder.php',
+        'WorldTablesSeeder' => __DIR__ . '/../..' . '/database/seeds/WorldTablesSeeder.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
         'Yajra\\DataTables\\ApiResourceDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/ApiResourceDataTable.php',
         'Yajra\\DataTables\\CollectionDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/CollectionDataTable.php',
