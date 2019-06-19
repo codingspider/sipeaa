@@ -30,4 +30,8 @@ class HomeController extends Controller
         {
             return view('pages.approval');
         }
+    public function members_profile()
+        {
+            return view('pages.members_profile');
+        }
 }

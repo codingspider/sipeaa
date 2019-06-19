@@ -200,13 +200,13 @@
 															<ul class="dropdown-menu">
 									@if( $data == NULL)
                                     <li><a class="dropdown-item" href="{{ URL::to('/login')}}">Membership</a></li>
-                                    <li><a class="dropdown-item" href="#">Member Profile</a></li>
+									<li><a class="dropdown-item" href="{{ URL::to('/members/profile')}}">Member Profile</a></li>
 									<li><a class="dropdown-item" href="{{ URL::to('/members/search') }}">Member's Search </a></li>
 									<li><a class="dropdown-item" href="{{ URL::to('/add/library') }}">Library Upload </a></li>
 									<li><a class="dropdown-item" href="{{ URL::to('/acounts/members') }}">Accounts SIPEAA </a></li>
 									<li><a class="dropdown-item" href="{{ URL::to('/alumni/contribution') }}">Alumni Members Contribution </a></li>
                                     @else
-									<li><a class="dropdown-item" href="#">Member Profile</a></li>
+									<li><a class="dropdown-item" href="{{ URL::to('/members/profile')}}">Member Profile</a></li>
 									<li><a class="dropdown-item" href="{{ URL::to('/members/search') }}">Member's Search </a></li>
 									<li><a class="dropdown-item" href="{{ URL::to('/add/library') }}">Library Upload </a></li>
 									<li><a class="dropdown-item" href="{{ URL::to('/acounts/members') }}">Accounts SIPEAA </a></li>

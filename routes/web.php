@@ -142,6 +142,8 @@ Route::post('bkash/payment/success', 'CartController@save_shipping');
 
 Route::get('/send/email', 'MailController@mail');
 
+Route::get('/members/profile', 'HomeController@members_profile');
+
 
 
 

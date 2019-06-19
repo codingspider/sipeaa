@@ -9,9 +9,9 @@ use App\Mail\SendMailable;
 class MailController extends Controller
 {
     public function mail(){
-        $name = 'Krunal';
-        Mail::to('krunal@appdividend.com')->send(new SendMailable($name));
+        // $name = 'Krunal';
+        // Mail::to('krunal@appdividend.com')->send(new SendMailable($name));
         
-        return 'Email was sent';
+        // return 'Email was sent';
     }
 }

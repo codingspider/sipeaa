@@ -40,6 +40,10 @@ $cart = Cart::count();
     <div class="row">
         <div class="col-sm-12 col-md-12 col-md-offset-1">
             <table class="table table-hover">
+                    @if($cart == 0)
+                    <h2 class="text-center"> You have 0 Item in cart </h2>
+                    @else
+  
                 <thead>
                     <tr>
                         <th>Product</th>
@@ -51,10 +55,7 @@ $cart = Cart::count();
                     </tr>
                 </thead>
                 <tbody>
-                  @if($cart == 0)
-                  <h2 class="text-center"> You have 0 Item in cart </h2>
-
-                  @else
+                 
                   @foreach($data as $value)
                     <tr>
                         <td class="col-sm-8 col-md-6">
@@ -84,7 +85,6 @@ $cart = Cart::count();
                     </tr>
 
                     @endforeach
-                    @endif
                     <tr>
                         <td>   </td>
                         <td>   </td>
@@ -165,6 +165,8 @@ $cart = Cart::count();
                     <!-- Modal -->
 
                 </tbody>
+            @endif
+
             </table>
 
         </div>

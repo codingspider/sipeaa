@@ -10,6 +10,8 @@ use Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Response;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMailable;
 use Session;
 use Khsing\World\World;
 
@@ -109,12 +111,13 @@ class CartController extends Controller
             $data['country_name'] = $request->country_name;
             $data['user_id'] = Auth::id();
 
-        $shiping_id = DB::table('shipings') 
+            $shiping_id = DB::table('shipings') 
             ->insertGetId($data);    
-            
+
+
             $data = array();
-            $data['payment_method'] = 'Bkash';
-            $data['payment_status'] = 'active';
+            $data['payment_method'] =  $request->method;
+            $data['payment_status'] = $request->status;
             $data['transaction_id'] = $request->transaction;
             $data['user_id'] = Auth::id();
             $data['course_fee'] = $request->total;
@@ -124,8 +127,13 @@ class CartController extends Controller
     
             
             Session::put('shiping_id', $shiping_id);
+            
+
+            
+            Mail::send( new SendMailable ($request));
 
             Cart::destroy();
+
             return view('pages.thanks');
         }
     }

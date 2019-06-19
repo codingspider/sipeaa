@@ -69,11 +69,15 @@
                 </div>
                 @foreach ($data as $item)
                     
-            <input type="hidden" name="course" value="{{ $item->name }}">
+
             @endforeach
 
+            <input type="hidden" name="course" value="{{ $item->name }}">
+            <input type="hidden" name="method" value="Bkash">
+            <input type="hidden" name="status" value="Active">
+            <input type="hidden" name="course_name" value="{{ $item->name }}">
             <input type="hidden" name="total" value="{{ $newSubtotal }}">
-      
+ 
                 <div class="col-50">
                   <h3>Payment</h3>
                   <div class="icon-container">
