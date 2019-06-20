@@ -85,7 +85,7 @@
                   
                   </div>
                   <label for="cname">Bkash Transaction Number</label>
-                  <input type="text" id="cname" name="transaction" placeholder="HFDO65DSF">
+                  <input type="text" id="cname" name="transaction" placeholder="HFDO65DSF" required>
                   
                
                 </div>

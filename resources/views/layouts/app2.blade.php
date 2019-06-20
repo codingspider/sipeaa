@@ -113,10 +113,12 @@
 								</div>
 								<div class="header-column justify-content-end">
 									<div class="header-row">
+										@php
+											$user = \App\User::where(['approve' => 1])->get()->count();
+										@endphp
 										<ul class="header-social-icons social-icons d-none d-sm-block social-icons-clean">
-											<li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-											<li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
-											<li class="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+										<li class="fa fa-user" style="color: #000"> Total Active Members: {{ $user }}</li>
+											
 										</ul>
 									</div>
 								</div>
@@ -177,9 +179,14 @@
 															</a>
 															<ul class="dropdown-menu">
 																
-                                                                <li><a class="dropdown-item" href="{{ URL::to('/sipeaa/blog') }}">SIPEAA Articles </a></li>
-                                                                <li><a class="dropdown-item" href="{{ URL::to('/blog_admin/add_post') }}">Post Articles </a></li>
-                                                                <li><a class="dropdown-item" href="{{ URL::to('/article/borad') }}">Articles Board </a></li>
+																<li><a class="dropdown-item" href="{{ URL::to('/sipeaa/blog') }}">SIPEAA Articles </a></li>
+																@if( $data == NULL)
+																<li><a class="dropdown-item" href="{{ URL::to('/login') }}">Post Articles </a></li>
+																<li><a class="dropdown-item" href="{{ URL::to('/article/borad') }}">Articles Board </a></li>
+																@else
+																<li><a class="dropdown-item" href="{{ URL::to('/article/borad') }}">Articles Board </a></li>
+																<li><a class="dropdown-item" href="{{ URL::to('/blog_admin/add_post') }}">Post Articles </a></li>
+																@endif
 															</ul>
 														</li>
 														<li class="dropdown dropdown-full-color dropdown-light">

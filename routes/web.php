@@ -144,6 +144,11 @@ Route::get('/send/email', 'MailController@mail');
 
 Route::get('/members/profile', 'HomeController@members_profile');
 
+Route::post('/upload/cv/online', 'CvController@cv_upload');
+
+Route::get('/delete/cv/{id}', 'CvController@cv_delete');
+
+
 
 
 

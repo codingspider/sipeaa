@@ -32,6 +32,7 @@ class HomeController extends Controller
         }
     public function members_profile()
         {
+            
             return view('pages.members_profile');
         }
 }

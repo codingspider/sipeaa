@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use DB;
-use Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Validator;
 use Session;
+use App\Mail\MailNotify;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redirect;
 session_start();
 
 
@@ -31,6 +32,8 @@ class TrainingDemandController extends Controller
         
         $success = DB::table('training_demands')->insert($data);
         Session::put('message','Training added sucessfully');
+        
+        Mail::send( new MailNotify ($request));
         return redirect::back();
     
 

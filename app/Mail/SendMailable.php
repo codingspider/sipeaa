@@ -31,7 +31,7 @@ class SendMailable extends Mailable
      */
     public function build()
     {
-        return $this->to('hello@rokon.com')
+        return $this->to($this->request->email)
                     //->bcc('auth@another.com')
                     ->subject('Your Order has been succesfull')
                     ->view('pages.email') ->with([

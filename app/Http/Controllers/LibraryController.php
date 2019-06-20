@@ -22,10 +22,10 @@ class LibraryController extends Controller
     {       
 
 
-    $data[] = $request->images;
+    $data[] = $request->upload_file;
 
     $validate = Validator::make($data, [
-        'image' => 'required|image|mimes:jpeg,png,jpg,doc|max:5048',
+        'upload_file' => 'required|pdf|max:5048',
     ]);
 
    if ($request->hasFile('images')) {
