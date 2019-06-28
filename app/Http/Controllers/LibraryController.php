@@ -54,4 +54,39 @@ class LibraryController extends Controller
         }
 
     }
+
+    public function library_authorising(){
+
+        $data = DB::table('librarys')->get();
+
+        return view('pages.library_authorization', compact('data'));
+    }
+
+    public function library_update_status(Request $request){
+
+            $id = $request->id;
+
+            $success = DB::table('librarys')->where('id',$id)->update(
+                [
+                  'status' => $request->status,
+                  
+                ]);
+                    if ($success) {
+                        return redirect::back()->with('success','Status Updated Successfully !');
+                    }else{
+                        return redirect::back()->with('danger','Something went wrong! please try again');   
+                    }
+    
+    }
+
+    public function library_delete_status($id){
+
+        $success = DB::table('librarys')->where('id',$id)->delete();
+        if ($success) {
+            return redirect::back()->with('success','Delete Updated Successfully !');
+        }else{
+            return redirect::back()->with('danger','Something went wrong! please try again');   
+        }
+    }
+
 }

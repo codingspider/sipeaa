@@ -6,6 +6,8 @@
 @foreach ($data as $item)
     
 @endforeach
+<br>
+<br>
 <div class="section section-pad">
         <div class="container">
             <div class="row">
@@ -13,7 +15,7 @@
 
                     <div class="post post-single">
                         <div class="post-thumb">
-                        <img alt="" src="{{ URL::asset( $item->images) }}">
+                        <img alt="" src="{{ URL::asset( $item->images) }}"  style="width:500px; height:300;">
                         </div>
                         <div class="post-meta">
                             <span class="pub-date ">Event Date <em class="fa fa-calendar" aria-hidden="true"></em>  {{ $item->start_date }} </span>

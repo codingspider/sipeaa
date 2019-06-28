@@ -205,32 +205,32 @@
 																Members   
 															</a>
 															<ul class="dropdown-menu">
-									@if( $data == NULL)
-                                    <li><a class="dropdown-item" href="{{ URL::to('/login')}}">Membership</a></li>
-									<li><a class="dropdown-item" href="{{ URL::to('/members/profile')}}">Member Profile</a></li>
-									<li><a class="dropdown-item" href="{{ URL::to('/members/search') }}">Member's Search </a></li>
-									<li><a class="dropdown-item" href="{{ URL::to('/add/library') }}">Library Upload </a></li>
-									<li><a class="dropdown-item" href="{{ URL::to('/acounts/members') }}">Accounts SIPEAA </a></li>
-									<li><a class="dropdown-item" href="{{ URL::to('/alumni/contribution') }}">Alumni Members Contribution </a></li>
-                                    @else
-									<li><a class="dropdown-item" href="{{ URL::to('/members/profile')}}">Member Profile</a></li>
-									<li><a class="dropdown-item" href="{{ URL::to('/members/search') }}">Member's Search </a></li>
-									<li><a class="dropdown-item" href="{{ URL::to('/add/library') }}">Library Upload </a></li>
-									<li><a class="dropdown-item" href="{{ URL::to('/acounts/members') }}">Accounts SIPEAA </a></li>
-									<li><a class="dropdown-item" href="{{ URL::to('/alumni/contribution') }}">Alumni Members Contribution </a></li>
-									@endif
+																@if( $data == NULL)
+																<li><a class="dropdown-item" href="{{ URL::to('/login')}}">Membership</a></li>
+																<li><a class="dropdown-item" href="{{ URL::to('/members/profile')}}">Member Profile</a></li>
+																<li><a class="dropdown-item" href="{{ URL::to('/members/search') }}">Member's Search </a></li>
+																<li><a class="dropdown-item" href="{{ URL::to('/add/library') }}">Library Upload </a></li>
+																<li><a class="dropdown-item" href="{{ URL::to('/acounts/members') }}">Accounts SIPEAA </a></li>
+																<li><a class="dropdown-item" href="{{ URL::to('/alumni/contribution') }}">Alumni Members Contribution </a></li>
+																@else
+																<li><a class="dropdown-item" href="{{ URL::to('/members/profile')}}">Member Profile</a></li>
+																<li><a class="dropdown-item" href="{{ URL::to('/members/search') }}">Member's Search </a></li>
+																<li><a class="dropdown-item" href="{{ URL::to('/add/library') }}">Library Upload </a></li>
+																<li><a class="dropdown-item" href="{{ URL::to('/acounts/members') }}">Accounts SIPEAA </a></li>
+																<li><a class="dropdown-item" href="{{ URL::to('/alumni/contribution') }}">Alumni Members Contribution </a></li>
+																@endif
 
 															</ul>
 														</li>
-											<li class="dropdown dropdown-full-color dropdown-light">
-								<a class="dropdown-item dropdown-toggle" href="#">T & D</a>
-					<ul class="dropdown-menu">
-						
-                            <li><a class="dropdown-item" href="{{URL::to('/training/lists') }}">Training/Workshop </a></li>
-                            <li><a class="dropdown-item" href="{{URL::to('/training/demand') }}">Training Demand Form </a></li>
-                            <li><a class="dropdown-item" href="{{URL::to('/training/post') }}">Training Posting</a></li>
-                            <li><a class="dropdown-item" href="{{ URL::to('/course/posting/board') }}">Course Posting Board </a></li>
-					</ul>
+																				<li class="dropdown dropdown-full-color dropdown-light">
+																	<a class="dropdown-item dropdown-toggle" href="#">T & D</a>
+														<ul class="dropdown-menu">
+															
+																<li><a class="dropdown-item" href="{{URL::to('/training/lists') }}">Training/Workshop </a></li>
+																<li><a class="dropdown-item" href="{{URL::to('/training/demand') }}">Training Demand Form </a></li>
+																<li><a class="dropdown-item" href="{{URL::to('/training/post') }}">Training Posting</a></li>
+																<li><a class="dropdown-item" href="{{ URL::to('/course/posting/board') }}">Course Posting Board </a></li>
+														</ul>
 														</li>
 														<li class="dropdown dropdown-full-color dropdown-light">
 															<a class="dropdown-item dropdown-toggle" href="#">
@@ -255,10 +255,19 @@
 													</ul>
 													
 												</nav>
+												
 											</div>
+											
+
 											<button class="btn header-btn-collapse-nav my-2" data-toggle="collapse" data-target=".header-nav-main nav">
 												<i class="fas fa-bars"></i>
 											</button>
+										</div>
+										<div class="float-right">
+														
+										<a href="{{ URL::to('/all/unread/messages') }}"><i style="color:brown" class="fa fa-bell fa-lg" aria-hidden="true"> {{ DB::table('messages')->where('notify_status', 0)->where('sent_to_id', Auth::id())->count() }}</i> </a>
+														
+											
 										</div>
 									</div>
 								</div>

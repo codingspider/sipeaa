@@ -20,7 +20,7 @@
         {{ session()->get('danger') }}
     </div>
 @endif
-<div role="main" class="main shop py-4">
+<div role="main" class="main py-4">
 
         <div class="container">
 
@@ -32,14 +32,14 @@
                                 <div class="featured-box featured-box-primary text-left mt-2">
                                     <div class="box-content">
                                         <h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">I'm a New User </h4>
-                                        <form method="POST" action="{{ URL::to('/employee/registration') }}" >
+                                        <form method="POST" action="{{ URL::to('/employee/registration') }}" enctype="multipart/form-data" >
                                             @csrf
                     
                                             <div class="form-group row">
                                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('User ID') }}</label>
                     
                                                 <div class="col-md-6">
-                                                    <input  type="text" class="form-control{{ $errors->has('user_id') ? ' is-invalid' : '' }}" name="user_id" value="{{ old('user_id') }}" required autofocus>
+                                                    <input  type="text" style="border:1px solid #818182" class="form-control{{ $errors->has('user_id') ? ' is-invalid' : '' }}" name="user_id" value="{{ old('user_id') }}" required autofocus>
                     
                                                     @if ($errors->has('user_id'))
                                                         <span class="invalid-feedback" role="alert">
@@ -54,10 +54,10 @@
                                         
                                            
                                             <div class="form-group row">
-                                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                                <label for="password"  class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
                     
                                                 <div class="col-md-6">
-                                                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                                    <input id="password" style="border:1px solid #818182" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
                     
                                                     @if ($errors->has('password'))
                                                         <span class="invalid-feedback" role="alert">
@@ -71,7 +71,7 @@
                                                 <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
                     
                                                 <div class="col-md-6">
-                                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                                    <input id="password-confirm" style="border:1px solid #818182" type="password" class="form-control" name="password_confirmation" required>
                                                 </div>
                                             </div>
                                             
@@ -84,7 +84,7 @@
                         <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Compnay Name') }}</label>
 
                         <div class="col-md-6">
-                            <input id="text" type="text" class="form-control{{ $errors->has('co_name') ? ' is-invalid' : '' }}" name="co_name" value="{{ old('co_name') }}" required>
+                            <input id="text" type="text" style="border:1px solid #818182" class="form-control{{ $errors->has('co_name') ? ' is-invalid' : '' }}" name="co_name" value="{{ old('co_name') }}" required>
 
                             @if ($errors->has('co_name'))
                                 <span class="invalid-feedback" role="alert">
@@ -97,7 +97,7 @@
                         <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Contact Person') }}</label>
 
                         <div class="col-md-6">
-                            <input id="text" type="text" class="form-control{{ $errors->has('contact_person') ? ' is-invalid' : '' }}" name="contact_person" value="{{ old('contact_person') }}" required>
+                            <input id="text" style="border:1px solid #818182" type="text" class="form-control{{ $errors->has('contact_person') ? ' is-invalid' : '' }}" name="contact_person" value="{{ old('contact_person') }}" required>
 
                             @if ($errors->has('contact_person'))
                                 <span class="invalid-feedback" role="alert">
@@ -110,7 +110,7 @@
                                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
                     
                                                 <div class="col-md-6">
-                                                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                                                    <input id="email" style="border:1px solid #818182" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
                     
                                                     @if ($errors->has('email'))
                                                         <span class="invalid-feedback" role="alert">
@@ -125,7 +125,7 @@
                                                     <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Contact Persons phone') }}</label>
                         
                                                     <div class="col-md-6">
-                                                        <input id="text" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" required>
+                                                        <input style="border:1px solid #818182" id="text" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" required>
                         
                                                         @if ($errors->has('phone'))
                                                             <span class="invalid-feedback" role="alert">
@@ -138,7 +138,7 @@
                                                     <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Contact Persons Designation') }}</label>
                         
                                                     <div class="col-md-6">
-                                                        <input id="text" type="text" class="form-control{{ $errors->has('designation') ? ' is-invalid' : '' }}" name="designation" value="{{ old('designation') }}" required>
+                                                        <input style="border:1px solid #818182" id="text" type="text" class="form-control{{ $errors->has('designation') ? ' is-invalid' : '' }}" name="designation" value="{{ old('designation') }}" required>
                         
                                                         @if ($errors->has('designation'))
                                                             <span class="invalid-feedback" role="alert">
@@ -147,31 +147,38 @@
                                                         @endif
                                                     </div>
                                                     <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Job Areas  ') }}</label>
-            
+                                                    <br>
                                         <div class="col-md-6">
-                                            <select class="form-control" name="job_areas" data-required="no" data-type="select">
+                                            <select style="border:1px solid #818182" class="form-control" name="job_areas" data-required="no" data-type="select">
 
-                                                <option value=""> - select -</option>
-                            @foreach ($data as $item)
-                                
-                                            <option value="{{ $item->id }}">{{ $item->category_name }}</option>
-                            @endforeach
-                                                           
-                                                </select>
-                                        </div>
+                                                                <option value=""> - select -</option>
+                                            @foreach ($data as $item)
+                                                
+                                                            <option value="{{ $item->id }}">{{ $item->category_name }}</option>
+                                            @endforeach
+                                                                        
+                                                                </select>
+                                                        </div>
                                                 </div>
                                             <div class="form-group row">
                                                 <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Description  ') }}</label>
                 
                                                 <div class="col-md-5">
-                                                        <textarea name="job_skill" rows="5" cols="50"></textarea>
+                                                        <textarea  style="border:1px solid #818182" name="job_skill" rows="5" cols="50"></textarea>
+                                                </div>
+                                                </div>
+                                            <div class="form-group row">
+                                                <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Photo') }}</label>
+                
+                                                <div class="col-md-5">
+                                                        <input style="border:1px solid #818182" type="file" name="images">
                                                 </div>
                                                 </div>
 
                                             <br>
                                             <div class="form-group col-lg-6">
-                                                    <input type="submit" value="Register Now" class="btn btn-primary btn-modern float-right">
-                                                </div>
+                    <input type="submit" value="Register Now" class="btn btn-primary btn-modern float-right">
+                                            </div>
                                                 
                                             
                                         </form>
@@ -182,8 +189,13 @@
                                 <div class="featured-box featured-box-primary text-left mt-2">
                                     <div class="box-content">
                                         <h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">Search</h4>
-                                      
+                                      <input style="border:1px solid #818182" class="form-control" type="text">
+                                      <br>
+                                      <div>
+                                        <button class="btn btn-primary float-left" type="submit">Search</button>
                                     </div>
+                                    </div>
+                                   
                                 </div>
                             </div>
                         </div>

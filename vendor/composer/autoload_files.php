@@ -23,6 +23,7 @@ return array(
     '95779e373bd3ef5069868a995b5280ab' => $vendorDir . '/imanghafoori/laravel-heyman/src/helpers.php',
     '1374595b22715c0d85ab645d8272fe85' => $vendorDir . '/imanghafoori/laravel-widgetize/src/helpers.php',
     '6124b4c8570aa390c21fafd04a26c69f' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+    '3109cb1a231dcd04bee1f9f620d46975' => $vendorDir . '/paragonie/sodium_compat/autoload.php',
     '801c31d8ed748cfa537fa45402288c95' => $vendorDir . '/psy/psysh/src/functions.php',
     '0b47d6d4a00ca9112ba3953b49e7c9a4' => $vendorDir . '/yajra/laravel-datatables-oracle/src/helper.php',
 );

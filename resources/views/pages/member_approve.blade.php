@@ -6,7 +6,7 @@
 <table id="table_id" class="display">
 
     <?php
-    $users = DB::table('users')->get();
+    $users = DB::table('users')->orderBy('id', 'desc')->where('user_type', 'member')->get();
 
     ?>
 
@@ -25,9 +25,9 @@
             <tr>
                 <th>Name </th>
                 <th>Email</th>
-         
+                <th>User Type</th>         
+                <th>Status</th>
                 <th>Action</th>
-                <th></th>
                 
             </tr>
         </thead>
@@ -39,6 +39,7 @@
 
                 <td>{{$item->name}}</td>
                 <td>{{$item->email}}</td> 
+                <td>{{$item->user_type}}</td> 
              
                 @if($item->approve == 1)
                 <td><a href="#" class="btn btn-success">Activate</a></td>
@@ -52,7 +53,7 @@
                     @else
                 <td><a class="btn btn-danger" href="{{ URL::to('/active_user', $item->id)}}"> <i class="fa fa-thumbs-down"></i></td>
                         @endif
-                <td><a class="btn btn-info" href="{{ URL::to('/user/profile/details', $item->id)}}"> <i class="fa fa-user"></i></td>
+                <td><a class="btn btn-info" href="{{ URL::to('/member/profile/details', $item->id)}}"> <i class="fa fa-user"></i></td>
 
             <td>
             <form action="{{ URL::to('/user/delete', $item->id)}}" method="post">

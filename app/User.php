@@ -2,9 +2,10 @@
 
 namespace App;
 
+use App\Message;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -27,6 +28,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function sent()
+    {
+        return $this->hasMany(Message::class, 'sender_id');
+    }
+
+    // A user can also receive a message
+    public function received()
+    {
+        return $this->hasMany(Message::class, 'sent_to_id');
+    }
 
     public function canManageBlogEtcPosts()
     {

@@ -37,12 +37,12 @@
                                 <div class="featured-box featured-box-primary text-left mt-5">
                                     <div class="box-content">
                                         <h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">I'm a New Customer</h4>
-                                        <form method="POST" action="{{ URL::to('/member/registration') }}" >
+                                        <form method="POST" action="{{ URL::to('/member/registration') }}" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-row">
                                                 <div class="form-group col">
                                                     <label class="font-weight-bold text-dark text-2">First Name</label>
-                                                    <input  type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name=" first_name" value="{{ old('name') }}" required autofocus>
+                                                    <input  type="text" style="border:1px solid #818182" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name=" first_name" value="{{ old('name') }}" required autofocus>
                                     
                                                                     @if ($errors->has('name'))
                                                                         <span class="invalid-feedback" role="alert">
@@ -54,7 +54,7 @@
                                             <div class="form-row">
                                                 <div class="form-group col">
                                                     <label class="font-weight-bold text-dark text-2">Last Name</label>
-                                                    <input  type="text" class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" value="{{ old('last_name') }}" required autofocus>
+                                                    <input  type="text" style="border:1px solid #818182" class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" value="{{ old('last_name') }}" required autofocus>
                                     
                                                                     @if ($errors->has('name'))
                                                                         <span class="invalid-feedback" role="alert">
@@ -66,7 +66,7 @@
                                             <div class="form-row">
                                                 <div class="form-group col">
                                                     <label class="font-weight-bold text-dark text-2">User Id</label>
-                                                    <input  type="email" class="form-control{{ $errors->has('user_id') ? ' is-invalid' : '' }}" name="user_id" value="{{ old('user_id') }}" required autofocus>
+                                                    <input  type="email" style="border:1px solid #818182" class="form-control{{ $errors->has('user_id') ? ' is-invalid' : '' }}" name="user_id" value="{{ old('user_id') }}" required autofocus>
                                     
                                                     @if ($errors->has('name'))
                                                         <span class="invalid-feedback" role="alert">
@@ -78,7 +78,7 @@
                                             <div class="form-row">
                                                 <div class="form-group col">
                                                     <label class="font-weight-bold text-dark text-2">Password</label>
-                                                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                                    <input id="password" style="border:1px solid #818182" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
                                     
                                                                     @if ($errors->has('password'))
                                                                         <span class="invalid-feedback" role="alert">
@@ -90,13 +90,13 @@
                                             <div class="form-row">
                                                 <div class="form-group col">
                                                     <label class="font-weight-bold text-dark text-2">Confirm Password</label>
-                                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                                    <input id="password-confirm" style="border:1px solid #818182" type="password" class="form-control" name="password_confirmation" required>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col">
                                                     <label class="font-weight-bold text-dark text-2"> E-mail Address</label>
-                                                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                                                    <input id="email" style="border:1px solid #818182" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
                                     
                                                                     @if ($errors->has('email'))
                                                                         <span class="invalid-feedback" role="alert">
@@ -108,7 +108,7 @@
                                             <div class="form-row">
                                                 <div class="form-group col">
                                                     <label class="font-weight-bold text-dark text-2">Phone</label>
-                                                    <input id="text" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" required>
+                                                    <input id="text" style="border:1px solid #818182" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" required>
                                         
                                                                         @if ($errors->has('phone'))
                                                                             <span class="invalid-feedback" role="alert">
@@ -120,7 +120,7 @@
                                             <div class="form-row">
                                                 <div class="form-group col">
                                                     <label class="font-weight-bold text-dark text-2">Blood Group</label>
-                                                    <select name="blood_group" class="form-control" id="sel1">
+                                                    <select style="border:1px solid #818182" name="blood_group" class="form-control" id="sel1">
                                                             <option value="A+">A+</option>
                                                             <option value="A-">A-</option>
                                                             <option value="B+">B+</option>
@@ -135,7 +135,7 @@
                                             <div class="form-row">
                                                     <div class="form-group col">
                                                         <label class="font-weight-bold text-dark text-2">Year of Admission</label>
-                                                        <input id="text" type="text" class="form-control{{ $errors->has('admission_year') ? ' is-invalid' : '' }}" name="admission_year" value="{{ old('admission_year') }}" required>
+                                                        <input style="border:1px solid #818182" id="text" type="text" class="form-control{{ $errors->has('admission_year') ? ' is-invalid' : '' }}" name="admission_year" value="{{ old('admission_year') }}" required>
                                         
                                                         @if ($errors->has('admission_year'))
                                                             <span class="invalid-feedback" role="alert">
@@ -147,7 +147,7 @@
                                             <div class="form-row">
                                                     <div class="form-group col">
                                                         <label class="font-weight-bold text-dark text-2">Year of Passing</label>
-                                                        <input id="text" type="text" class="form-control{{ $errors->has('passing_year') ? ' is-invalid' : '' }}" name="passing_year" value="{{ old('passing_year') }}" required>
+                                                        <input style="border:1px solid #818182" id="text" type="text" class="form-control{{ $errors->has('passing_year') ? ' is-invalid' : '' }}" name="passing_year" value="{{ old('passing_year') }}" required>
                                         
                                                                         @if ($errors->has('passing_year'))
                                                                             <span class="invalid-feedback" role="alert">
@@ -159,7 +159,7 @@
                                             <div class="form-row">
                                                     <div class="form-group col">
                                                         <label class="font-weight-bold text-dark text-2">Registration no</label>
-                                                        <input id="text" type="text" class="form-control{{ $errors->has('reg_no') ? ' is-invalid' : '' }}" name="reg_no" value="{{ old('reg_no') }}" required>
+                                                        <input style="border:1px solid #818182" id="text" type="text" class="form-control{{ $errors->has('reg_no') ? ' is-invalid' : '' }}" name="reg_no" value="{{ old('reg_no') }}" required>
                                         
                                                         @if ($errors->has('reg_no'))
                                                             <span class="invalid-feedback" role="alert">
@@ -171,7 +171,7 @@
                                             <div class="form-row">
                                                     <div class="form-group col">
                                                         <label class="font-weight-bold text-dark text-2">Batch no</label>
-                                                        <input id="text" type="text" class="form-control{{ $errors->has('batch_no') ? ' is-invalid' : '' }}" name="batch_no" value="{{ old('batch_no') }}" required>
+                                                        <input style="border:1px solid #818182" id="text" type="text" class="form-control{{ $errors->has('batch_no') ? ' is-invalid' : '' }}" name="batch_no" value="{{ old('batch_no') }}" required>
                                         
                                                                         @if ($errors->has('batch_no'))
                                                                             <span class="invalid-feedback" role="alert">
@@ -183,7 +183,7 @@
                                             <div class="form-row">
                                                     <div class="form-group col">
                                                         <label class="font-weight-bold text-dark text-2">Experiece Years</label>
-                                                        <input id="text" type="text" class="form-control{{ $errors->has('exp_year') ? ' is-invalid' : '' }}" name="exp_year" value="{{ old('exp_year') }}" required>
+                                                        <input style="border:1px solid #818182" id="text" type="text" class="form-control{{ $errors->has('exp_year') ? ' is-invalid' : '' }}" name="exp_year" value="{{ old('exp_year') }}" required>
                             
                                                         @if ($errors->has('exp_year'))
                                                             <span class="invalid-feedback" role="alert">
@@ -195,7 +195,7 @@
                                             <div class="form-row">
                                                     <div class="form-group col">
                                                         <label class="font-weight-bold text-dark text-2">Job Areas </label>
-                                                        <select class="form-control" name="job_areas" data-required="no" data-type="select">
+                                                        <select style="border:1px solid #818182" class="form-control" name="job_areas" data-required="no" data-type="select">
 
                                                                 <option value=""> - select -</option>
                                             @foreach ($data as $item)
@@ -211,7 +211,16 @@
                                                             <label class="font-weight-bold text-dark text-2">Job Skills </label>
                                 
                                                             <div class="col-md-5">
-                                                                <textarea name="job_skill" rows="5" cols="80"></textarea>
+                                                                <textarea style="border:1px solid #818182" name="job_skill" rows="5" cols="80"></textarea>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                            <div class="form-row">
+                                                    <div class="form-group col">
+                                                            <label class="font-weight-bold text-dark text-2">Profile Picture </label>
+                                
+                                                            <div class="col-md-5">
+                                                               <input type="file" name="images">
                                                             </div>
                                                     </div>
                                                 </div>

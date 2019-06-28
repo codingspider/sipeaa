@@ -7,7 +7,8 @@
 $events = DB::table('events')->get();
 $side_events = DB::table('side_slider_events')->get();
 
-$blog_etc_posts = DB::table('blog_etc_posts')->get();
+$item = DB::table('jobs')->orderBy('id', 'desc')->first();
+
     
 @endphp
   <div class="container">
@@ -32,7 +33,7 @@ $blog_etc_posts = DB::table('blog_etc_posts')->get();
                             @foreach($side_events as $value)
                               <div class="item"><img src="{{$value->images}}" alt="Owl Image">
                                 <div class="carousel-caption">
-                                <a href="{{ URL::to('/events/details', $value->id )}}" target="_blank"><button type="button" class="btn btn-default">{{ $value->title }}</button></a>
+                                <a href="{{ URL::to('/side/slider/events/details', $value->id )}}" target="_blank"><button type="button" class="btn btn-default">{{ $value->title }}</button></a>
                                   </div>
                               </div>
                             @endforeach
@@ -57,30 +58,28 @@ $blog_etc_posts = DB::table('blog_etc_posts')->get();
                     </div>
                 </div>
                 <div class="row recent-posts appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
-                    @foreach ($blog_etc_posts as $item)
+              
                         
                     <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
                         <article>
                             <div class="row">
                                 <div class="col">
-                                    <a href="blog-post.html" class="text-decoration-none">
-                                    <img src="{{ URL::asset("blog_images/{$item->image_medium}") }}" class="img-fluid hover-effect-2 mb-3" alt="" />
+                                    <a href="{{ URL::to('job/details/page/'.$item->id )}}" class="text-decoration-none">
+                                    <img src="{{ URL::asset('/images/'.$item->company_image) }}" style="width:250px; height:300;"/>
                                     </a>
                                 </div>
                             </div>
+                            <br>
                             <div class="row">
-                                <div class="col-auto pr-0">
-                                    
-                                </div>
+                             
                                 <div class="col pl-1">
-                                    <h4 class="line-height-3 text-4"><a href="blog-post.html" class="text-light"> {{$item->title }}</a></h4>
-                                    <p class="text-color-light line-height-5 opacity-6 pr-4 mb-1">{{$item->subtitle }}</p>
-                                <a href="" class="read-more text-color-light font-weight-semibold text-2">read more <i class="fas fa-chevron-right text-1 ml-1"></i></a>
+                                    <h4 class="line-height-3 text-4"><a href="{{ URL::to('job/details/page/'.$item->id )}}" class="text-light"> {{$item->title }}</a></h4>
+                                    <p class="text-color-light line-height-5 opacity-6 pr-4 mb-1">{{$item->job_position }}</p>
+                                <a href="{{ URL::to('job/details/page/'.$item->id )}}" class="read-more text-color-light font-weight-semibold text-2">read more <i class="fas fa-chevron-right text-1 ml-1"></i></a>
                                 </div>
                             </div>
                         </article>
                     </div>
-                    @endforeach
                     
                 </div>
             </div>

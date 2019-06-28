@@ -1,5 +1,7 @@
 <?php
 
+use App\Events\UserChat;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +18,9 @@
 Route::get('/', 'EventController@index');
 
 Route::get('/home', 'EventController@index');
-Route::get('/events/details/page/{id}', 'EventController@events_details');
+Route::get('/events/details/{id}', 'EventController@events_details');
+Route::get('/view/details/events/{id}', 'EventController@view_events_details');
+Route::get('/side/slider/events/details/{id}', 'EventController@view_side_events_details');
 
 Route::get('/registration/pages', 'RegistrationController@member_index');
 Route::get('/registration/pages/employee', 'RegistrationController@employee_index');
@@ -30,7 +34,9 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/user/approval', 'RegistrationController@member_approve');
-Route::get('/user/profile/details/{id}', 'RegistrationController@user_profile');
+Route::get('/employee/approval', 'RegistrationController@employee_approve');
+Route::get('/user/profile/details/{id}', 'RegistrationController@user_employee_profile');
+Route::get('/member/profile/details/{id}', 'RegistrationController@user_member_profile');
 
 
 Route::get('/unactive_user/{id}', 'UsersController@unactive');
@@ -102,7 +108,10 @@ Route::get('/alumni/contribution', 'ContributionController@index');
 Route::post('/make/contribution', 'ContributionController@make_contribution');
 
 Route::get('/add/library', 'LibraryController@index');
+Route::get('/library/authorisation', 'LibraryController@library_authorising');
 Route::post('/upload/library', 'LibraryController@library_upload');
+Route::post('/library/update/status', 'LibraryController@library_update_status');
+Route::get('/delete/library/{id}', 'LibraryController@library_delete_status');
 
 
 Route::get('/training/post', 'TrainingController@index');
@@ -111,6 +120,10 @@ Route::post('/training/post/success', 'TrainingController@add_training');
 Route::get('/training/demand', 'TrainingDemandController@index');
 Route::post('/training/demand/post', 'TrainingDemandController@training_demand');
 Route::get('/training/lists', 'TrainingDemandController@training_list');
+Route::get('/training/lists/status', 'TrainingDemandController@training_status');
+
+Route::post('/change/status/update', 'TrainingDemandController@training_status_update');
+Route::get('/training/demand/delete/{id}', 'TrainingDemandController@training_delete_status');
 
 
 Route::get('training/course/details/{id}', 'TrainingCartController@details');
@@ -149,6 +162,46 @@ Route::post('/upload/cv/online', 'CvController@cv_upload');
 Route::get('/delete/cv/{id}', 'CvController@cv_delete');
 
 
+Route::get('event', function () {
+    event(new UserChat('You have new msg'));
+});
 
+Route::get('listen', function () {
+    return view('pages.listenBroadcast');
+});
+
+
+
+Route::get('test', function () {
+
+    return App\PrivateMessage::where('id', 1)->first();
+    
+});
+
+//private massage route
+
+Route::post('get-private-message-notifications', 'PrivateMessageController@getUserNotification');
+Route::post('get-private-messages', 'PrivateMessageController@getPrivateMessages');
+Route::post('get-private-message', 'PrivateMessageController@getPrivateMessageById');
+Route::post('get-private-message-sent', 'PrivateMessageController@getPrivateMessageSent');
+Route::post('send-private-message', 'PrivateMessageController@sendPrivateMessage');
+
+Route::post('/online/cv/create','OnlineCvController@cv_create');
+Route::post('/online/cv/update/','OnlineCvController@cv_update');
+
+
+
+Route::post('/user/message/sent','MessageController@sendMessage');
+
+Route::get('/all/unread/messages','MessageController@all_unread_message');
+
+Route::get('/messages/viewed/{id}','MessageController@all_read_message');
+Route::get('/all/messages/','MessageController@all_message');
+
+
+Route::get('/getUsers/{id}','MessageController@getUsers');
+Route::post('/admin/message/sent/{id}','MessageController@admin_users');
+
+Route::get('read/message/by/user/{id}','MessageController@all_read_message');
 
 

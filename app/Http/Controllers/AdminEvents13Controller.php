@@ -43,19 +43,19 @@
 			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
 			$this->form[] = ['label'=>'Short Description','name'=>'short_description','type'=>'textarea','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Description','name'=>'description','type'=>'textarea','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Images','name'=>'images','type'=>'upload','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Images','name'=>'images','type'=>'upload','validation'=>'required|min:1','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ["label"=>"Title","name"=>"title","type"=>"text","required"=>TRUE,"validation"=>"required|string|min:3|max:70","placeholder"=>"You can only enter the letter only"];
-			//$this->form[] = ["label"=>"Short Description","name"=>"short_description","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Description","name"=>"description","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Images","name"=>"images","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			//$this->form[] = ["label"=>"Start Date","name"=>"start_date","type"=>"date","required"=>TRUE,"validation"=>"required|date"];
-			//$this->form[] = ["label"=>"End Date","name"=>"end_date","type"=>"date","required"=>TRUE,"validation"=>"required|date"];
+			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
+			//$this->form[] = ['label'=>'Short Description','name'=>'short_description','type'=>'textarea','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Description','name'=>'description','type'=>'textarea','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Images','name'=>'images','type'=>'upload','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Start Date','name'=>'start_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'End Date','name'=>'end_date','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 
