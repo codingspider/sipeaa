@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use DB;
+use Auth;
+use Session;
 use App\User;
+use Illuminate\Support\Facades\File;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Auth;
-use DB;
-use Session;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 session_start(); 
 
 
@@ -183,4 +185,45 @@ class RegistrationController extends Controller
 
         return view('pages.member_approve_details', compact('users')); 
     }
+
+    public function employe_profile_update(Request $request){
+        
+
+            if(Input::hasFile('images'))
+                {
+                    $usersImage = public_path("files/".$request->old_images); // get previous image from folder
+                    if (File::exists($usersImage)) { // unlink or remove previous image from folder
+                        unlink($usersImage);
+                    }
+                    $image = $request->file('images');
+                    $name = time().'.'.$image->getClientOriginalExtension();
+                    $destinationPath = public_path('/files');
+                    $image->move($destinationPath, $name);
+                }
+
+            $id = Auth::id();
+            $data = array();
+            $data['name'] = $request->name;
+            $data['email'] = $request->email;
+            $data['images'] = $name;
+
+            $users = DB::table('users')->where('id', $id)
+            ->update($data); 
+
+            $data = array();
+            $data['company_name'] = $request->co_name;
+            $data['contact_person'] = $request->contact_person;
+            $data['contact_person_designation'] = $request->designation;
+            $data['contact_person_mobile'] = $request->phone;
+            $data['contact_person_email'] = $request->email;
+           
+
+            $customer_id = DB::table('employee')->where('user_id', $id)
+            ->update($data);
+
+                return redirect::back()->with('message', 'Profile Updated Succesfully');
+                
+            
+    }
+
 }

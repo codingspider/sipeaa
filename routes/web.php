@@ -27,6 +27,9 @@ Route::get('/registration/pages/employee', 'RegistrationController@employee_inde
 
 Route::post('/employee/registration', 'RegistrationController@employe_store');
 Route::post('/member/registration', 'RegistrationController@member_store');
+Route::post('/employee/profile/update', 'RegistrationController@employe_profile_update');
+
+Route::post('/update/users/profile/pictures', 'RegistrationController@images_update');
 
 Auth::routes();
 

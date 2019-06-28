@@ -43,8 +43,14 @@
 		<link rel="stylesheet" href="{{ asset('assets3/vendor/rs-plugin/css/layers.css') }}">
 		<link rel="stylesheet" href="{{ asset('assets3/vendor/rs-plugin/css/navigation.css') }}">
 		
-        <!-- Demo CSS -->
+		<!-- Demo CSS -->
+		<style>
+		html {
+			font-size: 20px;
+		}
+		</style>
 <script
+
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>

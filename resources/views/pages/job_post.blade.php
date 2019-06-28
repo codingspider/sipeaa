@@ -37,22 +37,22 @@
         <div class="col-md-6">
             <!-- First name -->
             <label for="sel1">Job Title *</label>
-            <input type="text" name="job_title" class="form-control" placeholder="Job Title " required>
+            <input type="text" name="job_title" style="border: 1px solid #000;" class="form-control" placeholder="Job Title " required>
         </div>
         <div class="col-md-6">
             <!-- First name -->
             <label for="sel1">Company Name*</label>
-            <input type="text" name="company_name" class="form-control" placeholder="Company name" required>
+            <input type="text" name="company_name" style="border: 1px solid #000;" class="form-control" placeholder="Company name" required>
         </div>
         <div class="col-md-6">
             <!-- Last name -->
             <label for="sel1">Job Position *</label>
-            <input type="text" name="job_position" class="form-control" placeholder="Job Position" required>
+            <input type="text" name="job_position" style="border: 1px solid #000;" class="form-control" placeholder="Job Position" required>
         </div>
         <div class="col-md-6">
             <!-- Last name -->
             <label for="sel1">No. of Vacancy *</label>
-            <input type="text" name="no_vacancy" class="form-control mb-4" placeholder="No. of Vacancies" required>
+            <input type="text" name="no_vacancy" style="border: 1px solid #000;" class="form-control mb-4" placeholder="No. of Vacancies" required>
 
         </div>
     </div>
@@ -60,10 +60,10 @@
    
     <!-- Password -->
     <label for="sel1">Job Details *</label>
-    <textarea name="job_details" rows="4" cols="80" placeholder="Describe you job details  here..."></textarea>
+    <textarea class="form-control" name="job_details" rows="4" cols="80" style="border: 1px solid #000;" placeholder="Describe you job details  here..."></textarea>
     <br>
     <label for="sel1">Job Category *</label>
-     <select name="job_category" class="form-control" id="sel1">
+     <select name="job_category" style="border: 1px solid #000;" class="form-control" id="sel1">
          @foreach ($category as $item)
              
      <option value="{{ $item->id }}">{{ $item->category_name }}</option>
@@ -77,11 +77,11 @@
     <br>
     <br>
     <label for="sel1">Experience & Other Requirements</label>
-    <textarea name="job_experience" rows="4" cols="80" placeholder="Describe you job details  here..."></textarea>
+    <textarea class="form-control" style="border: 1px solid #000;" name="job_experience" rows="4" cols="80" placeholder="Describe you job details  here..."></textarea>
     <br>
     <br>
     <label for="sel1">Job Location *</label>
-    <select name="job_location" class="form-control" id="sel1">
+    <select style="border: 1px solid #000;" name="job_location" class="form-control" id="sel1">
         @foreach ($location as $item)
             
     <option value="{{ $item->id }}" >{{ $item->name }}</option>
@@ -89,24 +89,27 @@
      
     </select>
     <br>
-    <div class="col-md-8">
-            <label for="sel1">Salary Range *</label>
-            <!-- Last name -->
-            <input type="text" name="salary" class="form-control" placeholder="Salary Range" required>
-        </div>
-    <div class="col-md-8">
-            <label for="sel1">Application Deadline *</label>
-            <!-- Last name -->
-            <input type="date" name="app_deadline" class="form-control" placeholder="Application Deadline" required>
-        </div>
+    <div class="row">
+            <div class="col">
+                    <label for="sel1">Salary Range *</label>
+                    <!-- Last name -->
+                    <input style="border: 1px solid #000;" type="text" name="salary" class="form-control" placeholder="Salary Range" required>
+                </div>
+            <div class="col">
+                    <label for="sel1">Application Deadline *</label>
+                    <!-- Last name -->
+                    <input style="border: 1px solid #000;" type="date" name="app_deadline" class="form-control" placeholder="Application Deadline" required>
+                </div>
+
+    </div>
 
         <label for="sel1">Apply Instructions </label>
-    <textarea name="apply_instruction" rows="4" cols="80" placeholder="Describe your Apply Instruction  here..."></textarea>
+    <textarea class="form-control" style="border: 1px solid #000;" name="apply_instruction" rows="4" cols="80" placeholder="Describe your Apply Instruction  here..."></textarea>
     <!-- Sign up button -->
     <br>
     <input type="hidden" name="user_id" value="{{ $id }}"> 
     <br>
-    <input type="file" name="images">
+    <input style="border: 1px solid #000;" type="file" name="images">
     <br>
     <br>
     <button class="btn btn-info my-4 btn-block" type="submit">Post Your Job Now</button>

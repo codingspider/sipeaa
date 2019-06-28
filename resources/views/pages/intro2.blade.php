@@ -17,9 +17,9 @@ $item = DB::table('jobs')->orderBy('id', 'desc')->first();
                         <div class="slider">
                             <div id="owl-demo">
                                 @foreach($events as $value)
-                                  <div class="item"><img src="{{$value->images}}" alt="Owl Image">
+                                  <div class="item"><img src="{{$value->images}}" alt="Responsive image">
                                     <div class="carousel-caption">
-                                    <a href="{{ URL::to('/events/details', $value->id )}}" target="_blank"><button type="button" class="btn btn-default">{{ $value->title }}</button></a>
+                                    <a href="{{ URL::to('/events/details', $value->id )}}" target="_blank"><button type="button" style="color:blue" alt="Responsive image" class="btn btn-default">{{ $value->title }}</button></a>
                                       </div>
                                   </div>
                                 @endforeach
@@ -31,7 +31,7 @@ $item = DB::table('jobs')->orderBy('id', 'desc')->first();
                       <div class="slider">
                         <div id="my_car">
                             @foreach($side_events as $value)
-                              <div class="item"><img src="{{$value->images}}" alt="Owl Image">
+                              <div class="item"><img src="{{$value->images}}" alt="Responsive image">
                                 <div class="carousel-caption">
                                 <a href="{{ URL::to('/side/slider/events/details', $value->id )}}" target="_blank"><button type="button" class="btn btn-default">{{ $value->title }}</button></a>
                                   </div>
@@ -50,22 +50,22 @@ $item = DB::table('jobs')->orderBy('id', 'desc')->first();
                     </div>
                 </div>
             </div>
-        <section class="section section-height-3 bg-primary border-0 m-0 appear-animation" data-appear-animation="fadeIn">
+        <section class="section  bg-primary  appear-animation" data-appear-animation="fadeIn">
             <div class="container">
                 <div class="row">
                     <div class="col appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
-                        <h2 class="font-weight-bold text-color-light text-6 mb-4">Latest Posts</h2>
+                        <h2 class="font-weight-bold text-color-light text-6 mb-4">Latest Job Post</h2>
                     </div>
                 </div>
                 <div class="row recent-posts appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
               
                         
-                    <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+                    <div class="col-md-6">
                         <article>
                             <div class="row">
                                 <div class="col">
                                     <a href="{{ URL::to('job/details/page/'.$item->id )}}" class="text-decoration-none">
-                                    <img src="{{ URL::asset('/images/'.$item->company_image) }}" style="width:250px; height:300;"/>
+                                    <img src="{{ URL::asset('/images/'.$item->company_image) }}" alt="Responsive image" style="width:250px; height:300;"/>
                                     </a>
                                 </div>
                             </div>
@@ -82,8 +82,13 @@ $item = DB::table('jobs')->orderBy('id', 'desc')->first();
                     </div>
                     
                 </div>
+       
             </div>
+            
+         
         </section>
+
+      
         
        
     </div>
