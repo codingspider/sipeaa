@@ -77,6 +77,7 @@
 			@php
 			use Illuminate\Support\Facades\Auth;
 			$data = Auth::id();
+			$user_type = DB::table('users')->where('id', $data)->where('user_type', 'employee')->first();
         	@endphp
 		<div class="body">
 			<header id="header" data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 148, 'stickySetTop': '-148px', 'stickyChangeLogo': true}">
@@ -184,12 +185,10 @@
 																Blog 
 															</a>
 															<ul class="dropdown-menu">
-																
+																@if($user_type->user_type == 'employee')
 																<li><a class="dropdown-item" href="{{ URL::to('/sipeaa/blog') }}">SIPEAA Articles </a></li>
-																@if( $data == NULL)
-																<li><a class="dropdown-item" href="{{ URL::to('/login') }}">Post Articles </a></li>
-																<li><a class="dropdown-item" href="{{ URL::to('/article/borad') }}">Articles Board </a></li>
 																@else
+																<li><a class="dropdown-item" href="{{ URL::to('/sipeaa/blog') }}">SIPEAA Articles </a></li>
 																<li><a class="dropdown-item" href="{{ URL::to('/article/borad') }}">Articles Board </a></li>
 																<li><a class="dropdown-item" href="{{ URL::to('/blog_admin/add_post') }}">Post Articles </a></li>
 																@endif

@@ -2,7 +2,13 @@
 @section('title', 'Blog Page')
 @section("content")
 <div class='col-sm-6 blogetc_container'>
-        @if(\Auth::check() && \Auth::user()->canManageBlogEtcPosts())
+    	@php
+			use Illuminate\Support\Facades\Auth;
+			$data = Auth::id();
+			$user_type = DB::table('users')->where('id', $data)->where('admin', 1)->first();
+            @endphp
+            
+        @if(\Auth::check() && \Auth::user()->canManageBlogEtcPosts() && $user_type->admin == 1)
             <div class="text-center">
                     <p class='mb-1'>You are logged in as a blog admin user.
                         <br>

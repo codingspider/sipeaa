@@ -12,6 +12,12 @@ session_start();
 
 class LibraryController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
 
     	return view('pages.libray_add');

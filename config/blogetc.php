@@ -170,7 +170,9 @@ return [
 
 
     'search' => [
-        'search_enabled' => false, // is search enabled? By default this is disabled, but you can easily turn it on.
+        'search_enabled' => true, // is search enabled? By default this is disabled, but you can easily turn it on.
+ 
+        'blog_etc_posts' => 'title',
     ],
 
 

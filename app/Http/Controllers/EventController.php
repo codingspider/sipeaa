@@ -52,7 +52,7 @@ class EventController extends Controller
 
         return view('pages.event_details', compact('data'));
     }
-    public function view_events_details($id){
+    public function view_events_details($id){ 
         
         $data = DB::table('events')->where('id', $id)->get();
 

@@ -60,6 +60,8 @@ class JobController extends Controller
        $data['job_id']=$request->job_id;
        $data['user_id']=Auth::id();
        $data['status']=1;
+       $data['exp_salary']=$request->expected_salary;
+       
         $success = DB::table('job_applies')->insert($data);
         if($success){
             return redirect()->back()->with('message', 'Job Applied successfully');
@@ -106,6 +108,7 @@ class JobController extends Controller
 
         return view ('pages.search_all_jobs', compact('data'));
     }
+
     public function search_by_name (Request $request){ 
 
         function index()
@@ -147,5 +150,17 @@ class JobController extends Controller
         } 
     } 
 
+        public function actBook($job_id){
 
+           $data= DB::table('job_applies')
+                            ->join('users','users.id','job_applies.user_id')
+                            ->join('jobs','jobs.id','job_applies.job_id')
+                            ->select('users.*', 'job_applies.*', 'jobs.*')
+                            ->where('job_applies.job_id',$job_id)->get();
+
+            return view('pages.all_candited_list', compact('data'));
+           
+        }
+        
+    
 }

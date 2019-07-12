@@ -34,6 +34,7 @@ class TrainingDemandController extends Controller
         Session::put('message','Training added sucessfully');
         
         Mail::send( new MailNotify ($request));
+        
         return redirect::back();
     
 

@@ -88,10 +88,17 @@
                       <li class="nav-item">
                           <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"  style="color:#000" aria-selected="false">Job Posted</a>
                       </li>
+                      <li class="nav-item">
+                          <a class="nav-link" id="message-tab" data-toggle="tab" href="#message" role="tab" aria-controls="message"  style="color:#000" aria-selected="false">Message</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" id="job-tab" data-toggle="tab" href="#job" role="tab" aria-controls="job"  style="color:#000" aria-selected="false">Total Application</a>
+                      </li>
+                      
                   </ul>
               </div>
           </div>
-          <div class="col-md-2">
+    <div class="col-md-2">
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Edit Profile 
   </button>
@@ -296,8 +303,103 @@
                           </tbody>
                         </table>
                         
-                        
+                  </div>
+                  <div class="tab-pane fade" id="message" role="tabpanel" aria-labelledby="message-tab">
+                      <table class="table">
+                          <form action="{{ URL::to('/user/message/sent') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <div class="row">
+                                        <div class="col">
+                                            <label for="name">
+                                                Select Admin</label>
+                                           <select style="border:1px solid #818182" name="sent_to_id" id="receiver_id" class="form-control">
+                                            <option value="0">Select a User </option>
+                                            @foreach ($cms_users as $item)
+                                                
+                                           <option value="{{ $item->id}}">{{ $item->name}}</option>
+                                            @endforeach
 
+                                           </select>
+
+                                        </div>
+                                          
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="email">
+                                             Subject </label>
+                                          <div class="input-group">
+                                              <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
+                                              </span>
+                                              <input style="border:1px solid #818182" name="subject" type="text" class="form-control" id="subject" placeholder="Enter subject" required="required" /></div>
+                                              <br>
+                                              <label for="attachment">Add A File</label>
+                                               <input type="file" name="attachment">
+                                            </div>
+
+                                    
+                                  </div>
+                                  <div class="col-md-6">
+                                      <div class="form-group">
+                                          <label for="message">
+                                              Message</label>
+                                          <textarea style="border:1px solid #818182" name="message" id="message" class="form-control" rows="9" cols="50" required="required"
+                                              placeholder="Message"></textarea>
+                                      </div>
+                                  </div>
+                                  
+                                  <div class="col-md-12">
+                                      <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+                                          Send Message</button>
+                                  </div>
+                              </div>
+                              </form>
+                        </table>
+                        
+                  </div>
+                  @php
+                      $data = DB::table('jobs')
+                            ->where('user_id', Auth::id())
+                            ->get();
+
+                            
+
+                  @endphp 
+                  <div class="tab-pane fade" id="job" role="tabpanel" aria-labelledby="message-tab">
+                    <table class="table">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th scope="col">Job ID</th>
+                          <th scope="col">Job Title</th>
+                          <th scope="col">Compnay Name</th>
+                          <th scope="col">Application Dead line</th>
+                          <th scope="col">Total Applicant </th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach ($data as $item)
+
+                        <tr>
+                        <th scope="row">{{ $item->id }}</th>
+                        <th scope="row">{{ $item->title }}</th>
+                        <th scope="row">{{ $item->company_name }}</th>
+                        <th scope="row">{{ $item->application_deadline }}</th>
+                        <?php  
+
+                         $total= DB::table('job_applies')
+                          ->where('job_id', $item->id)
+                          ->count();
+                          ?>
+
+                        <th scope="row"><a style="color:blue;" class="btn btn-default btn-block" href="{{url('/applied/job/list/view',$item->id)}}">{{$total}}</a>
+                        </th>
+                        </tr>
+                        @endforeach
+                      
+                      </tbody>
+                    </table>   
                   </div>
               </div>
           </div>
@@ -805,7 +907,7 @@
                                     </tr>
                                   </thead>
                                   @php
-                                      $view_status = DB::table('messages')->where('notify_status', )->first()
+                                      $view_status = DB::table('messages')->where('notify_status', 0)->first()
                                   @endphp
                                   <tbody>
                                       @foreach ($unread_messages as $item)

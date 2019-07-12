@@ -36,7 +36,7 @@
     	@csrf
       	<div>
       		<p>Transaction Type:</p>
-	      <select name="transaction_type" class="col-md-8" required>
+	      <select style="border:1px solid #000" name="transaction_type" class="col-md-6" required>
 		  <option selected>Select</option>
 		  <option value="1">Income</option>
 		  <option value="2">Expences</option>
@@ -45,7 +45,7 @@
 		<br>
 	</div>
 		<p>Payment Type:</p>
-	      <select name="payment_type" class="col-md-8" required>
+	      <select style="border:1px solid #000" name="payment_type" class="col-md-6" required>
 		  <option selected>Select</option>
 		  <option value="bank_transfer">Bank Transfer</option>
 		  <option value="cheque">Cheque</option>
@@ -56,7 +56,7 @@
 		<br>
 		<br>
 		<p>Acounts Lists:</p>
-	      <select name="head_name" class="col-md-8" required>
+	      <select style="border:1px solid #000" name="head_name" class="col-md-6" required>
 		  <option selected>Select</option>
 		  @foreach($acounts as $value )
 		  <option value="{{ $value->id }}">{{ $value->name }}</option>
@@ -65,21 +65,21 @@
 		<br>
 		<br>
 		<p>Transaction Date: </p>
-		<input class="col-md-6" type="date" name="date" required=""><br>
+		<input style="border:1px solid #000" class="col-md-6" type="date" name="date" required=""><br>
 		<br>
 		<p>Transaction Amount: </p>
-		<input class="col-md-6" type="text" name="amount" required="">
+		<input style="border:1px solid #000" class="col-md-6" type="text" name="amount" required="">
 		<br>
 		<br>
 		<p>Transaction ID: </p>
 		<p style="color:red;">* First make your transaction and then give your transaction id below.</p>
-		<input class="col-md-6" type="text" name="transaction" required="">
+		<input style="border:1px solid #000" class="col-md-6" type="text" name="transaction" required="">
 		<br>
-		<input type="hidden" name="user_id" value="{{ $id }}">
+		<input style="border:1px solid #000" type="hidden" name="user_id" value="{{ $id }}">
 		<br>
-		<input type="hidden" name="status" value="0">
+		<input style="border:1px solid #000" type="hidden" name="status" value="0">
 		<br>
-		<input type="submit" name="transaction" value="Add Payment" class="btn btn-primary"></input>
+		<input style="border:1px solid #000" type="submit" class="btn btn-success">
 		<div>
 			
 		</div>
@@ -91,11 +91,11 @@
   	@csrf
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Acount Head Name</label>
-      <input type="text" name="name" class="form-control"  placeholder="name" required="">
+      <label >Acount Head Name</label>
+      <input style="border:1px solid #000" type="text" name="name" class="form-control"  placeholder="name" required="">
       <br>
       <br>
-       <input type="submit" name="delete" value="Add Head" class="btn btn-primary"></input>
+       <input style="border:1px solid #000" type="submit" name="delete" value="Add Head" class="btn btn-primary">
     </div>
     
   </div>
@@ -123,7 +123,7 @@
                 <form action="{{ URL::to('/delete/head', $data->id)}}" method="GET">
                   @csrf
                   @method('DELETE')
-                  <input type="submit" name="delete" value="Delete" class="btn btn-danger"></input>
+                  <input type="submit" name="delete" value="Delete" class="btn btn-danger">
                 </form>
             </th>
       

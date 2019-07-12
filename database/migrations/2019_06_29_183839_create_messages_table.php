@@ -22,23 +22,6 @@ class CreateMessagesTable extends Migration
             $table->text('subject');
             $table->string('attachment')->nullable();
             $table->integer('notify_status');
-
-            // It's better to work with default timestamp names:
-
-            // `sender_id` field referenced the `id` field of `users` table:
-            $table->foreign('sender_id')
-                  ->references('id')
-                  ->on('users');
-
-            // Let's add another foreign key on the same table,
-            // but this time fot the `sent_to_id` field:
-            $table->foreign('sent_to_id')
-                  ->references('id')
-                  ->on('users');
-                  
-            $table->foreign('admin_sender_id')
-                  ->references('id')
-                  ->on('cms_users');
             $table->timestamps();
         });
     }

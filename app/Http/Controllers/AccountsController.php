@@ -12,10 +12,7 @@ session_start();
 class AccountsController extends Controller
 {
 
-	 public function __construct()
-    {
-        $this->middleware('auth');
-    }
+	
 
     public function index(){
 
@@ -89,6 +86,16 @@ class AccountsController extends Controller
         ->where('id', $id)
         ->update(['transactions_status'=> $val]); 
         Session::put('successfull','Cancel sucessfully');
+        return redirect::back();
+    }
+
+    public function transactions_delete ($id) {
+
+    	
+        DB::table('transactions')
+        ->where('id', $id)
+        ->delete(); 
+        Session::put('successfull','Transaction Deleted sucessfully');
         return redirect::back();
     }
 }

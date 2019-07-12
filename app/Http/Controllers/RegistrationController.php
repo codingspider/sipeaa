@@ -6,13 +6,16 @@ use DB;
 use Auth;
 use Session;
 use App\User;
-use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Input;
+use App\Mail\SendMailableRegistration;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use App\Mail\SendMailableMemberRegistration;
 session_start(); 
 
 
@@ -56,7 +59,7 @@ class RegistrationController extends Controller
        }
 
             $data = array();
-            $data['name'] = $request->co_name;
+            $data['name'] = $request->name;
             $data['email'] = $request->user_id;
             $data['password'] = Hash::make($request->password);
             $data['user_type'] = 'employee'; 
@@ -83,6 +86,9 @@ class RegistrationController extends Controller
 
             Session::put('customer_id', $customer_id);
             Session::put('name', $name);
+
+            Mail::send( new SendMailableRegistration ($request));
+
             return redirect::to('/registration/pages/employee')->with('message', 'You have successfully registered. Please wait for activate your account');
     
         
@@ -144,6 +150,9 @@ class RegistrationController extends Controller
 
         Session::put('customer_id', $customer_id);
         Session::put('name', $name);
+        
+        Mail::send( new SendMailableMemberRegistration ($request));
+
         return redirect::to('/registration/pages')->with('message', 'You have successfully registered. Please wait for activate your account');
     }
 

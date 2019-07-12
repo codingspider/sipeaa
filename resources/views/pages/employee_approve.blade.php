@@ -34,7 +34,6 @@
         <tbody>
             <tr>
                 
-
                 @foreach ($users as $item)
 
                 <td>{{$item->name}}</td>
@@ -45,17 +44,35 @@
                 <td><a href="#" class="btn btn-success">Activate</a></td>
                 @else
                 <td><a href="#" class="btn btn btn-danger">Unactive</a></td>
-
+                
                 @endif
 
                 @if($item->approve == 1)
-                <td><a class="btn btn-success" href="{{ URL::to('/unactive_user', $item->id)}}"> <i class="fa fa-thumbs-up"></i></td>
+                <td><form action="{{ URL::to('/unactive_user')}}" method="POST">
+                    @csrf
+
+                <input type="hidden" name="email" value="{{$item->email}}"> 
+                <input type="hidden" name="user_id" value="{{$item->id}}"> 
+                <input type="hidden" name="name" value="{{$item->name}}"> 
+                <button class="btn btn-info" type="submit"><i class="fa fa-thumbs-up"></i></button>
+
+                </form></td>
                     @else
-                <td><a class="btn btn-danger" href="{{ URL::to('/active_user', $item->id)}}"> <i class="fa fa-thumbs-down"></i></td>
-                        @endif
-                <td><a class="btn btn-info" href="{{ URL::to('/user/profile/details', $item->id)}}"> <i class="fa fa-user"></i></td>
+                <td><form action="{{ URL::to('/active_user')}}" method="POST">
+                    @csrf
+                    <input type="hidden" name="email" value="{{$item->email}}"> 
+                    <input type="hidden" name="user_id" value="{{$item->id}}"> 
+                    <input type="hidden" name="name" value="{{$item->name}}"> 
+                <button class="btn btn-info" type="submit"><i class="fa fa-thumbs-down"></i></button>
+                </form> </td>
+                
+                
+                    @endif
+                <td><a class="btn btn-info" href="{{ URL::to('/member/profile/details', $item->id)}}"> <i class="fa fa-user"></i></td>
 
             <td>
+               
+                
             <form action="{{ URL::to('/user/delete', $item->id)}}" method="post">
                   @csrf
                   

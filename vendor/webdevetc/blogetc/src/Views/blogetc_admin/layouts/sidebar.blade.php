@@ -1,4 +1,4 @@
-<h2><a href='http://sipeaa.org/'>SIPEAA</a></h2>
+<h2><a href='{{ URL::to('/home')}}'>SIPEAA</a></h2>
 <p>Welcome to the SIPEAA Blog</p>
 
 @php
@@ -132,11 +132,7 @@
 @else 
 <div class="list-group ">
 
-    <a href='{{ route('blogetc.admin.index') }}'
-       class='list-group-item list-group-item-action @if(\Request::route()->getName() === 'blogetc.admin.index') active @endif  '><i
-                class="fa fa-th fa-fw"
-                aria-hidden="true"></i>
-        All Posts</a>
+ 
     <a href='{{ route('blogetc.admin.create_post') }}'
        class='list-group-item list-group-item-action  @if(\Request::route()->getName() === 'blogetc.admin.create_post') active @endif  '><i
                 class="fa fa-plus fa-fw" aria-hidden="true"></i>

@@ -57,6 +57,11 @@ class MessageController extends Controller
     }
     public function admin_users(Request $request)
     {
+
+            
+        $reciever_id = $request->sender_id;
+    
+
         $data[] = $request->attachment;
         $id = CRUDBooster::myId();
         $validate = Validator::make($data, [
@@ -72,18 +77,19 @@ class MessageController extends Controller
             $succes = DB::table('messages')->insert([
             'body'       => $request->message,
             'subject'    => $request->subject,
-            'sent_to_id' => $request->sent_to_id,
+            'sent_to_id' => $reciever_id,
             'attachment' => $name,
             'admin_sender_id' => $id,
             'notify_status' => '0',
         ]);   
+
         return redirect::back()->with('message','Message Sent sucessfully');
         
        } else {
                     $succes = DB::table('messages')->insert([
                         'body'       => $request->message,
                         'subject'    => $request->subject,
-                        'sent_to_id' => $request->sent_to_id,
+                        'sent_to_id' => $reciever_id,
                         'attachment' => $name,
                         'admin_sender_id' => $id,
                         'notify_status' => '0',
@@ -131,4 +137,18 @@ class MessageController extends Controller
     
         return Response::json($design);
     }
+
+    public function updateInbox (Request $request){
+        $mId = $request->msgId;
+        $update = DB::table('messages')
+        ->where('id',$mId)
+        ->update([
+          'notify_status' => 1
+        ]);
+        if($update){
+          echo "Status Update successfully";
+        }else {
+            echo "something went wrong";
+        }
+      }
 }
