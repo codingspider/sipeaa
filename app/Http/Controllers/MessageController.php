@@ -151,4 +151,5 @@ class MessageController extends Controller
             echo "something went wrong";
         }
       }
+   
 }

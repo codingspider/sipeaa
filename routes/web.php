@@ -199,6 +199,11 @@ Route::post('/online/cv/update/','OnlineCvController@cv_update');
 
 
 Route::get('/applied/job/list/view/{job_id}', 'JobController@actBook');
+
+Route::get('/view_message', 'AdminMessageView@view_message');
+Route::post('//amin/reply/sent', 'AdminMessageView@admin_message_sent');
+
+
 Route::post('/user/message/sent','MessageController@sendMessage');
 Route::post('/admin/reply/sent/','MessageController@admin_users');
 
