@@ -88,9 +88,9 @@
                       <li class="nav-item">
                           <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"  style="color:#000" aria-selected="false">Job Posted</a>
                       </li>
-                      <li class="nav-item">
+                    {{--   <li class="nav-item">
                           <a class="nav-link" id="message-tab" data-toggle="tab" href="#message" role="tab" aria-controls="message"  style="color:#000" aria-selected="false">Message</a>
-                      </li>
+                      </li> --}}
                       <li class="nav-item">
                           <a class="nav-link" id="job-tab" data-toggle="tab" href="#job" role="tab" aria-controls="job"  style="color:#000" aria-selected="false">Total Application</a>
                       </li>
@@ -826,8 +826,7 @@
                           <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">New Messages</a>
                             <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">All Unread Messages</a>
-                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
-                            <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">About</a>
+                           
                           </div>
                         </nav>
                         <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
@@ -897,42 +896,133 @@
                                   </form>
                           </div>
                           <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                              <table class="table">
-                                  <thead>
-                                    <tr>
-                                      <th scope="col">ID</th>
-                                      <th scope="col">Sender</th>
-                                      <th scope="col">Subject</th>
-                                      <th scope="col">Action</th>
-                                    </tr>
-                                  </thead>
-                                  @php
-                                      $view_status = DB::table('messages')->where('notify_status', 0)->first()
-                                  @endphp
-                                  <tbody>
-                                      @foreach ($unread_messages as $item)
-                                    <tr>
-                                      <th style="color:#0062cc">{{ $item->id}}</th>
-                                      <th style="color:#0062cc">{{ $item->uname}}</th>
-                                      <th style="color:#0062cc">{{ $item->subject}}</th>
-                                    <th> 
-                                    <button class="show-modal btn btn-success" type="button" onclick="window.location.href = '{{ URL::to('/read/message/by/user', $item->id)}}'" class="btn btn-primary">
-                                            <span class="glyphicon glyphicon-eye-open"></span> Show</button>
-                                           
-                                    </form>
-                                   </th>
-                                    </tr>
+                            <br>
+                            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+                            <meta name="csrf-token" content="{{ csrf_token() }}">
+                            @php
+                            
+                                    $unread_messages = DB::table('messages')
+                                      ->select('messages.*')
+                                      ->where('sent_to_id', 20)
+                                      
+                                     ->orderBy('id', 'desc')
+                                      ->get();
+
+                                    
+                                 
+                            @endphp
+                            <div class="container">
+                                <div class="col-md-12">
+                                    <table class="table">
+                                        <thead>
+                                          <tr>
+                                            <th scope="col">Message ID</th>
+                                            <th scope="col">Message Subject </th>
                                    
-                                    @endforeach
-                                  </tbody>
-                                </table>
+                                            <th scope="col">Message Reply</th>
+                                            <th scope="col">Message Seen</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          @foreach ($unread_messages as $item)
+                                            
+                                          @if($item->notify_status == 0)
+                                          <tr>
+                                          <th>{{ $item->id }}</th>
+                                          <th>{{ $item->subject }}</th>
+                                          
+
+                                          <th> <button class="btn btn-primary" OnClick="DoAction({{ $item->id }});" >View Message </button> </th>
+                                           
+                                          </tr>
+                                          @else 
+                                          <tr>
+                                              <th>{{ $item->id }}</th>
+                                               
+                                              <th>{{ $item->subject }}</th>
+                                             
+                                              <th> <button class="btn btn-primary" OnClick="DoAction({{ $item->id }});" >View Message </button> </th>
+                                               <th><li class="fa fa-check"></li></th>
+                                              </tr>
+                                          @endif 
+                            
+                                          @endforeach
+                            
+                                        </tbody>
+                                      </table>
+                                </div>
+                            
+                            </div>
+                            <script>
+                            function DoAction(id)
+                            {
+                                $.ajax({
+                                     type: "get",
+                                     url: "/read/message/",
+                                     data: "id=" + id,
+                                     dataType: 'json',
+                                     success: function(data){
+                                        if(data){
+                                          var text = "No Files There !";
+                                                 $('#myModal').modal('show');
+                                                 $('#subject').text(data.subject);
+                                                 $('#body').text(data.body);
+                                                 $('#created_at').text(data.created_at);
+                                                 if(data.attachment){
+                                                 $('#attachment').html('<img src="files/' + data.attachment + '" width="100" />');
+                                               
+                                                }else{
+                                                  $('#attachment').text(text);
+                                                }
+                                     }
+                                    }
+                                });
+                            }
+                            
+                            function SendAction(id)
+                            {
+                              $('#message').modal('show');
+                              $('#sender_id').val(id);
+                            }
+                            </script>
+                            <!-- view message modal -->
+                            <div id="myModal" class="modal fade" role="dialog">
+                                <div class="modal-dialog modal-lg">
+                              
+                                  <!-- Modal content-->
+                                  <div class="modal-content">
+                                    <div class="modal-body">
+                                        <table class="table table-bordered table-striped">
+                                            <thead>
+                                              <tr>
+                                                
+                                                <th>Message</th>
+                                                <th>Attachment</th>
+                                                <th>Creted At</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                
+                                                <td id="body"></td>
+                                                <td id="attachment"></td>
+                                                <td id="created_at"></td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+                                  </div>
+                              
+                                </div>
+                              </div>
+                            
+                            <!-- send message modal -->
+                              
                           </div>    
-                          <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                            Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
-                          </div>
-                          <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
-                            Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
-                          </div>
+                        
                         </div>
                       
                       </div>

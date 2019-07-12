@@ -151,5 +151,8 @@ class MessageController extends Controller
             echo "something went wrong";
         }
       }
+    public function all_message_view (Request $request){
+       return 'ok';
+      }
    
 }

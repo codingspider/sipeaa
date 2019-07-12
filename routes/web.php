@@ -68,11 +68,6 @@ Route::post('/search', 'JobController@search_by_name');
 Route::get('/about', 'AboutController@index');
 
 
-
-
-
-
-
 Route::get('/transaction/manage', 'AccountsController@transactions_control');
 
 Route::post('/transaction/delete/{id}', 'AccountsController@transactions_delete');
@@ -163,7 +158,7 @@ Route::post('bkash/payment/success', 'CartController@save_shipping');
 
 Route::get('/send/email', 'MailController@mail');
 
-Route::get('/members/profile', 'HomeController@members_profile');
+Route::get('/profile', 'HomeController@members_profile');
 
 Route::post('/upload/cv/online', 'CvController@cv_upload');
 
@@ -201,7 +196,10 @@ Route::post('/online/cv/update/','OnlineCvController@cv_update');
 Route::get('/applied/job/list/view/{job_id}', 'JobController@actBook');
 
 Route::get('/view_message', 'AdminMessageView@view_message');
-Route::post('//amin/reply/sent', 'AdminMessageView@admin_message_sent');
+
+Route::get('/read/message', 'AdminMessageView@view_message_member');
+
+Route::post('/amin/reply/sent', 'AdminMessageView@admin_message_sent');
 
 
 Route::post('/user/message/sent','MessageController@sendMessage');
@@ -210,13 +208,13 @@ Route::post('/admin/reply/sent/','MessageController@admin_users');
 Route::get('/all/unread/messages','MessageController@all_unread_message');
 
 Route::get('/messages/viewed/{id}','MessageController@all_read_message');
-Route::get('/all/messages/','MessageController@all_message');
+Route::get('/messages/','MessageController@all_message');
 
 Route::get('/update/inbox/','MessageController@updateInbox');
 
 
 Route::get('/getUsers/{id}','MessageController@getUsers');
-Route::post('/admin/message/sent/{id}','MessageController@admin_users');
+Route::get('/admin/message/sent/{id}','MessageController@admin_users');
 
 Route::get('read/message/by/user/{id}','MessageController@all_read_message');
 

@@ -33,12 +33,11 @@
               @foreach ($unread_messages as $item)
                 
               @if($item->notify_status == 0)
-              <tr style="color:blue;">
+              <tr>
               <th>{{ $item->id }}</th>
               
               <th >{{ $item->uname }}</th>
 
-              <th>{{ $item->uname }}</th>
               
               <th>{{ $item->subject }}</th>
               <th> <button class="btn btn-primary" OnClick="DoAction({{ $item->id }});" >View Message </button> </th>
@@ -46,17 +45,16 @@
                
               </tr>
               @else 
-              <tr >
+              <tr>
                   <th>{{ $item->id }}</th>
                   
                   <th >{{ $item->uname }}</th>
     
-                  <th>{{ $item->uname }}</th>
                   
                   <th>{{ $item->subject }}</th>
                   <th> <button class="btn btn-primary" OnClick="DoAction({{ $item->id }});" >View Message </button> </th>
                   <th> <button class="btn btn-success" OnClick="SendAction({{ $item->sender_id }});" >Reply Message </button> </th>
-                   
+                   <th><li class="fa fa-check"></li></th>
                   </tr>
               @endif 
 
@@ -74,14 +72,22 @@ function DoAction(id)
          type: "get",
          url: "/view_message",
          data: "id=" + id,
+         dataType: 'json',
          success: function(data){
             if(data){
+              var text = "No Files There !";
                      $('#myModal').modal('show');
                      $('#subject').text(data.subject);
                      $('#body').text(data.body);
                      $('#created_at').text(data.created_at);
-                  }
+                     if(data.attachment){
+                     $('#attachment').html('<img src="files/' + data.attachment + '" width="100" />');
+                   
+                    }else{
+                      $('#attachment').text(text);
+                    }
          }
+        }
     });
 }
 
@@ -103,6 +109,7 @@ function SendAction(id)
                   <tr>
                     <th>Subject</th>
                     <th>Message</th>
+                    <th>Attachment</th>
                     <th>Creted At</th>
                   </tr>
                 </thead>
@@ -110,6 +117,7 @@ function SendAction(id)
                   <tr>
                     <td id="subject"></td>
                     <td id="body"></td>
+                    <td id="attachment"></td>
                     <td id="created_at"></td>
                   </tr>
                 </tbody>

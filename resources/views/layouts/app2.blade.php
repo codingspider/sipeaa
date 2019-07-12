@@ -212,13 +212,13 @@
 															<ul class="dropdown-menu">
 																@if( $data == NULL)
 																<li><a class="dropdown-item" href="{{ URL::to('/login')}}">Membership</a></li>
-																<li><a class="dropdown-item" href="{{ URL::to('/members/profile')}}">Member Profile</a></li>
+																<li><a class="dropdown-item" href="{{ URL::to('/profile')}}">Member Profile</a></li>
 																<li><a class="dropdown-item" href="{{ URL::to('/members/search') }}">Member's Search </a></li>
 																<li><a class="dropdown-item" href="{{ URL::to('/add/library') }}">Library Upload </a></li>
 																<li><a class="dropdown-item" href="{{ URL::to('/acounts/members') }}">Accounts SIPEAA </a></li>
 																<li><a class="dropdown-item" href="{{ URL::to('/alumni/contribution') }}">Alumni Members Contribution </a></li>
 																@else
-																<li><a class="dropdown-item" href="{{ URL::to('/members/profile')}}">Member Profile</a></li>
+																<li><a class="dropdown-item" href="{{ URL::to('/profile')}}">Member Profile</a></li>
 																<li><a class="dropdown-item" href="{{ URL::to('/members/search') }}">Member's Search </a></li>
 																<li><a class="dropdown-item" href="{{ URL::to('/add/library') }}">Library Upload </a></li>
 																<li><a class="dropdown-item" href="{{ URL::to('/acounts/members') }}">Accounts SIPEAA </a></li>
@@ -237,18 +237,7 @@
 																<li><a class="dropdown-item" href="{{ URL::to('/course/posting/board') }}">Course Posting Board </a></li>
 														</ul>
 														</li>
-														<li class="dropdown dropdown-full-color dropdown-light">
-															<a class="dropdown-item dropdown-toggle" href="#">
-																Events & Galary  
-															</a>
-															<ul class="dropdown-menu">
-																
-                                                                    <li><a class="dropdown-item" href="#">Training/Workshop </a></li>
-                                                                    <li><a class="dropdown-item" href="#">Training Demand Form </a></li>
-                                                                    <li><a class="dropdown-item" href="#">Training Posting</a></li>
-                                                                    <li><a class="dropdown-item" href="#">Course Posting Board </a></li>
-															</ul>
-														</li>
+													
 														
 														<li class="pull-left">
 														<a class="dropdown-item dropdown-toggle pull-left" href="{{ URL::to('show/cart')}}">

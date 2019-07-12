@@ -1,9 +1,8 @@
 @extends('layouts.app2')
 
-@section('title', 'Members Registration')
+@section('title', 'Member Registration')
     
 @section('content')
-
 @php
     $data = DB::table('job_categories')->get();
 @endphp
@@ -15,28 +14,24 @@
     </div>
 @endif
 
-
+<br>
 @if(session()->has('danger'))
     <div class="alert alert-danger">
         {{ session()->get('danger') }}
     </div>
 @endif
-
-<div role="main" class="main">
-
-        
+<div role="main" class="main py-4">
 
         <div class="container">
 
             <div class="row">
                 <div class="col">
-
                     <div class="featured-boxes">
                         <div class="row">
                             <div class="col-md-8">
-                                <div class="featured-box featured-box-primary text-left mt-5">
+                                <div class="featured-box featured-box-primary text-left mt-2">
                                     <div class="box-content">
-                                        <h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">I'm a New Member</h4>
+                                        <h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">I'm a New User </h4>
                                         <form method="POST" action="{{ URL::to('/member/registration') }}" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-row">
@@ -227,7 +222,7 @@
                                             
                                             <div class="form-row">
                                                 
-                                                <div class="form-group col-lg-6">
+                                                <div class="form-group col-lg-7">
                                                     <input type="submit" value="Register Now" class="btn btn-primary btn-modern float-right" data-loading-text="Loading...">
                                                 </div>
                                             </div>
@@ -235,7 +230,19 @@
                                     </div>
                                 </div>
                             </div>
-                            
+                            <div class="col-md-4">
+                                <div class="featured-box featured-box-primary text-left mt-2">
+                                    <div class="box-content">
+                                        <h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">Search</h4>
+                                      <input style="border:1px solid #818182" class="form-control" type="text">
+                                      <br>
+                                      <div>
+                                        <button class="btn btn-primary float-left" type="submit">Search</button>
+                                    </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -245,5 +252,7 @@
         </div>
 
     </div>
+
+
 
 @endsection

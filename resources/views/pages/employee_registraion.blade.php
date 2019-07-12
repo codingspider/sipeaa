@@ -189,8 +189,11 @@
                                                 </div>
 
                                             <br>
-                                            <div class="form-group col-lg-6">
-                    <input type="submit" value="Register Now" class="btn btn-primary btn-modern float-right">
+                                            <div class="form-row">
+                                                
+                                                <div class="form-group col-lg-7">
+                                                    <input type="submit" value="Register Now" class="btn btn-primary btn-modern float-right" data-loading-text="Loading...">
+                                                </div>
                                             </div>
                                                 
                                             

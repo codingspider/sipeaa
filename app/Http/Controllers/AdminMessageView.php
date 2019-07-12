@@ -65,4 +65,16 @@ class AdminMessageView extends Controller
             }
       
      }
+
+     public function view_message_member (){
+
+        $id =request()->get('id');
+        $success=DB::table('messages')->where('id',$id)->first(); 
+        if($success->notify_status ==0) {
+        DB::table('messages')->where('id',$id)->update(['notify_status'=> 1]);
+        }
+
+        return Response::json($success);
+
+     }
 }
