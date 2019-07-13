@@ -12,7 +12,7 @@ use crocodicstudio\crudbooster\helpers\CRUDBooster;
 
 class MessageController extends Controller
 {
-    public function sendMessage(Request $request)
+    public function member_sendMessage(Request $request)
     {
         $data[] = $request->attachment;
         $id = Auth::id();
@@ -32,6 +32,7 @@ class MessageController extends Controller
             'body'       => $request->message,
             'subject'    => $request->subject,
             'sent_to_id' => $request->sent_to_id,
+            'sent_to_id_admin' => $request->sent_to_id_admin,
             'attachment' => $name,
             'sender_id' => $id,
             'notify_status' => '0',
@@ -43,6 +44,52 @@ class MessageController extends Controller
                         'body'       => $request->message,
                         'subject'    => $request->subject,
                         'sent_to_id' => $request->sent_to_id,
+                        'sent_to_id_admin' => $request->sent_to_id_admin,
+                        'attachment' => $name,
+                        'sender_id' => $id,
+                        'notify_status' => '0',
+                    ]);   
+
+         
+    
+                return redirect::back()->with('message','Message Sent sucessfully');
+          
+                
+            }
+    }
+    public function employee_sendMessage(Request $request)
+    {
+        $data[] = $request->attachment;
+        $id = Auth::id();
+
+
+        $validate = Validator::make($data, [
+            'attachment' => 'required|image|mimes:jpeg,png,jpg,doc|pdf|max:5048',
+        ]);
+
+       if ($request->hasFile('attachment')) {
+            $image = $request->file('attachment');
+            $name = $image->getClientOriginalName();
+            $destinationPath = public_path('/files');
+            $image->move($destinationPath, $name);
+        // Set flash message, render view, etc...
+            $succes = DB::table('messages')->insert([
+            'body'       => $request->message,
+            'subject'    => $request->subject,
+            'sent_to_id' => $request->sent_to_id,
+            'sent_to_id_admin' => $request->sent_to_id_admin,
+            'attachment' => $name,
+            'sender_id' => $id,
+            'notify_status' => '0',
+        ]);   
+        return redirect::back()->with('message','Message Sent sucessfully');
+        
+       } else {
+                    $succes = DB::table('messages')->insert([
+                        'body'       => $request->message,
+                        'subject'    => $request->subject,
+                        'sent_to_id' => $request->sent_to_id,
+                        'sent_to_id_admin' => $request->sent_to_id_admin,
                         'attachment' => $name,
                         'sender_id' => $id,
                         'notify_status' => '0',

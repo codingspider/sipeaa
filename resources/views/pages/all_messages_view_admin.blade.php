@@ -10,7 +10,7 @@
         $unread_messages = DB::table('messages')
           ->join('users', 'users.id', '=', 'messages.sender_id')
           ->select('messages.*','users.name as uname', 'users.id as uid' )
-          ->where('sent_to_id', CRUDBooster::myId())
+          ->where('sent_to_id_admin', CRUDBooster::myId())
           
          ->orderBy('id', 'desc')
           ->get();

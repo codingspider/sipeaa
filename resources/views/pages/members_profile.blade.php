@@ -88,9 +88,9 @@
                       <li class="nav-item">
                           <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"  style="color:#000" aria-selected="false">Job Posted</a>
                       </li>
-                    {{--   <li class="nav-item">
+                      <li class="nav-item">
                           <a class="nav-link" id="message-tab" data-toggle="tab" href="#message" role="tab" aria-controls="message"  style="color:#000" aria-selected="false">Message</a>
-                      </li> --}}
+                      </li>
                       <li class="nav-item">
                           <a class="nav-link" id="job-tab" data-toggle="tab" href="#job" role="tab" aria-controls="job"  style="color:#000" aria-selected="false">Total Application</a>
                       </li>
@@ -304,9 +304,9 @@
                         </table>
                         
                   </div>
-                  <div class="tab-pane fade" id="message" role="tabpanel" aria-labelledby="message-tab">
+                  <div class="tab-pane fade" id="message" role="tabpanel" aria-labelledby="message">
                       <table class="table">
-                          <form action="{{ URL::to('/user/message/sent') }}" method="POST" enctype="multipart/form-data">
+                          <form action="{{ URL::to('/employee/message/sent') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                               <div class="row">
                                   <div class="col-md-6">
@@ -314,8 +314,8 @@
                                         <div class="col">
                                             <label for="name">
                                                 Select Admin</label>
-                                           <select style="border:1px solid #818182" name="sent_to_id" id="receiver_id" class="form-control">
-                                            <option value="0">Select a User </option>
+                                           <select style="border:1px solid #818182" name="sent_to_id_admin" id="receiver_id" class="form-control">
+                                            <option>Select a User </option>
                                             @foreach ($cms_users as $item)
                                                 
                                            <option value="{{ $item->id}}">{{ $item->name}}</option>
@@ -326,6 +326,7 @@
                                         </div>
                                           
                                       </div>
+                                      <br>
                                       <div class="form-group">
                                           <label for="email">
                                              Subject </label>
@@ -831,7 +832,7 @@
                         </nav>
                         <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
                           <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                              <form action="{{ URL::to('/user/message/sent') }}" method="POST" enctype="multipart/form-data">
+                              <form action="{{ URL::to('/member/message/sent') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                   <div class="row">
                                       <div class="col-md-6">
@@ -840,7 +841,7 @@
                                             <div class="col">
                                                 <label for="name">
                                                     Select User</label>
-                                               <select style="border:1px solid #818182" name="sent_to_id" id="receiver_id" class="form-control">
+                                               <select style="border:1px solid #818182" name="sent_to_id" class="form-control">
                                                 <option value="0">Select a User </option>
                                                 @foreach ($users as $item)
                                                     
@@ -853,8 +854,8 @@
                                             <div class="col">
                                                 <label for="name">
                                                     Select Admin</label>
-                                               <select style="border:1px solid #818182" name="sent_to_id" id="receiver_id" class="form-control">
-                                                <option value="0">Select a User </option>
+                                               <select style="border:1px solid #818182" name="sent_to_id_admin" class="form-control">
+                                                <option value="0">Select a Admin </option>
                                                 @foreach ($cms_users as $item)
                                                     
                                                <option value="{{ $item->id}}">{{ $item->name}}</option>
@@ -863,7 +864,7 @@
                                                </select>
 
                                             </div>
-                                              
+                                                                                   
                                           </div>
                                           <div class="form-group">
                                               <label for="email">
@@ -1273,7 +1274,7 @@
                     <label for="education">Results 
                         </label>
                     <select  style="border:1px solid #818182" class="form-control" name="job_type" id="gender">
-                            <option value="0">Select</option>
+                            <option>Select</option>
                             <option value="Firs_class">First Division/Class</option>
                             <option value="Second_class">Second  Division/Class</option>
                             <option value="Third_class">Third Division/Class</option>

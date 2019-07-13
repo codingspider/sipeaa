@@ -202,7 +202,10 @@ Route::get('/read/message', 'AdminMessageView@view_message_member');
 Route::post('/amin/reply/sent', 'AdminMessageView@admin_message_sent');
 
 
-Route::post('/user/message/sent','MessageController@sendMessage');
+Route::post('/member/message/sent','MessageController@member_sendMessage');
+
+Route::post('/employee/message/sent','MessageController@employee_sendMessage');
+
 Route::post('/admin/reply/sent/','MessageController@admin_users');
 
 Route::get('/all/unread/messages','MessageController@all_unread_message');
