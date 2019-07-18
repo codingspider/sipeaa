@@ -18,7 +18,7 @@
             <div class="carousel-inner">
               <!-- Slide 1 -->
               <div class="item active">
-                <img src="{{ URL::asset("documents/{$data->images}") }}" width="500px" height="300" alt="">
+                <img src="{{ URL::asset("documents/{$data->images}") }}" width="300px" height="300" alt="">
               </div>
               <!-- Slide 2 -->
             
@@ -31,7 +31,7 @@
       
         <h2 class="name">
           {{ $data->course_title}}
-          <small>Trainer <a href="javascript:void(0);">Rokon</a></small>
+        <small>Trainer <a href="javascript:void(0);">{{$data->uname}}</a></small>
           <i class="fa fa-star fa-2x text-primary"></i>
           <i class="fa fa-star fa-2x text-primary"></i>
           <i class="fa fa-star fa-2x text-primary"></i>

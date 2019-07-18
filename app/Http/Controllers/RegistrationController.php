@@ -198,23 +198,10 @@ class RegistrationController extends Controller
     public function employe_profile_update(Request $request){
         
 
-            if(Input::hasFile('images'))
-                {
-                    $usersImage = public_path("files/".$request->old_images); // get previous image from folder
-                    if (File::exists($usersImage)) { // unlink or remove previous image from folder
-                        unlink($usersImage);
-                    }
-                    $image = $request->file('images');
-                    $name = time().'.'.$image->getClientOriginalExtension();
-                    $destinationPath = public_path('/files');
-                    $image->move($destinationPath, $name);
-                }
-
             $id = Auth::id();
             $data = array();
             $data['name'] = $request->name;
             $data['email'] = $request->email;
-            $data['images'] = $name;
 
             $users = DB::table('users')->where('id', $id)
             ->update($data); 

@@ -13,11 +13,13 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-
+@php
+    $data = DB::table('messages')->where('sent_to_id_admin', CRUDBooster::myId())->where('notify_status', 0)->count();
+@endphp
                 <li class="dropdown notifications-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" title='Notifications' aria-expanded="false">
-                        <i id='icon_notification' class="fa fa-bell-o"></i>
-                        <span id='notification_count' class="label label-danger" style="display:none">0</span>
+                <a href="{{ URL::to('/messages')}}"  title='Notifications' aria-expanded="false">
+                        <i style="color:chartreuse;" id='icon_notification' class="fa fa-bell-o"> {{$data}} </i>
+                        {{-- <span id='notification_count' class="label label-danger" style="display:none">0</span> --}}
                     </a>
                     <ul id='list_notifications' class="dropdown-menu">
                         <li class="header">{{trans("crudbooster.text_no_notification")}}</li>

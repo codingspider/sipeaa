@@ -35,4 +35,9 @@ class HomeController extends Controller
             
             return view('pages.members_profile');
         }
+    public function employee_profile()
+        {
+            
+            return view('pages.employee_profile');
+        }
 }

@@ -77,6 +77,7 @@
             <input type="hidden" name="status" value="Active">
             <input type="hidden" name="course_name" value="{{ $item->name }}">
             <input type="hidden" name="total" value="{{ $newSubtotal }}">
+            <input type="hidden" name="user_id" value="{{ Auth::id() }}">
  
                 <div class="col-50">
                   <h3>Payment</h3>
@@ -112,7 +113,7 @@
             @endforeach
         
             <hr>
-        <p>Discount <span class="price" style="color:black"><b>৳ {{ session()->get('coupon')['discount'] }}</b></span></p>
+        <p>Discount <span class="price" style="color:black"><b>৳ {{ session()->get('coupon')['discount'] }}%</b></span></p>
             <hr>
         <p>Total <span class="price" style="color:black"><b>৳ {{ $newSubtotal }}</b></span></p>
           </div>

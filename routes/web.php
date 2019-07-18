@@ -61,7 +61,7 @@ Route::get('/job/details/page/{id}', 'JobController@job_details');
 Route::post('/job/application/success', 'JobController@job_apply'); 
 
 Route::post('/post/jobs/save', 'JobController@add_new_job'); 
-Route::get('/all/jobs', 'JobController@all_job'); 
+
 Route::get('/search/by/location/{id}', 'JobController@search_by_location'); 
 Route::post('/search', 'JobController@search_by_name'); 
 
@@ -81,9 +81,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/alumni/contribution', 'ContributionController@index');
     Route::get('/members/search', 'MemberController@search');
     Route::post('/search/result', 'MemberController@find'); 
+
     Route::post('search/result/job/areas', 'MemberController@find_job_area'); 
     Route::post('/upload/library', 'LibraryController@library_upload');
     Route::get('/add/library', 'LibraryController@index');
+    Route::get('/training/demand', 'TrainingDemandController@index');
+    Route::get('/all/unread/messages','MessageController@all_unread_message');
+    Route::get('/all/jobs', 'JobController@all_job'); 
 
 
 });
@@ -120,16 +124,26 @@ Route::get('/delete/library/{id}', 'LibraryController@library_delete_status');
 Route::get('/training/post', 'TrainingController@index');
 Route::post('/training/post/success', 'TrainingController@add_training');
 
-Route::get('/training/demand', 'TrainingDemandController@index');
+
 Route::post('/training/demand/post', 'TrainingDemandController@training_demand');
 Route::get('/training/lists', 'TrainingDemandController@training_list');
+
 Route::get('/training/lists/status', 'TrainingDemandController@training_status');
 
 Route::post('/change/status/update', 'TrainingDemandController@training_status_update');
+
+Route::get('/assign/trainer/view', 'TrainingDemandController@assign_trainer_view');
+
+Route::post('/assign/trainer', 'TrainingDemandController@assign_trainer');
+
 Route::get('/training/demand/delete/{id}', 'TrainingDemandController@training_delete_status');
 
 
 Route::get('training/course/details/{id}', 'TrainingCartController@details');
+Route::get('training/course/list', 'TrainingCartController@training_list');
+Route::get('training/course/delete/{id}', 'TrainingCartController@training_delete');
+Route::get('training/course/edit/{id}', 'TrainingCartController@training_edit');
+Route::post('training/post/update', 'TrainingCartController@training_update');
 
 
 //add to cart controller
@@ -152,13 +166,20 @@ Route::get('payment/process','CartController@payment' );
 
 Route::post('bkash/payment/success', 'CartController@save_shipping');
 
+Route::get('contact-us', 'ContactusController@index');
+Route::post('send/contact/mail', 'ContactusController@send_mail');
 
 
+Route::get('/view/course/order/list', 'ShippingOrderController@index');
+Route::post('/change/course/order/status', 'ShippingOrderController@change_status');
+Route::get('/delete/course/order/{id}', 'ShippingOrderController@delete_order');
 
 
 Route::get('/send/email', 'MailController@mail');
 
 Route::get('/profile', 'HomeController@members_profile');
+
+Route::get('/employee/profile', 'HomeController@employee_profile');
 
 Route::post('/upload/cv/online', 'CvController@cv_upload');
 
@@ -190,7 +211,11 @@ Route::post('get-private-message-sent', 'PrivateMessageController@getPrivateMess
 Route::post('send-private-message', 'PrivateMessageController@sendPrivateMessage');
 
 Route::post('/online/cv/create','OnlineCvController@cv_create');
+
 Route::post('/online/cv/update/','OnlineCvController@cv_update');
+
+Route::get('/online/member/cv/view','OnlineCvController@online_cv_view');
+Route::get('/edit/page/view','OnlineCvController@online_cv_edit');
 
 
 Route::get('/applied/job/list/view/{job_id}', 'JobController@actBook');
@@ -208,7 +233,7 @@ Route::post('/employee/message/sent','MessageController@employee_sendMessage');
 
 Route::post('/admin/reply/sent/','MessageController@admin_users');
 
-Route::get('/all/unread/messages','MessageController@all_unread_message');
+
 
 Route::get('/messages/viewed/{id}','MessageController@all_read_message');
 Route::get('/messages/','MessageController@all_message');
@@ -231,7 +256,19 @@ Route::get('/sipeaa/blog', 'BlogController@index');
 Route::get('/sipeaa/blog/post', 'BlogController@blog_post');
 Route::get('article/borad', 'BlogController@article_board');
 
-// cache clear
+Route::post('/update/profile/picture', 'MemberPictureController@change_photo');
+
+Route::post('/employee/profile/update', 'RegistrationController@employe_profile_update');
+
+Route::post('/update/profile/picture/employee', 'ProfilePictureController@employe_profile_update_picture');
+
+
+// // cache clear
+Route::get('create', 'DisplayDataController@create');
+Route::get('index', 'DisplayDataController@index'); 
+
+
+
 
 
 Route::get('/clear-cache', function() {

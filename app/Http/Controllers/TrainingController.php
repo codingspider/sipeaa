@@ -13,10 +13,7 @@ session_start();
 
 class TrainingController extends Controller
 {
-	public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
     
     public function index(){
 
@@ -54,6 +51,7 @@ class TrainingController extends Controller
         $data['venue'] = $request->venue;
         $data['images'] = $name;
         $data['user_id'] = $request->user_id;
+        $data['trainer_id'] = $request->trainer_id;
         
         $success = DB::table('trainings')->insert($data);
         Session::put('message','Training added sucessfully');

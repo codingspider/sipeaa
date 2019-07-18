@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 
 class OnlineCvController extends Controller
 {
     public function cv_create(Request $request){
+
 
 
         $data[] = $request->images;
@@ -42,8 +44,8 @@ class OnlineCvController extends Controller
             $data['maritial_status'] = $request->maritial_status ;
             $data['present_add'] = $request->present_add ;
             $data['permanent_add'] = $request->permanent_add ;
-            $data['job_type'] = $request->job_type ;
-            $data['exp_salary'] = $request->exp_salary ;
+            $data['job_type'] = $request->job_type;
+            $data['exp_salary'] = $request->exp_salary;
             $data['level_education'] = $request->level_education ;
             $data['board_education'] = $request->board_education ;
             $data['institiute'] = $request->institiute ;
@@ -54,8 +56,14 @@ class OnlineCvController extends Controller
             $data['from_date'] = $request->from_date ;
             $data['to_date'] = $request->to_date ;
             $data['email'] = $request->email ;
+            $value = DB::table('online-cv')->where('user_id', $user)->first();
+           
+            if($value->user_id == $user){
         
-            $success = DB::table('online-cv')->insert($data);
+            $success = DB::table('online-cv')->where('user_id', $user)->update($data);
+            }else{
+                $success = DB::table('online-cv')->where('user_id', $user)->insert($data);
+            }
             return redirect::back()->with('message','CV Created Successfully');
         }else{
     
@@ -99,6 +107,22 @@ class OnlineCvController extends Controller
         
             
             
+        }
+
+        public function online_cv_view(){
+
+        $id =request()->get('id');
+        $success=DB::table('online-cv')->where('id',$id)->first(); 
+
+        return Response::json($success);
+        } 
+
+        public function online_cv_edit ($id){
+
+        $id =request()->get('id');
+        $success=DB::table('online-cv')->where('id',$id)->first(); 
+
+        return Response::json($success);
         }
     
 }

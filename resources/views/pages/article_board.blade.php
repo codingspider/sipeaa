@@ -2,46 +2,109 @@
 @section('title', 'Article Board')
 @section('content')
 
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-@foreach ($data as $item)
-    
-@endforeach
+@php
+    $users = DB::table('users')->where('user_type', 'member')->where('admin', 1)->get(); 
+@endphp
+<br>
 <div class="container">
-    <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-12">
-            <div class="well well-sm">
-                <div class="row">
-                    <div class="col-sm-6 col-md-4">
-                        <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" height="200" width="200px" />
-                    </div>
-                    <div class="col-sm-6 col-md-8">
-                        <h4>
-                        {{ $item->name }}</h4>
-                        <small><cite title="San Francisco, USA">San Francisco, USA <i class="glyphicon glyphicon-map-marker">
-                        </i></cite></small>
-                        <p>
-                            <i class="glyphicon glyphicon-envelope"></i>email@example.com
-                            <br />
-                            <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
-                            <br />
-                            <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
-                        <!-- Split button -->
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-primary">
-                                Social</button>
-                            
-
-                        </div>
-                    </div>
+        <body>
+                <!-- Header -->
+              <header class="text-center py-2 mb-4">
+                <div class="container">
+                  <h1 class="font-weight-light text-black">Meet the Team</h1>
                 </div>
-            </div>
-        </div>
+              </header>
+              
+              <!-- Page Content -->
+              <div class="container">
+                <div class="row">
+                  @foreach ($users as $item)
+                      
+                  <!-- Team Member 1 -->
+                  <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-0 shadow text-center">
+                    <img  src="{{ URL::asset('images/'.$item->images)}}" class="mx-auto d-block" style="width:100px; height:100%;" alt="...">
+                      <div class="card-body text-center">
+                        <h5 class="card-title mb-0"></h5>
+                        <div class="card-text text-black-100"> Name: {{$item->name}}</div>
+                        <p>Email: {{$item->email}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  @endforeach
+              
+              
+                </div>
+                <!-- /.row -->
+              
+              </div>
+              <!-- /.container -->
+              </body>
     </div>
-</div>
+<br>
+
+<style>
+.view-group {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+.thumbnail
+{
+    margin-bottom: 30px;
+    padding: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+
+.item.list-group-item
+{
+    float: none;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 30px;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 1rem;
+    border: 0;
+}
+.item.list-group-item .img-event {
+    float: left;
+    width: 30%;
+}
+
+.item.list-group-item .list-group-image
+{
+    margin-right: 10px;
+}
+.item.list-group-item .thumbnail
+{
+    margin-bottom: 0px;
+    display: inline-block;
+}
+.item.list-group-item .caption
+{
+    float: left;
+    width: 70%;
+    margin: 0;
+}
+
+.item.list-group-item:before, .item.list-group-item:after
+{
+    display: table;
+    content: " ";
+}
+
+.item.list-group-item:after
+{
+    clear: both;
+}
+</style>
 
     
 @endsection

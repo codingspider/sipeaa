@@ -18,46 +18,21 @@
 <!-- Page Content -->
 <div class="container">
   <div class="row">
+    @foreach ($data as $item)
+        
     <!-- Team Member 1 -->
     <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-0 shadow">
-        <img src="https://source.unsplash.com/TMgQMXoglsM/500x350" class="card-img-top" alt="...">
+      <div class="card border-0 shadow text-center">
+      <img  src="{{ URL::asset($item->photo)}}" class="mx-auto d-block" style="width:100px; height:100%;" alt="...">
         <div class="card-body text-center">
-          <h5 class="card-title mb-0">Team Member</h5>
-          <div class="card-text text-black-50">Web Developer</div>
+          <h5 class="card-title mb-0"></h5>
+          <div class="card-text text-black-100">{{$item->name}}</div>
         </div>
       </div>
     </div>
-    <!-- Team Member 2 -->
-    <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-0 shadow">
-        <img src="https://source.unsplash.com/9UVmlIb0wJU/500x350" class="card-img-top" alt="...">
-        <div class="card-body text-center">
-          <h5 class="card-title mb-0">Team Member</h5>
-          <div class="card-text text-black-50">Web Developer</div>
-        </div>
-      </div>
-    </div>
-    <!-- Team Member 3 -->
-    <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-0 shadow">
-        <img src="https://source.unsplash.com/sNut2MqSmds/500x350" class="card-img-top" alt="...">
-        <div class="card-body text-center">
-          <h5 class="card-title mb-0">Team Member</h5>
-          <div class="card-text text-black-50">Web Developer</div>
-        </div>
-      </div>
-    </div>
-    <!-- Team Member 4 -->
-    <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-0 shadow">
-        <img src="https://source.unsplash.com/ZI6p3i9SbVU/500x350" class="card-img-top" alt="...">
-        <div class="card-body text-center">
-          <h5 class="card-title mb-0">Team Member</h5>
-          <div class="card-text text-black-50">Web Developer</div>
-        </div>
-      </div>
-    </div>
+    @endforeach
+
+
   </div>
   <!-- /.row -->
 

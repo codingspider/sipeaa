@@ -61,7 +61,7 @@ $cart = Cart::count();
                         <td class="col-sm-8 col-md-6">
                         <div class="media">
                             <a class="thumbnail pull-left" href="#"> 
-                              <img class="media-object" src="{{ URL::asset($value->options->images) }}" style="width: 72px; height: 72px;"> </a>
+                              <img class="media-object" src="{{ URL::asset('images/'.$value->options->images) }}" style="width: 72px; height: 72px;"> </a>
                             <div class="media-body">
                                 <h4 class="media-heading"><a href="#">{{ $value->name }}</a></h4>
                             </div>
@@ -124,7 +124,7 @@ $cart = Cart::count();
                         <td>   </td>
                         <td>   </td>
                         <td><h3>Total</h3></td>
-                        <td class="text-right"><h3><strong>৳{{ $newSubtotal }}</strong></h3></td>
+                        <td class="text-right"><h3><strong>৳{{ $newSubtotal}}</strong></h3></td>
                     </tr>
                     <tr>
                         <td>   </td>

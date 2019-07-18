@@ -2,13 +2,15 @@
 
 namespace App\Mail;
 
+
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Symfony\Component\HttpFoundation\Request;
 
-class MailNotify extends Mailable
+class ContactMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -33,12 +35,13 @@ class MailNotify extends Mailable
     {
         return $this->to('admin@sipeaa.org')
                     //->bcc('auth@another.com')
-                    ->subject('Somenone is demanding a Training')
-                    ->view('pages.email_training_demand') ->with([
-                        'request' => $this->request->training_need,
-                        'request' => $this->request->form_date,
-                        'request' => $this->request->description,
-               
+                    ->subject('Message from contact page')
+                    ->view('pages.Contact_email') ->with([
+                        'request' => $this->request->email,
+                        'request' => $this->request->name,
+                        'request' => $this->request->phone,
+                        'request' => $this->request->message,
+                        
                       ]);
     }
 }

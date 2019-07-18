@@ -210,20 +210,20 @@
 																Members   
 															</a>
 															<ul class="dropdown-menu">
-																@if( $data == NULL)
+																
 																<li><a class="dropdown-item" href="{{ URL::to('/login')}}">Membership</a></li>
+																@if($user_type->user_type == 'employee')
+																<li><a class="dropdown-item" href="{{ URL::to('/employee/profile')}}">Member Profile</a></li>
+																@else 
 																<li><a class="dropdown-item" href="{{ URL::to('/profile')}}">Member Profile</a></li>
-																<li><a class="dropdown-item" href="{{ URL::to('/members/search') }}">Member's Search </a></li>
-																<li><a class="dropdown-item" href="{{ URL::to('/add/library') }}">Library Upload </a></li>
-																<li><a class="dropdown-item" href="{{ URL::to('/acounts/members') }}">Accounts SIPEAA </a></li>
-																<li><a class="dropdown-item" href="{{ URL::to('/alumni/contribution') }}">Alumni Members Contribution </a></li>
-																@else
-																<li><a class="dropdown-item" href="{{ URL::to('/profile')}}">Member Profile</a></li>
-																<li><a class="dropdown-item" href="{{ URL::to('/members/search') }}">Member's Search </a></li>
-																<li><a class="dropdown-item" href="{{ URL::to('/add/library') }}">Library Upload </a></li>
-																<li><a class="dropdown-item" href="{{ URL::to('/acounts/members') }}">Accounts SIPEAA </a></li>
-																<li><a class="dropdown-item" href="{{ URL::to('/alumni/contribution') }}">Alumni Members Contribution </a></li>
 																@endif
+																<li><a class="dropdown-item" href="{{ URL::to('/members/search') }}">Member's Search </a></li>
+																<li><a class="dropdown-item" href="{{ URL::to('/add/library') }}">Library Upload </a></li>
+																<li><a class="dropdown-item" href="{{ URL::to('/acounts/members') }}">Accounts SIPEAA </a></li>
+																<li><a class="dropdown-item" href="{{ URL::to('/alumni/contribution') }}">Alumni Members Contribution </a></li>
+																
+																
+																
 
 															</ul>
 														</li>
@@ -233,7 +233,7 @@
 															
 																<li><a class="dropdown-item" href="{{URL::to('/training/lists') }}">Training/Workshop </a></li>
 																<li><a class="dropdown-item" href="{{URL::to('/training/demand') }}">Training Demand Form </a></li>
-																<li><a class="dropdown-item" href="{{URL::to('/training/post') }}">Training Posting</a></li>
+
 																<li><a class="dropdown-item" href="{{ URL::to('/course/posting/board') }}">Course Posting Board </a></li>
 														</ul>
 														</li>
@@ -242,6 +242,12 @@
 														<li class="pull-left">
 														<a class="dropdown-item dropdown-toggle pull-left" href="{{ URL::to('show/cart')}}">
 																My Cart
+															</a>
+														
+														</li>
+														<li class="pull-left">
+														<a class="dropdown-item dropdown-toggle pull-left" href="{{ URL::to('contact-us')}}">
+																Contact Us
 															</a>
 														
 														</li>

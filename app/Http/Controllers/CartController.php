@@ -36,25 +36,28 @@ class CartController extends Controller
 
         Cart::add($data);
 
-
         return redirect::to('/show/cart');
     }
     public function showcart(){
 
-
-
         $discount = session()->get('coupon')['discount'];
-        $Subtotal = Cart::total();
+        $total = Cart::total();
+     
+       
 
-        $discounted_price = $Subtotal - ($Subtotal * $discount / 100);
-
+        $a = $total;
+        $b = str_replace( ',', '', $a );
+        
+        $discounted_total = $b - ($b * ($discount/100)); 
+     
+      
         Session::put('shiping_id', $shiping_id);
 
 
         return view('pages.shoping_cart')->with([
 
             'discount' => $discount,
-            'newSubtotal' => $discounted_price,
+            'newSubtotal' => $discounted_total,
 
         ]);
     }
@@ -91,6 +94,8 @@ class CartController extends Controller
             'state' => 'required',
             'postal' => 'required',
     );
+    $id = $request->user_id;
+
         $validator = Validator::make ( Input::all (), $rules );
         if ($validator->fails ())
             return Response::json ( array (
@@ -109,7 +114,7 @@ class CartController extends Controller
             $data['state'] = $request->state;
             $data['postal'] = $request->postal;
             $data['country_name'] = $request->country_name;
-            $data['user_id'] = Auth::id();
+            $data['user_id'] = $id;
 
             $shiping_id = DB::table('shipings') 
             ->insertGetId($data);    
@@ -117,9 +122,9 @@ class CartController extends Controller
 
             $data = array();
             $data['payment_method'] =  $request->method;
-            $data['payment_status'] = $request->status;
+            $data['payment_status'] = 'pending';
             $data['transaction_id'] = $request->transaction;
-            $data['user_id'] = Auth::id();
+            $data['user_id'] = $id;
             $data['course_fee'] = $request->total;
             $data['course'] = $request->course;
             $payment_id = DB::table('payments')
@@ -149,15 +154,20 @@ class CartController extends Controller
         $country = World::Countries('name', 'DESC');
 
         $discount = session()->get('coupon')['discount'];
-        $Subtotal = Cart::total();
+        $total = Cart::total();
+     
+       
 
-        $discounted_price = $Subtotal - ($Subtotal * $discount / 100);
+        $a = $total;
+        $b = str_replace( ',', '', $a );
+        
+        $discounted_total = $b - ($b * ($discount/100)); 
 
 
         return view('pages.add_billing')->with([
 
             'discount' => $discount,
-            'newSubtotal' => $discounted_price,
+            'newSubtotal' => $discounted_total,
             'country' => $country,
         ]);
     }

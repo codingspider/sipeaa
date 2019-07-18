@@ -18,7 +18,11 @@ class MemberController extends Controller
 
     $text = $request->input('blood_group');
 
-    $patients = DB::table('members')->where('blood_group', 'Like', "$text")->get();
+    $patients = DB::table('members')
+    ->join('users', 'users.id', '=', 'members.users_id')
+    ->select('users.*', 'members.*' )
+    ->where('blood_group', 'Like', "$text")->get();
+
 
     return view('pages.member_search_result', compact('patients'));
 
@@ -28,10 +32,13 @@ class MemberController extends Controller
 
     $text = $request->input('job_areas');
 
-    $patients = DB::table('members')->where('job_area_id', 'Like', "$text")->get();
+    $patients = DB::table('members')
+    ->join('users', 'users.id', '=', 'members.users_id')
+    ->select('users.*', 'members.*' )
+    ->where('job_area_id', 'Like', "$text")->get();
 
 
-    return view('pages.member_search_result', compact('patients'));
+    return view('pages.job_area_search_result', compact('patients'));
 
 
 	}

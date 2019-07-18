@@ -25,22 +25,22 @@
   <h3 class="text-center">Training Demand Form</h3>
   <div class="form-group">
     <label for="exampleInputEmail1">Training Need *</label>
-     <input type="text" class="form-control" name="training_need" required="">
+     <input type="text" style="border: 1px solid #000;" class="form-control" name="training_need" required="">
     </div>
     
 
   <div class="form-group">
     <label for="exampleInputPassword1">Demand Date *</label>
-    <input type="date" class="form-control" name="form_date" required="">
+    <input style="border: 1px solid #000;" type="date" class="form-control" name="form_date" required="">
   </div>
 
     <div class="form-group">
     <label for="exampleInputPassword1">Description:</label>
     <div class="form-group">
-  <textarea name="description" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" required></textarea>
+  <textarea name="description" style="border: 1px solid #000;" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" required></textarea>
 </div>
   </div>
- 
+<input type="hidden" name="id" value="{{Auth::id()}}">
   <br>
   <br>
   <button type="submit" class="btn btn-primary">Post Now</button>

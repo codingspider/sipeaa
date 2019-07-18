@@ -318,7 +318,7 @@
                     <tr>
                       <td>
                         <p>Hi {{ $request->name }} {{ $request->first_name }} {{ $request->last_name }},</p>
-                        <p>Your SIPEAA acbout has been Approved  !. Now you can login to your account. </p>
+                        <p>Your SIPEAA account has been Approved  !. Now you can login to your account. </p>
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                           <tbody>
                             <tr>

@@ -2,7 +2,8 @@
 @section('title', 'Members Profile')
 @section('content')
 <link rel="stylesheet" href="{{ asset('assets/css/rokon.css') }}">
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @php
     $id = Auth::id();
     $user_details = DB::table('users')
@@ -43,6 +44,12 @@
     ->where('approve', 1)->where('users.id', $id)->first();
 
     $job_posted = DB::table('jobs')->where('user_id', $id)->get();
+
+
+    foreach ($users as  $value) {
+   
+    }
+
    
 @endphp
 <br>
@@ -60,9 +67,9 @@
     </div>
 @endif
 
-{{-- @foreach ($employe_profile as $item)
+@foreach ($users as $valupic)
     
-@endforeach --}}
+@endforeach
 
 <div class="container emp-profile">
       <div class="row">
@@ -70,7 +77,15 @@
           <div class="col-md-4">
               <div class="profile-img">
               <img src="{{ URL::asset('/files/'.$employe_profile->images ) }}" style="width: 235px; height: 200;" alt=""/>
-               
+              <div class="file btn btn-lg btn-primary">
+                  Change Photo
+              <form action="{{ URL::to('/update/profile/picture/employee') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="old_images" value="{{$valupic->images}}">
+
+                    <input type="file" name="images" onchange="form.submit()" />
+                </form>
+              </div>
               </div>
           </div>
           <div class="col-md-6">
@@ -190,17 +205,7 @@
                     <br>
 
                 </div>
-              <input type="hidden" name="old_images" value="{{ $employe_profile->images }}">
-            <div class="form-group row">
-                    <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Profile Picture') }}</label>
-
-                    <div class="col-md-6">
-                        <input type="file"  class="form-control" name="images">
-
-                    </div>
-                    <br>
-
-                </div>
+              
                  
 
             <br>
@@ -408,15 +413,22 @@
 </div>
 @else 
 
+
 <div class="container">
 
   <div class="row">
       <div class="col-md-4">
           <div class="profile-img">
-              <img src="{{ URL::asset('/files/'.$member_profile->images ) }}" style="width: 235px; height: 200;" alt=""/>
+              <img src="{{ URL::asset('/images/'.$member_profile->images ) }}" style="width: 235px; height: 200;" alt=""/>
               <div class="file btn btn-lg btn-primary">
                   Change Photo
-                  <input type="file" name="file"/>
+              <form action="{{ URL::to('/update/profile/picture') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="old_images" value="{{$value->images}}">
+                <input type="hidden" name="user_id" value="{{$id}}">
+
+                    <input type="file" name="images" onchange="form.submit()" />
+                </form>
               </div>
           </div>
       </div>
@@ -442,14 +454,22 @@
               </ul>
           </div>
       </div>
+      @php
+          $cv_online = DB::table('online-cv')->where('user_id', $id)->first();
+          if( $cv_online != NULL){
+            foreach ($cv_online as  $item) {
+              # code...
+            }
+          }
+      @endphp
       <div class="col-md-2">
         <button type="button" class="btn btn-primary"style="margin:5px; min-width: 120px;" data-toggle="modal" data-target="#exampleModal">
           Create Your CV
         </button>
-        <button type="button" class="btn btn-dark pull-left" style="margin:5px;" data-toggle="modal" data-target="#viewcv">
+        <button type="button" class="btn btn-dark pull-left" OnClick="DoviewAction({{ $cv_details->id }});"  style="margin:5px;" data-toggle="modal" data-target="#viewcv">
           View CV Online
         </button>
-    <button type="button" class="btn btn-info pull-left" style="margin:5px;" data-toggle="modal" data-target="#cvedit">
+    <button type="button" class="btn btn-info pull-left"  style="margin:5px;" data-toggle="modal" data-target="#cvedit">
           Edit CV Online
         </button>
       </div>
@@ -465,238 +485,291 @@
       </div>
       <div class="modal-body col-md-12">
        
-          <p style="color: red">You Must Fill All the Options </p>
-          <form action="{{ URL::to('/online/cv/create') }}" method="POST" id="form" enctype="multipart/form-data">
-          @csrf
-
-         
-          <div class="media">
-            <ul class="nav nav-tabs" id="myForm">
-              <li class="active col-xs-3 nav-tabs"><a href="#one">Personal</a></li>
-              <li class="col-xs-3 nav-tabs"><a href="#two">Education / Training</a></li>
-              <li class="col-xs-3 nav-tabs"><a href="#three">Employment</a></li>
-              <li class="col-xs-3 nav-tabs"><a href="#five">Photograph</a></li>
-          </ul>
-          </div>
-          
-             
-                  <div class="tab-content form-group">
-
-                  <div class="tab-pane active" id="one">
-                          <div class="row">
-                                  <div class="col">
-                                      <label for="">First Name</label>
-                                    <input type="text" style="border:1px solid #818182" name="first_name" style="color:#3931af" class="form-control" placeholder="First name">
-                                  </div>
-                                  <div class="col">
-                                          <label for="">Last Name</label>
-                                    <input type="text" style="border:1px solid #818182" name="last_name" style="color:#3931af" class="form-control" placeholder="Last name">
-                                  </div>
-                          </div>
-                          <br>
-                          <div class="row">
-                                  <div class="col">
-                                          <label for="">Nationality</label>
-                                    <input type="text" style="border:1px solid #818182" name="nationality" style="color:#3931af" class="form-control" placeholder="Nationality">
-                                  </div>
-                                  <div class="col">
-                                          <label for="">National ID</label>
-                                    <input type="text" style="border:1px solid #818182" name="na_id" style="color:#3931af" class="form-control" placeholder="National ID NO">
-                                  </div>
-                          </div>
-                          <br>
-                          <div class="row">
-                                  <div class="col">
-                                          <label for="">Father Name</label>
-                                    <input type="text" style="border:1px solid #818182" name="father_name" style="color:#3931af" class="form-control" placeholder="Father Name">
-                                  </div>
-                                  <div class="col">
-                                          <label for="">Mother Name</label>
-                                    <input type="text" style="border:1px solid #818182" name="mother_name" style="color:#3931af" class="form-control" placeholder="Mother Name">
-                                  </div>
-                          </div>
-                          <br>
-                          <div class="row">
-                                  <div class="col">
-                                          <label for="">Date of Birth</label>
-                                    <input type="date" style="border:1px solid #818182" name="dob" style="color:#3931af" class="form-control" placeholder="Date Of Birth">
-                                  </div>
-                                  <div class="col">
-                                          <label for="">Phone Number</label>
-                                    <input type="text" style="border:1px solid #818182" name="mobile" style="color:#3931af" class="form-control" placeholder="Phone Number">
-                                  </div>
-                          </div>
-                          <br>
-                          <div class="row">
-                                  <div class="col">
-                                          <label for="">Gender</label>
-                                    <select style="border:1px solid #818182" class="form-control" name="gender" id="gender">
-                                          <option value="Married">--Select--</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                        <option value="Others">Others</option>
-                                    </select>
-                                  </div>
-                                  <div class="col">
-                                          <label for="">Maritial Status</label>
-                                  <select style="border:1px solid #818182" class="form-control" name="maritial_status">
-                                          <option value="Married">--Select--</option>
-                                          <option value="Married">Married</option>
-                                          <option value="Unmarried">Unmarried</option>
-                                          <option value="Single">Single</option>
-                                      </select>
-                                  </div>
-                          </div>
-                          <br>
-                          <div class="row">
-                                  <div class="col">
-                                          <label for="">Present Address</label>
-                                    <input style="border:1px solid #818182" type="text" name="present_add" style="color:#3931af" class="form-control" placeholder="Present Address">
-                                  </div>
-                                  <div class="col">
-                                          <label for="">Permanent Address</label>
-                                    <input style="border:1px solid #818182" type="text" name="permanent_add" style="color:#3931af" class="form-control" placeholder="Permanent Address">
-                                  </div>
-                          </div>
-                          <br>
-                          <div class="row">
-                                  <div class="col">
-                                          <label for="">Job Type</label>
-                                    <select style="border:1px solid #818182" class="form-control" name="job_type" id="gender">
-                                        <option value="Male">Select your Job type</option>
-                                        <option value="Male">Full Time</option>
-                                        <option value="Female">Part Time</option>
-                                        <option value="Others">Entry Level</option>
-                                        <option value="Others">High Level</option>
-                                    </select>
-                                  </div>
-                                  <div class="col">
-                                          <label for="">Expect Salary</label>
-                                          <input style="border:1px solid #818182" type="text" name="exp_salary" style="color:#3931af" class="form-control" placeholder="Expected Salary">
-                                  </div>
-                                    <br>
-                                  <div class="row">
-                                      <label for="Email"> Email </label>
-                                      <input style="border:1px solid #818182" type="email" name="email" class="form-control" placeholder="email" required>
-                                    </div>
-                          </div>
-                          
-                  
-                  </div>
-                  <div class="tab-pane" id="two">
-                          <div class="row">
-                                  <div class="col">
-                                      <label for="education">Level of Education 
-                                          </label>
-                                      <select style="border:1px solid #818182" required class="form-control" name="level_education" id="gender">
-                                          <option value="PSC">PSC/5 pass</option>
-                                          <option value="JSC/JDC">JSC/JDC/8 pass</option>
-                                          <option value="Secondary">Secondary</option>
-                                          <option value="Secondary">Higher Secondary</option>
-                                          <option value="Diploma" selected="">Diploma</option>
-                                          <option value="Honors">Bachelor/Honors</option>
-                                          <option value="Masters">Masters</option>
-                                          <option value="PhD">PhD (Doctor of Philosophy)</option>
-                                      </select>
-                                    
-                                  </div>
-                                  <div class="col">
-                                      <label for="education">Results 
-                                          </label>
-                                      <select style="border:1px solid #818182" class="form-control" name="job_type" id="gender">
-                                              <option value="0">Select</option>
-                                              <option value="Firs_class">First Division/Class</option>
-                                              <option value="Second_class">Second  Division/Class</option>
-                                              <option value="Third_class">Third Division/Class</option>
-                                              <option value="Grade">Grade</option>
-                                              <option value="Appeared">Appeared</option>
-                                              <option value="Enrolled">Enrolled</option>
-                                              <option value="Awarded">Awarded</option>
-                                              <option value="Do_not_Mention">Do not mention</option>
-                                              <option value="Passed" selected="">Pass</option> 
-                                      </select>
-                                    
-                                  </div>
-                                  
-                          </div>
-                          <br>
-                          <div class="row">
-                                  <div class="col">
-                                      <label for="education">Board of Education 
-                                          </label>
-                                      <select style="border:1px solid #818182" required class="form-control" name="board_education" id="gender">
-                                              <option value="Chattogram">Chattogram</option>
-                                              <option value="Cumilla">Cumilla</option>
-                                              <option value="Dhaka">Dhaka</option>
-                                              <option value="Dinajpur">Dinajpur</option>
-                                              <option value="Jashore">Jashore</option>
-                                              <option value="Rajshahi">Rajshahi</option>
-                                              <option value="Sylhet">Sylhet</option>
-                                              <option value="Madrasah">Madrasah</option>
-                                              <option value="Technical">Technical</option>
-                                      </select>
-                                    
-                                  </div>
-                                  <div class="col">
-                                      <label for="education">Instititue Name 
-                                          </label>
-                                     <input style="border:1px solid #818182" type="text" name="institiute" class="form-control" placeholder="Instititue Name" required>
-                                      </select>
-                                    
-                                  </div>
-                                  
-                          </div>
-                  </div>
-                  <div class="tab-pane" id="three">
-                          <div class="row">
-                                  <div class="col">
-                                      <label for=""> Company Name</label>
-                                    <input style="border:1px solid #818182" type="text" name="company_name" style="color:#3931af" class="form-control" placeholder="Company Name">
-                                  </div>
-                                  <div class="col">
-                                      <label for="">company Buisiness</label>
-                                    <input style="border:1px solid #818182" type="text" name="compnay_buisness" style="color:#3931af" class="form-control" placeholder="Company Buisness">
-                                  </div>
-                          </div>
-                          <br>
-                          <div class="row">
-                                  <div class="col">
-                                      <label for=""> Designation</label>
-                                    <input style="border:1px solid #818182" type="text" name="designation" style="color:#3931af" class="form-control" placeholder="Company Name">
-                                  </div>
-                                  <div class="col">
-                                      <label for="">company Location</label>
-                                    <input style="border:1px solid #818182" type="text" name="compnay_loacation" style="color:#3931af" class="form-control" placeholder="Company Buisness">
-                                  </div>
-                          </div>
-                          <br>
-                          <div class="row">
-                                  <div class="col">
-                                      <label for=""> Employment Period From</label>
-                                    <input style="border:1px solid #818182" type="date" name="from_date" style="color:#3931af" class="form-control" placeholder="Start Date">
-                                  </div>
-                                  <div class="col">
-                                      <label for="">Employment Period till</label>
-                                    <input  type="date" name="to_date" style="color:#3931af" class="form-control" placeholder="End Date">
-                                  </div>
-                          </div>
-                  </div>
-                 
-                  <div class="tab-pane" id="five">
-                      <label for="">Add Photograph</label>
-                      <br>
-                      <input type="file" name="images" required>
+          <style>
+              * {
+                box-sizing: border-box;
+              }
+              
+              body {
+                background-color: #f1f1f1;
+              }
+              
+            
+              
+              h1 {
+                text-align: center;  
+              }
+              
+              input {
+                padding: 10px;
+                width: 100%;
+                font-size: 17px;
+                font-family: Raleway;
+                border: 1px solid #aaaaaa;
+              }
+              
+              /* Mark input boxes that gets an error on validation: */
+              input.invalid {
+                background-color: #ffdddd;
+              }
+              
+              /* Hide all steps by default: */
+              .tab {
+                display: none;
+              }
+              
+              button {
+                background-color: #4CAF50;
+                color: #ffffff;
+                border: none;
+                padding: 10px 20px;
+                font-size: 17px;
+                font-family: Raleway;
+                cursor: pointer;
+              }
+              
+              button:hover {
+                opacity: 0.8;
+              }
+              
+              #prevBtn {
+                background-color: #bbbbbb;
+              }
+              
+              /* Make circles that indicate the steps of the form: */
+              .step {
+                height: 15px;
+                width: 15px;
+                margin: 0 2px;
+                background-color: #bbbbbb;
+                border: none;  
+                border-radius: 50%;
+                display: inline-block;
+                opacity: 0.5;
+              }
+              
+              .step.active {
+                opacity: 1;
+              }
+              
+              /* Mark the steps that are finished and valid: */
+              .step.finish {
+                background-color: #4CAF50;
+              }
+              </style>
+              <body>
+              
+<form action="{{ URL::to('/online/cv/create') }}" method="POST" id="form" enctype="multipart/form-data">
+  @csrf
+               
+                <!-- One "tab" for each step in the form: -->
+                <div class="tab">Personal Information:
+                    <div class="row">
+                        <div class="col">
+                            <label for="">First Name</label>
+                            <input placeholder="First name..." oninput="this.className = ''" name="first_name">
+                        </div>
+                        <div class="col">
+                                <label for="">Last Name</label>
+                                <input placeholder="Last name..." oninput="this.className = ''" name="last_name">
+                        </div>
+                    </div>
                   <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                      <br>
-                      <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                             
-                              <button type="submit" onclick="document.getElementById('form').submit();" class="btn btn-primary">Save changes</button>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <label for="">Father Name</label>
+                            <input placeholder="Father name..." oninput="this.className = ''" name="father_name">
+                        </div>
+                        <div class="col">
+                                <label for="">Mother Name</label>
+                                <input placeholder="Mother name..." oninput="this.className = ''" name="mother_name">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                                <label for="">Nationality</label>
+                          <input type="text" style="border:1px solid #818182" name="nationality" style="color:#3931af" class="form-control" placeholder="Nationality">
+                        </div>
+                        <div class="col">
+                                <label for="">National ID</label>
+                          <input type="text" style="border:1px solid #818182" name="na_id" style="color:#3931af" class="form-control" placeholder="National ID NO">
+                        </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                            <label for="">Gender</label>
+                      <select style="border:1px solid #818182" class="form-control" name="gender" id="gender">
+                            <option value="Married">--Select--</option>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          <option value="Others">Others</option>
+                      </select>
+                    </div>
+                    <div class="col">
+                            <label for="">Maritial Status</label>
+                    <select style="border:1px solid #818182" class="form-control" name="maritial_status">
+                            <option value="Married">--Select--</option>
+                            <option value="Married">Married</option>
+                            <option value="Unmarried">Unmarried</option>
+                            
+                        </select>
+                    </div>
+            </div>
+            <br>
+              <div class="row">
+                      <div class="col">
+                              <label for="">Present Address</label>
+                        <input style="border:1px solid #818182" type="text" name="present_add" style="color:#3931af" class="form-control" placeholder="Present Address">
                       </div>
-                  </div>    
+                      <div class="col">
+                              <label for="">Permanent Address</label>
+                        <input style="border:1px solid #818182" type="text" name="permanent_add" style="color:#3931af" class="form-control" placeholder="Permanent Address">
+                      </div>
               </div>
-                  
-           </form>
+              <br>
+       
+                  <div class="row">
+                      <label for="Email"> Email </label>
+                      <input style="border:1px solid #818182" type="email" name="email" class="form-control" placeholder="email" required>
+                    </div>
+                    <br>
+
+                <div class="row">
+                        <div class="col">
+                                <label for="">Date of Birth</label>
+                          <input type="date" style="border:1px solid #818182" name="dob" style="color:#3931af" class="form-control" placeholder="Date Of Birth">
+                        </div>
+                        <div class="col">
+                                <label for="">Phone Number</label>
+                          <input type="text" style="border:1px solid #818182" name="mobile" style="color:#3931af" class="form-control" placeholder="Phone Number">
+                        </div>
+                </div>
+                    </div>
+                <div class="tab">Education  Info:
+                  <br>
+                <div class="row">
+                      <div class="col">
+                          <label for="education">Level of Education 
+                            </label>
+                        <select style="border:1px solid #818182" required class="form-control" name="level_education" id="gender">
+                            <option value="PSC">PSC/5 pass</option>
+                            <option value="JSC/JDC">JSC/JDC/8 pass</option>
+                            <option value="Secondary">Secondary</option>
+                            <option value="Secondary">Higher Secondary</option>
+                            <option value="Diploma" selected="">Diploma</option>
+                            <option value="Honors">Bachelor/Honors</option>
+                            <option value="Masters">Masters</option>
+                            <option value="PhD">PhD (Doctor of Philosophy)</option>
+                        </select>
+                      
+                    </div>
+                    <div class="col">
+                        <label for="education">Board of Education 
+                            </label>
+                        <select style="border:1px solid #818182" required class="form-control" name="board_education" id="gender">
+                                <option value="Chattogram">Chattogram</option>
+                                <option value="Cumilla">Cumilla</option>
+                                <option value="Dhaka">Dhaka</option>
+                                <option value="Dinajpur">Dinajpur</option>
+                                <option value="Jashore">Jashore</option>
+                                <option value="Rajshahi">Rajshahi</option>
+                                <option value="Sylhet">Sylhet</option>
+                                <option value="Madrasah">Madrasah</option>
+                                <option value="Technical">Technical</option>
+                        </select>
+                      
+                    </div>
+        
+                  </div>
+                  <br>
+                  <div class="row">
+                   
+                      
+                      <div class="col">
+                          <label for="education">Instititue Name 
+                              </label>
+                         <input style="border:1px solid #818182" type="text" name="institiute" class="form-control" placeholder="Instititue Name" required>
+                          </select>
+                        
+                      </div>
+                      
+                    </div>   
+                </div>
+                <br><br>
+                <div class="tab">Employement:
+                    <div class="row">
+                        <div class="col">
+                            <label for=""> Company Name</label>
+                          <input style="border:1px solid #818182" type="text" name="company_name" style="color:#3931af" class="form-control" placeholder="Company Name">
+                        </div>
+                        <div class="col">
+                            <label for="">company Buisiness</label>
+                          <input style="border:1px solid #818182" type="text" name="compnay_buisness" style="color:#3931af" class="form-control" placeholder="Company Buisness">
+                        </div>
+                </div>
+                <br>
+                <div class="row">
+                        <div class="col">
+                            <label for=""> Designation</label>
+                          <input style="border:1px solid #818182" type="text" name="designation" style="color:#3931af" class="form-control" placeholder="Company Name">
+                        </div>
+                        <div class="col">
+                            <label for="">company Location</label>
+                          <input style="border:1px solid #818182" type="text" name="compnay_loacation" style="color:#3931af" class="form-control" placeholder="Company Buisness">
+                        </div>
+                        <div class="col">
+                            <label for="education">Job Type
+                                </label>
+                            <select style="border:1px solid #818182" required class="form-control" name="job_type">
+                                <option value="Entry level">Entry Level</option>
+                                <option value="Mid level">Mid Level</option>
+                                <option value="Full time">Full time</option>
+                                <option value="Part Time">Part Time</option>
+                            </select>
+                          
+                        </div>
+                       
+                </div>
+                <br>
+                
+                <div class="row">
+                    <div class="col">
+                        <label for=""> Employment Period From</label>
+                      <input style="border:1px solid #818182" type="date" name="from_date" style="color:#3931af" class="form-control" placeholder="Start Date">
+                    </div>
+                    <div class="col">
+                        <label for="">Employment Period till</label>
+                      <input  style="border:1px solid #818182"  type="date" name="to_date" style="color:#3931af" class="form-control" placeholder="End Date">
+                    </div>
+                    <div class="col">
+                        <label for="">Expected Salary</label>
+                      <input  style="border:1px solid #818182"  type="text" name="exp_salary" style="color:#3931af" class="form-control" placeholder="Expected Salary">
+                    </div>
+               </div>
+                </div>
+                <br>
+                <div class="tab">Add Photograph:
+                    <input type="file" name="images" required>
+                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                        <br>
+                </div>
+                <div style="overflow:auto;">
+                  <div style="float:right;">
+                    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                    <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                  </div>
+                </div>
+                <!-- Circles which indicates the steps of the form: -->
+                <div style="text-align:center;margin-top:40px;">
+                  <span class="step"></span>
+                  <span class="step"></span>
+                  <span class="step"></span>
+                  <span class="step"></span>
+                </div>
+        </form>
 
       </div>
     
@@ -718,7 +791,6 @@
               <p style="color: #000">Registration No: {{ $member_profile->reg_no}}</p>
               <p style="color: #000">Job Experience: {{ $member_profile->experience_year}}</p>
               <p style="color: #000">Job Skills: {{ $member_profile->job_skill}} </p>
-              <p style="color: #000">Job Areas: {{ $member_profile->job_cat_name}}</p>
               
               
           </div>
@@ -904,7 +976,7 @@
                             
                                     $unread_messages = DB::table('messages')
                                       ->select('messages.*')
-                                      ->where('sent_to_id', 20)
+                                      ->where('sent_to_id', Auth::id())
                                       
                                      ->orderBy('id', 'desc')
                                       ->get();
@@ -1069,19 +1141,19 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<div class="modal-body">
+<div class="modal-body modal-lg">
         <div class="container">
                 <section class="col-md-12">
                         <div class="panel-body">
                           <article class="panel-body">
                             <figure class="text-center">
-                            <img src="{{ URL::asset('files/'.$cv_details->images) }}" class="img-thumbnail img-circle img-responsive" style="width:200px; height:300" alt="me">
-                            <br>  
+                       
+                            <p id="images"></p>
                             <br>  
                             <figcaption>
 
-                              <h3>{{ $cv_details->first_name }} {{ $cv_details->last_name }}</h3> {{ $cv_details->permanent_add}}
-                                <br> Tel. {{ $cv_details->mobile }} E-mail: {{ $cv_details->email }}
+                                <p id="email"></p>
+                                <p id="mobile"></p>
                               </figcaption>
                             </figure>
                           </article>
@@ -1089,41 +1161,49 @@
                           <div class="table-responsive">
                             <table class="table">
                               <thead class="thead-dark">
-                                <tr>
-                             
-                                  <th scope="col">Personal Details </th>
-                                  <th scope="col">Education Details </th>
-                                  <th scope="col">Job Experience </th>
-                                  <th scope="col">Others </th>
-                                </tr>
+                              
                               </thead>
                               <tbody>
                                 <tr>
                                
-                                  <td ><dt>Date of Birth: <dd>{{ $cv_details->dob }}</dd></dt>
-                                    <dt>Marital Status: <dd>{{ $cv_details->maritial_status }}</dd></dt>
-                                    <dt>Gender: <dd>{{ $cv_details->gender }}</dd></dt></td>
-                                  <td>
-                                      <dt>Last Degree: <dd>{{ $cv_details->level_education}}</dd></dt>
-                                      <dt>Board: <dd>{{ $cv_details->board_education}}</dd></dt>
-                                    <dt>Institiute: <dd>{{ $cv_details->institiute}}</dd></dt>
-
-                                  <td>
-                                      <dt>Job Period: <dd>{{ $cv_details->from_date}} to {{ $cv_details->to_date}}</dd></dt>
-                                      <dt>Designation: <dd>{{ $cv_details->designation}}</dd></dt>
-                                      <dt>Company Name: <dd>{{ $cv_details->company_name}}</dd></dt>
-                                      <dt>Company Business: <dd>{{ $cv_details->compnay_buisness}}</dd></dt>
-                                      <dt>Company Location: <dd>{{ $cv_details->compnay_loacation}}</dd></dt>
-
-                                  </td>
-                                  <td>
-                                      <dt>Father Name: <dd>{{ $cv_details->father_name}}</dd></dt>
-                                      <dt>Mother Name: <dd>{{ $cv_details->mother_name}}</dd></dt>
-                                      <dt>Nationality: <dd>{{ $cv_details->nationality}}</dd></dt>
-                                      <dt>Nationality ID: <dd>{{ $cv_details->na_id}}</dd></dt>
-                                      <dt>Expected Salary: <dd>{{ $cv_details->exp_salary}}</dd></dt>
-
-                                  </td>
+                                  <td ><dt>First Name: <dd id="first_name"></dd></dt></td>
+                                  <td ><dt>Last Name: <dd id="last_name"></dd></dt></td>
+                                  <td ><dt>Date of Birth: <dd id="dob"></dd></dt></td>
+                                  <td ><dt>Maritial status: <dd id="maritial_status"></dd></dt></td>
+                                  <td ><dt> Father Name: <dd id="father_name"></dd></dt></td>
+                                  <td ><dt> Mother Name: <dd id="mother_name"></dd></dt></td>
+                                 
+                                  
+                                  
+                                  
+                                </tr>
+                                <tr>
+                               
+                                  <td ><dt>Gender : <dd id="gender"></dd></dt></td>
+                                  <td ><dt>Maritial Status : <dd id="maritial_status"></dd></dt></td>
+                                  <td ><dt>Present Address: <dd id="present_add"></dd></dt></td>
+                                  <td ><dt>Parmanent Address: <dd id="permanent_add"></dd></dt></td>
+                                  <td ><dt>Level Of Education: <dd id="level_education"></dd></dt></td>
+                                  <td ><dt>Education Board : <dd id="board_education"></dd></dt></td>
+                                  
+                                </tr>
+                                <tr>
+                               
+                                  <td ><dt>Compnay Name : <dd id="company_name"></dd></dt></td>
+                                  <td ><dt>Compnay Buisiness: <dd id="compnay_buisness"></dd></dt></td>
+                                  <td ><dt>designation: <dd id="designation"></dd></dt></td>
+                                  <td ><dt>compnay_loacation: <dd id="compnay_loacation"></dd></dt></td>
+                                  <td ><dt>job_type: <dd id="job_type"></dd></dt></td>
+                                  <td ><dt>exp_salary: <dd id="exp_salary"></dd></dt></td>
+                                  
+                                </tr>
+                                <tr>
+                               
+                                  <td ><dt>Nationality: <dd id="nationality"></dd></dt></td>
+                                  <td ><dt>ID No: <dd id="na_id"></dd></dt></td>
+                                 
+                                  
+                                  
                                 </tr>
                               
                               </tbody>
@@ -1238,9 +1318,9 @@
     <br>
     <div class="row">
             <div class="col">
-                    <label for="">Job Type</label>
-              <select style="border:1px solid #818182" class="form-control" name="job_type" id="gender">
-                  <option value="Male">Select your Job type</option>
+              <label>Job Type</label>
+              <select name="job_type" style="border:1px solid #818182" class="form-control" >
+                  <option value="none">Select your Job type</option>
                   <option value="Male">Full Time</option>
                   <option value="Female">Part Time</option>
                   <option value="Others">Entry Level</option>
@@ -1249,7 +1329,7 @@
             </div>
             <div class="col">
                     <label for="">Expect Salary</label>
-                    <input style="border:1px solid #818182" type="text" name="exp_salary" style="color:#3931af" value="{{ $cv_details->exp_salary}}" class="form-control" placeholder="Expected Salary">
+                    <input type="text" name="exp_salary" value="{{ $cv_details->exp_salary}}" style="border:1px solid #818182"  style="color:#3931af"  class="form-control" placeholder="Expected Salary">
             </div>
     </div>
     <br>
@@ -1270,25 +1350,7 @@
                     </select>
                   
                 </div>
-                <div class="col">
-                    <label for="education">Results 
-                        </label>
-                    <select  style="border:1px solid #818182" class="form-control" name="job_type" id="gender">
-                            <option>Select</option>
-                            <option value="Firs_class">First Division/Class</option>
-                            <option value="Second_class">Second  Division/Class</option>
-                            <option value="Third_class">Third Division/Class</option>
-                            <option value="Grade">Grade</option>
-                            <option value="Appeared">Appeared</option>
-                            <option value="Enrolled">Enrolled</option>
-                            <option value="Awarded">Awarded</option>
-                            <option value="Do_not_Mention">Do not mention</option>
-                            <option value="Passed" selected="">Pass</option> 
-                    </select>
-
-                    
-                  
-                </div>
+        
                 <div class="col">
                     <label for="">Expect Salary</label>
                     <input style="border:1px solid #818182" type="email" name="email" style="color:#3931af" value="{{ $cv_details->email}}" class="form-control" placeholder="Put your email">
@@ -1317,5 +1379,131 @@ $(this).tab('show');
 })
 </script>
 @endif
+
+
+<script>
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the current tab
+    
+    function showTab(n) {
+      // This function will display the specified tab of the form...
+      var x = document.getElementsByClassName("tab");
+      x[n].style.display = "block";
+      //... and fix the Previous/Next buttons:
+      if (n == 0) {
+        document.getElementById("prevBtn").style.display = "none";
+      } else {
+        document.getElementById("prevBtn").style.display = "inline";
+      }
+      if (n == (x.length - 1)) {
+        document.getElementById("nextBtn").innerHTML = "Submit";
+      } else {
+        document.getElementById("nextBtn").innerHTML = "Next";
+      }
+      //... and run a function that will display the correct step indicator:
+      fixStepIndicator(n)
+    }
+    
+    function nextPrev(n) {
+      // This function will figure out which tab to display
+      var x = document.getElementsByClassName("tab");
+      // Exit the function if any field in the current tab is invalid:
+      if (n == 1 && !validateForm()) return false;
+      // Hide the current tab:
+      x[currentTab].style.display = "none";
+      // Increase or decrease the current tab by 1:
+      currentTab = currentTab + n;
+      // if you have reached the end of the form...
+      if (currentTab >= x.length) {
+        // ... the form gets submitted:
+        document.getElementById("form").submit();
+        return false;
+      }
+      // Otherwise, display the correct tab:
+      showTab(currentTab);
+    }
+    
+    function validateForm() {
+      // This function deals with validation of the form fields
+      var x, y, i, valid = true;
+      x = document.getElementsByClassName("tab");
+      y = x[currentTab].getElementsByTagName("input");
+      // A loop that checks every input field in the current tab:
+      for (i = 0; i < y.length; i++) {
+        // If a field is empty...
+        if (y[i].value == "") {
+          // add an "invalid" class to the field:
+          y[i].className += " invalid";
+          // and set the current valid status to false
+          valid = false;
+        }
+      }
+      // If the valid status is true, mark the step as finished and valid:
+      if (valid) {
+        document.getElementsByClassName("step")[currentTab].className += " finish";
+      }
+      return valid; // return the valid status
+    }
+    
+    function fixStepIndicator(n) {
+      // This function removes the "active" class of all steps...
+      var i, x = document.getElementsByClassName("step");
+      for (i = 0; i < x.length; i++) {
+        x[i].className = x[i].className.replace(" active", "");
+      }
+      //... and adds the "active" class on the current step:
+      x[n].className += " active";
+    }
+    </script>
+
+    <script>
+    
+    function DoviewAction(id)
+{
+    $.ajax({
+         type: "get",
+         url: "/online/member/cv/view",
+         data: "id=" + id,
+         dataType: 'json',
+         success: function(data){
+      if(data){
+                var text = "No Files There !";
+                $('#viewcv').modal('show');
+                $('#first_name').text(data.first_name);
+                $('#last_name').text(data.last_name);
+                $('#nationality').text(data.nationality);
+                $('#na_id').text(data.na_id);
+                $('#father_name').text(data.father_name);
+                $('#mother_name').text(data.mother_name);
+                $('#dob').text(data.dob);
+                $('#mobile').text(data.mobile);
+                $('#gender').text(data.gender);
+                $('#maritial_status').text(data.maritial_status);
+                $('#present_add').text(data.present_add);
+                $('#permanent_add').text(data.permanent_add);
+                $('#level_education').text(data.level_education);
+                $('#board_education').text(data.board_education);
+                $('#institiute').text(data.institiute);
+                $('#company_name').text(data.company_name);
+                $('#compnay_buisness').text(data.compnay_buisness);
+                $('#compnay_loacation').text(data.compnay_loacation);
+                $('#email').text(data.email);
+                $('#job_type').text(data.job_type);
+                $('#exp_salary').text(data.exp_salary);
+                $('#designation').text(data.designation);
+                if(data.images){
+                $('#images').html('<img src="files/' + data.images + '" width="100" />');
+              
+              }else{
+                $('#attachment').text(text);
+              }
+          }
+        }
+    });
+}
+    
+    
+    
+    </script>
 
 @endsection
