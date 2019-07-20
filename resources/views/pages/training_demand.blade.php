@@ -13,7 +13,12 @@
         } 
             ?>
 
+@php
+    
+    $blood = DB::table('members')->orderBy('id', 'DESC')->get();
 
+    $job_areas = DB::table('job_categories')->get();
+@endphp
 <div class="section section-pad">
         <div class="container">
             <div class="row">
@@ -53,16 +58,17 @@
                         <div class="wgs-search">
                             <div class="wgs-content">
                                 <div class="form-group">
-                                    <h3> Search Employees </h3>
-                                    
-                                        <select class="form-control" id="sel1">
-                                                <option value=""> - select -</option>
-                                            
-                                                <option value="Accounting/Finance">Accounting/Finance</option>
-                                                        <option value="Bank/ Non-Bank Fin. Institution">Bank/ Non-Bank Fin. Institution</option>
-                                                        
-                                              </select>
-                                              <button type="button" class="btn btn-primary">Search</button>
+                                    <p class="text-center"> Select Job Areas </p>
+    <form method="post" action="{{URL::to('/search/result/job/areas') }}">
+        @csrf
+    <select id="search" name="job_areas" onchange="this.form.submit()" class="form-control">
+
+                  <option selected>Select</option>
+                  @foreach( $job_areas as $jobs )
+                  <option value="{{ $jobs->id }}">{{ $jobs->category_name }}</option>
+                  @endforeach
+                </select>
+</form>
                                 </div>
                             </div>
                             <div class="gaps size-1x"></div>
@@ -71,15 +77,17 @@
                         <div class="wgs-post">
                             <div class="wgs-content">
                                     <div class="form-group">
-                                            <h3> Search Jobs  </h3>
-                                            
-                                                <select class="form-control" id="sel1">
-                                                        <option value=""> - select -</option>
-                                                    
-                                                        <option value="Accounting/Finance">Accounting/Finance</option>
-                                                       
-                                                      </select>
-                                                      <button type="button" class="btn btn-primary">Search</button>
+                                        <p class="text-center"> Select Blood Group </p>
+                                        <form method="post" action="{{URL::to('/search/result') }}">
+                                            @csrf
+                                        <select id="search" name="blood_group" onchange="this.form.submit()" class="form-control">
+                                    
+                                                      <option selected>Select</option>
+                                                      @foreach( $blood as $b )
+                                                      <option value="{{ $b->blood_group }}">{{ $b->blood_group }}</option>
+                                                      @endforeach
+                                                    </select>
+                                    </form>
                                         </div>
                             </div>
                             <div class="gaps size-2x"></div>

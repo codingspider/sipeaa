@@ -46,7 +46,7 @@ $cart = Cart::count();
   
                 <thead>
                     <tr>
-                        <th>Product</th>
+                        <th>Course</th>
                         <th>Quantity</th>
                         <th> Update</th>
                         <th class="text-center">Price</th>
@@ -61,7 +61,7 @@ $cart = Cart::count();
                         <td class="col-sm-8 col-md-6">
                         <div class="media">
                             <a class="thumbnail pull-left" href="#"> 
-                              <img class="media-object" src="{{ URL::asset('images/'.$value->options->images) }}" style="width: 72px; height: 72px;"> </a>
+                              <img class="media-object" src="{{ URL::asset('documents/'.$value->options->images) }}" style="width: 72px; height: 72px;"> </a>
                             <div class="media-body">
                                 <h4 class="media-heading"><a href="#">{{ $value->name }}</a></h4>
                             </div>

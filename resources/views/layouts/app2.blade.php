@@ -138,8 +138,8 @@
 								<div class="header-row">
 									<div class="header-logo header-logo-sticky-change">
 										<a href="index.html">
-											<img class="header-logo-sticky opacity-0" alt="Porto" width="100" height="60" data-sticky-width="89" data-sticky-height="43" data-sticky-top="88" src="{{ asset('images/cropped-Logo-Final-Masum.png')}}">
-                                        <img class="header-logo-non-sticky opacity-0" alt="Porto" width="100" height="60" src="{{ asset('images/cropped-Logo-Final-Masum.png')}}">
+											<img class="header-logo-sticky opacity-0"  width="100" height="40" data-sticky-width="77" data-sticky-height="60" data-sticky-top="80" src="{{ asset('images/cropped-Logo-Final-Masum.png')}}">
+                                        <img class="header-logo-non-sticky opacity-0"  width="100" height="40" src="{{ asset('images/cropped-Logo-Final-Masum.png')}}">
 										</a>
 									</div>
 								</div>
@@ -159,12 +159,12 @@
 							</div>
 						</div>
 					</div>
-					<div class="header-nav-bar bg-primary" data-sticky-header-style="{'minResolution': 991}" data-sticky-header-style-active="{'background-color': 'transparent'}" data-sticky-header-style-deactive="{'background-color': '#0088cc'}">
+					<div style="background:#7585bf" class="header-nav-bar" data-sticky-header-style="{'minResolution': 991}" data-sticky-header-style-active="{'background-color': '#7585bf'}" data-sticky-header-style-deactive="{'background-color': '#7585bf'}">
 						<div class="container">
 							<div class="header-row">
 								<div class="header-column">
 									<div class="header-row justify-content-end">
-										<div class="header-nav header-nav-force-light-text justify-content-start py-2 py-lg-3" data-sticky-header-style="{'minResolution': 991}" data-sticky-header-style-active="{'margin-left': '135px'}" data-sticky-header-style-deactive="{'margin-left': '0'}">
+										<div class="header-nav header-nav-force-light-text justify-content-start py-2 py-lg-2" data-sticky-header-style="{'minResolution': 991}" data-sticky-header-style-active="{'margin-left': '135px'}" data-sticky-header-style-deactive="{'margin-left': '0'}">
 											<div class="header-nav-main header-nav-main-effect-1 header-nav-main-sub-effect-1">
 												<nav class="collapse">
 													<ul class="nav nav-pills" id="mainNav">
@@ -202,7 +202,7 @@
 																
                                                                     <li><a class="dropdown-item" href="{{ URL::to('/all/jobs') }}">All Jobs </a></li>
                                                                     <li><a class="dropdown-item" href="{{URL::to('/post/jobs') }}">Job Posting </a></li>
-                                                                    <li><a class="dropdown-item" href="#">Job Posting Board </a></li>
+                                                                    <li><a class="dropdown-item" href="{{ URL::to('/course/posting/board') }}">Job Posting Board </a></li>
 															</ul>
 														</li>
 														<li class="dropdown dropdown-full-color dropdown-light">
@@ -239,13 +239,13 @@
 														</li>
 													
 														
-														<li class="pull-left">
+														<li class="pull-left dropdown dropdown-full-color dropdown-light">
 														<a class="dropdown-item dropdown-toggle pull-left" href="{{ URL::to('show/cart')}}">
 																My Cart
 															</a>
 														
 														</li>
-														<li class="pull-left">
+														<li class="pull-left dropdown dropdown-full-color dropdown-light">
 														<a class="dropdown-item dropdown-toggle pull-left" href="{{ URL::to('contact-us')}}">
 																Contact Us
 															</a>
@@ -280,15 +280,14 @@
             @yield('content')
 
 			<footer id="footer" class="mt-0">
-				<div class="container my-4">
-					<div class="row py-5">
-						<div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
-							<h5 class="text-5 text-transform-none font-weight-semibold text-color-light mb-4">Contact Details</h5>
-							<p class="text-4 mb-0">Porto Template 123</p>
-							<p class="text-4 mb-0">Porto Blvd, Suite</p>
-							<p class="text-4 mb-0">New York</p>
+				<div class="container my-3">
+					<div class="row py-3">
+						<div class="col-md-12">
+							
+							<p class="text-center" style="color:blue">Copyright 2019 © SIPEAA . All Rights Reserved.</p>
+						
 						</div>
-						<div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+						{{-- <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
 							<h5 class="text-5 text-transform-none font-weight-semibold text-color-light mb-4">Opening Hours</h5>
 							<p class="text-4 mb-0">Mon-Fri: <span class="text-color-light">8:30 am to 5:00 pm</span></p>
 							<p class="text-4 mb-0">Saturday: <span class="text-color-light">9:30 am to 1:00 pm</span></p>
@@ -306,20 +305,10 @@
 								<li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
 								<li class="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
 							</ul>
-						</div>
+						</div> --}}
 					</div>
 				</div>
-				<div class="container">
-					<div class="footer-copyright footer-copyright-style-2 pb-4">
-						<div class="py-2">
-							<div class="row py-4">
-								<div class="col d-flex align-items-center justify-content-center mb-4 mb-lg-0">
-									<p>© Copyright 2019. All Rights Reserved.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+		
 			</footer>
 		</div>
 

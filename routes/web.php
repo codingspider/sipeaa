@@ -2,18 +2,22 @@
 
 use App\Events\UserChat;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::group(['middleware' => ['MustBeAdmin']], function () { 
+Route::get('/training/post', 'TrainingController@index');
+Route::post('/training/post/success', 'TrainingController@add_training');
+Route::get('training/course/list', 'TrainingCartController@training_list');
+Route::get('training/course/edit/{id}', 'TrainingCartController@training_edit');
+Route::get('/view/course/order/list', 'ShippingOrderController@index');
+Route::get('/blog/admin/assign', 'BlogAdminController@blog_admin_view');
+Route::get('/assign/trainer/view', 'TrainingDemandController@assign_trainer_view');
+Route::get('/training/lists/status', 'TrainingDemandController@training_status');
+Route::get('/user/approval', 'RegistrationController@member_approve');
+Route::get('/employee/approval', 'RegistrationController@employee_approve');
+Route::get('/transaction/manage', 'AccountsController@transactions_control');
+Route::get('/library/authorisation', 'LibraryController@library_authorising');
+Route::get('/messages/','MessageController@all_message');
 
-
+});
 
 Route::get('/', 'EventController@index');
 
@@ -29,15 +33,19 @@ Route::post('/employee/registration', 'RegistrationController@employe_store');
 
 Route::get('/registration/pages/employee', 'RegistrationController@employee_index');
 
+Route::get('/error', function () {
 
+    return view('pages.error');
+    
+});
 
 Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 Route::get('/logout', 'Auth\LoginController@logout');
 
-Route::get('/user/approval', 'RegistrationController@member_approve');
-Route::get('/employee/approval', 'RegistrationController@employee_approve');
+
+
 Route::get('/user/profile/details/{id}', 'RegistrationController@user_employee_profile');
 Route::get('/member/profile/details/{id}', 'RegistrationController@user_member_profile');
 
@@ -68,7 +76,7 @@ Route::post('/search', 'JobController@search_by_name');
 Route::get('/about', 'AboutController@index');
 
 
-Route::get('/transaction/manage', 'AccountsController@transactions_control');
+
 
 Route::post('/transaction/delete/{id}', 'AccountsController@transactions_delete');
 
@@ -102,7 +110,6 @@ Route::get('/export_excel', 'ExportExcelController@index');
 
 Route::get('/export/excel/report', 'ExportExcelController@excel');
 
-Route::get('/library/authorisation', 'LibraryController@library_authorising');
 
 
 Route::get('/edit/head/{id}', 'ShareController@edit');
@@ -121,18 +128,17 @@ Route::post('/library/update/status', 'LibraryController@library_update_status')
 Route::get('/delete/library/{id}', 'LibraryController@library_delete_status');
 
 
-Route::get('/training/post', 'TrainingController@index');
-Route::post('/training/post/success', 'TrainingController@add_training');
+
 
 
 Route::post('/training/demand/post', 'TrainingDemandController@training_demand');
 Route::get('/training/lists', 'TrainingDemandController@training_list');
 
-Route::get('/training/lists/status', 'TrainingDemandController@training_status');
+
 
 Route::post('/change/status/update', 'TrainingDemandController@training_status_update');
 
-Route::get('/assign/trainer/view', 'TrainingDemandController@assign_trainer_view');
+
 
 Route::post('/assign/trainer', 'TrainingDemandController@assign_trainer');
 
@@ -140,9 +146,9 @@ Route::get('/training/demand/delete/{id}', 'TrainingDemandController@training_de
 
 
 Route::get('training/course/details/{id}', 'TrainingCartController@details');
-Route::get('training/course/list', 'TrainingCartController@training_list');
+
 Route::get('training/course/delete/{id}', 'TrainingCartController@training_delete');
-Route::get('training/course/edit/{id}', 'TrainingCartController@training_edit');
+
 Route::post('training/post/update', 'TrainingCartController@training_update');
 
 
@@ -170,7 +176,7 @@ Route::get('contact-us', 'ContactusController@index');
 Route::post('send/contact/mail', 'ContactusController@send_mail');
 
 
-Route::get('/view/course/order/list', 'ShippingOrderController@index');
+
 Route::post('/change/course/order/status', 'ShippingOrderController@change_status');
 Route::get('/delete/course/order/{id}', 'ShippingOrderController@delete_order');
 
@@ -246,7 +252,7 @@ Route::get('/admin/message/sent/{id}','MessageController@admin_users');
 
 Route::get('read/message/by/user/{id}','MessageController@all_read_message');
 
-Route::get('/blog/admin/assign', 'BlogAdminController@blog_admin_view');
+
 Route::post('/create/blog/admin', 'BlogAdminController@blog_admin_create');
 Route::get('/blog/admin/delete/{id}', 'BlogAdminController@blog_admin_delete');
 Route::get('/blog/admin/active/{id}', 'BlogAdminController@blog_admin_active');

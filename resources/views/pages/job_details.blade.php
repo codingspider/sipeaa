@@ -9,6 +9,14 @@ foreach ($data_jobs as  $jobs) {
 }
    
 @endphp
+@php
+    //$data = DB::table('job_location')->orderBy('id', 'DESC')->get();
+
+    $blood = DB::table('members')->orderBy('id', 'DESC')->get();
+
+    $job_areas = DB::table('job_categories')->get();
+
+@endphp
 
 @if(session()->has('message'))
     <div class="alert alert-success text-center">
@@ -119,19 +127,32 @@ document.getElementById('myButton').value='Submitting, please wait...';">
                               <br>
                               <br>
                               <div class="form-group">
-                                <h3> Search Employees </h3>
-                                <form method="POST" action="{{ URL::to('/search/employes') }}">
+                                <h3> Search By Blood Group </h3>
+                                <form method="post" action="{{URL::to('/search/result') }}">
                                   @csrf
-                                    <select name="cate_id" class="form-control" id="sel1">
-                                  <option> - select a job category-</option>
-                                        @foreach ($data_jobs as $item)
-                                            
-                                    <option value="{{ $item->id}}">{{ $item->category_name}}</option>
-                                        @endforeach
-                                                    
+                              <select id="search" name="blood_group" onchange="this.form.submit()" class="form-control">
+                          
+                                            <option selected>Select</option>
+                                            @foreach( $blood as $b )
+                                            <option value="{{ $b->blood_group }}">{{ $b->blood_group }}</option>
+                                            @endforeach
                                           </select>
-                                          <br>
-                                        <button type="submit" class="btn btn-primary">Search</button>
+                          </form>
+                              </div>
+                              <div class="form-group">
+                                <h3>Search By JOb Area</h3>
+                                <form method="post" action="{{URL::to('/search/result/job/areas') }}">
+                                  @csrf
+                              <select id="search" name="job_areas" onchange="this.form.submit()" class="form-control">
+                          
+                                            <option selected>Select</option>
+                                            @foreach( $job_areas as $jobs )
+                                            <option value="{{ $jobs->id }}">{{ $jobs->category_name }}</option>
+                                            @endforeach
+                                          </select>
+                          </form>
+                              </div>
+                                
                             </div>
                         
                     </div>

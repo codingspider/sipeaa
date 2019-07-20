@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\HourlyUpdate::class,
+        'App\Console\Commands\HourlyUpdate',
     ];
 
     /**
@@ -24,8 +24,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('word:day')
-            ->daily();
+        $schedule
+        -> command('word:day')
+        -> everyMinute()
+        -> appendOutputTo ('/my/logs/laravel_output.log');
     }
 
     /**

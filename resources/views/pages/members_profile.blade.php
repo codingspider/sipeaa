@@ -443,14 +443,12 @@
                       <p class="proile-rating">RANKINGS : <span>8/10</span></p>
               <ul class="nav nav-tabs" id="myTab" role="tablist">
                   <li class="nav-item">
-                      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" style="color:blue;" aria-controls="home" aria-selected="true">My CV</a>
+                      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" style="color:blue;" aria-controls="home" aria-selected="true">My Uploaded CV</a>
                   </li>
                   <li class="nav-item">
                       <a class="nav-link" id="home-tab" data-toggle="tab" href="#apply" role="tab" aria-controls="home" style="color:blue;" aria-selected="true">Applied Job List</a>
                   </li>
-                  <li class="nav-item">
-                      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" style="color:blue;" aria-selected="false">View CV</a>
-                  </li>
+                  
               </ul>
           </div>
       </div>
@@ -856,9 +854,7 @@
               <br>
               <br>
              
-              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        demo
-              </div>
+              
               <div class="tab-pane fade" id="apply" role="tabpanel" aria-labelledby="profile-tab">
                           
                   <div class="row">

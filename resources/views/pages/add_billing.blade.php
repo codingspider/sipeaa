@@ -24,18 +24,18 @@
                   <div class="row">
                         <div class="col-50">
                           <label for="state">First Name</label>
-                          <input type="text" id="state" name="first_name" placeholder="First Name">
+                          <input style=" border: 1px solid black;" style=" border: 1px solid black;" type="text" id="state" name="first_name" placeholder="First Name">
                         </div>
                         <div class="col-50">
                           <label for="zip">Last Name</label>
-                          <input type="text" id="zip" name="last_name" placeholder="Last Name">
+                          <input style=" border: 1px solid black;" type="text" id="zip" name="last_name" placeholder="Last Name">
                         </div>
                       </div>
                   <label for="fname"><i class="fa fa"></i> Company Name </label>
-                  <input type="text" id="fname" name="company" placeholder="Copany Name">
+                  <input style=" border: 1px solid black;" type="text" id="fname" name="company" placeholder="Copany Name">
                   <label for="fname"><i class="fa fa"></i> Select Country </label>
 
-                  <select name="country_name" class="form-control" name="" id="">
+                  <select style=" border: 1px solid black;" name="country_name" class="form-control" name="" id="">
                       <option value="">Select Your Country</option>
                       @foreach ($country as $value)
                           
@@ -46,26 +46,26 @@
                   <br>
                   
                   <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-                  <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+                  <input style=" border: 1px solid black;" type="text" id="adr" name="address" placeholder="542 W. 15th Street">
                   <label for="city"><i class="fa fa-institution"></i> City</label>
-                  <input type="text" id="city" name="city" placeholder="New York">
+                  <input style=" border: 1px solid black;" type="text" id="city" name="city" placeholder="New York">
       
                   <div class="row">
                     <div class="col-50">
                       <label for="state">State</label>
-                      <input type="text" id="state" name="state" placeholder="NY">
+                      <input style=" border: 1px solid black;" type="text" id="state" name="state" placeholder="NY">
                     </div>
                     <div class="col-50">
                       <label for="zip">Zip</label>
-                      <input type="text" id="zip" name="postal" placeholder="10001">
+                      <input style=" border: 1px solid black;" type="text" id="zip" name="postal" placeholder="10001">
                     </div>
                     
                   </div>
                   <label for="email"><i class="fa fa-"></i> Email</label>
-                  <input type="text" id="email" name="email" placeholder="john@example.com">
+                  <input style=" border: 1px solid black;" type="text" id="email" name="email" placeholder="john@example.com">
                   <br>
                   <label for="email"><i class="fa fa-"></i> Phone </label>
-                  <input type="text" id="email" name="phone" placeholder="john@example.com">
+                  <input style=" border: 1px solid black;" type="text" id="email" name="phone" placeholder="john@example.com">
                 </div>
                 @foreach ($data as $item)
                     
@@ -86,7 +86,7 @@
                   
                   </div>
                   <label for="cname">Bkash Transaction Number</label>
-                  <input type="text" id="cname" name="transaction" placeholder="HFDO65DSF" required>
+                  <input style=" border: 1px solid black;" type="text" id="cname" name="transaction" placeholder="HFDO65DSF" required>
                   
                
                 </div>
@@ -98,8 +98,8 @@
           </div>
         </div>
       
-        <div class="col-25">
-          <div class="container">
+        <div  class="col-25">
+          <div style=" border: 1px solid black;" class="container">
             <h4>Cart 
               <span class="price" style="color:black">
                 <i class="fa fa-shopping-cart"></i> 
@@ -204,3 +204,13 @@ span.price {
 }
       </style>
 @endsection
+
+while($row=mysqli_fetch_array($res,MYSQLI_ASSOC)) 
+{
+         $menu .="<li><a href="'.$row['cat_slug'].'.$row['id'].">".$row['name']."</a>";
+     
+     $menu .= "<ul>".get_menu_tree($row['id'])."</ul>"; //call  recursively
+     
+      $menu .= "</li>";
+
+  }

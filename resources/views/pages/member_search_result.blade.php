@@ -25,7 +25,7 @@
                      <div class="col-sm-6">
                          <div class="blog-post shadow round">
                              
-                         <div class="post-thumb"><a href="#"><img src="{{ asset("images/".$item->images)}}"></a></div>
+                         <div class="post-thumb"><a href="#"><img height="200px;" width="100%" src="{{ asset("images/".$item->images)}}"></a></div>
                              <div class="post-entry">
                                  <div class="post-meta"><span>{{ $item->first_name }} {{ $item->last_name }}</span></div>
                                  <h5><a href="#">{{ $item->user_id  }}</a></h5>
@@ -47,57 +47,35 @@
             <br>
              <div class="col-md-3 col-md-offset-1">
                  <div class="sidebar-right wgs-box">
-                     <div class="wgs-search">
-                         <div class="wgs-content">
-                             <div class="form-group">
-                                 <input type="text" class="form-control"  placeholder="Search...">
-                                 <button class="search-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
-                             </div>
-                         </div>
-                         <div class="gaps size-1x"></div>
-                     </div>
+                   
                      <!-- Each Widget -->
-                     <div class="wgs-post">
-                         <h5 class="wgs-title">Recent Blog</h5>
-                         <div class="wgs-content">
-                             <div class="wgs-post-single">
-                                 <div class="wgs-post-thumb">
-                                     <img src="images/post-thumb-sm-a.jpg" alt="post-thumb">
-                                 </div>
-                                 <div class="wgs-post-entry">
-                                     <h6 class="wgs-post-title"><a href="blog-single.html">Working Hard to Keep Pace with Demand </a></h6>
-                                     <span class="wgs-post-meta">December 19, 2017</span>
-                                 </div>
-                             </div>
-                             <div class="wgs-post-single">
-                                 <div class="wgs-post-thumb">
-                                     <img src="images/post-thumb-sm-b.jpg" alt="post-thumb">
-                                 </div>
-                                 <div class="wgs-post-entry">
-                                     <h6 class="wgs-post-title"><a href="blog-single.html">Working Hard to Keep Pace with Demand </a></h6>
-                                     <span class="wgs-post-meta">December 19, 2017</span>
-                                 </div>
-                             </div>
-                             <div class="wgs-post-single">
-                                 <div class="wgs-post-thumb">
-                                     <img src="images/post-thumb-sm-c.jpg" alt="post-thumb">
-                                 </div>
-                                 <div class="wgs-post-entry">
-                                     <h6 class="wgs-post-title"><a href="blog-single.html">Working Hard to Keep Pace with Demand </a></h6>
-                                     <span class="wgs-post-meta">December 19, 2017</span>
-                                 </div>
-                             </div>
-                             <div class="wgs-post-single">
-                                 <div class="wgs-post-thumb">
-                                     <img src="images/post-thumb-sm-d.jpg" alt="post-thumb">
-                                 </div>
-                                 <div class="wgs-post-entry">
-                                     <h6 class="wgs-post-title"><a href="blog-single.html">Working Hard to Keep Pace with Demand </a></h6>
-                                     <span class="wgs-post-meta">December 19, 2017</span>
-                                 </div>
-                             </div>
-                         </div>
-                         <div class="gaps size-2x"></div>
+                     <div  class="wgs-post">
+                        <p class="text-center"> Select Job Areas </p>
+                        <form method="post" action="{{URL::to('/search/result/job/areas') }}">
+                            @csrf
+                        <select style=" border: 1px solid black;" id="search" name="job_areas" onchange="this.form.submit()" class="form-control">
+                    
+                                      <option selected>Select</option>
+                                      @foreach( $job_areas as $jobs )
+                                      <option value="{{ $jobs->id }}">{{ $jobs->category_name }}</option>
+                                      @endforeach
+                                    </select>
+                                    </form>
+
+                                    <br>
+                                    <p  class="text-center"> Select Blood Group </p>
+                                    <form method="post" action="{{URL::to('/search/result') }}">
+                                        @csrf
+                                    <select  style=" border: 1px solid black; id="search" name="blood_group" onchange="this.form.submit()" class="form-control">
+                                
+                                                  <option selected>Select</option>
+                                                  @foreach( $blood as $b )
+                                                  <option value="{{ $b->blood_group }}">{{ $b->blood_group }}</option>
+                                                  @endforeach
+                                                </select>
+                                </form>
+                        
+                        
                      </div>
                      <!-- End Widget -->
                      

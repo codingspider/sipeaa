@@ -2,25 +2,23 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Support\Carbon;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\DB;
 
-class HourlyUpdate extends Command
+class MonthlyUpdate extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'word:day';
+    protected $signature = 'command:name';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'delete record monthly';
+    protected $description = 'Monthly Job Expired ';
 
     /**
      * Create a new command instance.
@@ -39,7 +37,6 @@ class HourlyUpdate extends Command
      */
     public function handle()
     {
-        $stale_posts = DB::table('jobs')->where('created_at', '<', Carbon::now()->monthly())->delete();
-        
+        //
     }
 }
