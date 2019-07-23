@@ -58,6 +58,7 @@ class JobController extends Controller
        $data['user_id']=Auth::id();
        $data['status']=1;
        $data['exp_salary']=$request->expected_salary;
+       $data['cv']=$request->cv;
        
         $success = DB::table('job_applies')->insert($data);
         if($success){

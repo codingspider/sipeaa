@@ -35,7 +35,7 @@
     <select name="training_cat" style="border:1px solid #818182" class="form-control" required="">
       <option>Select.....</option>
             @foreach($data as $value)
-      <option value="{{ $value->name}}">{{ $value->name}} </option>
+      <option value="{{ $value->id}}">{{ $value->name}} </option>
       @endforeach
     </select>
     <br>
@@ -79,10 +79,10 @@
 
     <div class="form-group">
     <label for="exampleInputPassword1" style="color: green;">Choose a file to upload (Max. 1MB):</label>
-    <input type="file"  name="images" class="form-control" required="">
+    <input type="file"  name="images" class="form-control" >
   </div>
 
-  <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+  <input type="text" name="user_id" value="{{ CRUDBooster::myId() }}">
   <br>
   <br>
   <button type="submit" class="btn btn-primary">Post Now</button>

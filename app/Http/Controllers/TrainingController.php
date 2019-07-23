@@ -27,6 +27,7 @@ class TrainingController extends Controller
     {       
 
 
+
     $data[] = $request->images;
 
     $validate = Validator::make($data, [

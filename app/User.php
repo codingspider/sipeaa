@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Demand;
 use App\Message;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Notifiable;
@@ -53,8 +54,12 @@ class User extends Authenticatable
            return true;
         }
 
-        
-
         return false;
     }
+
+    public function vote ()
+        {
+            return $this->belongsToMany(Demand::class, 'user_id');
+                
+        }
 }

@@ -65,7 +65,7 @@ Route::post('/creat/group', 'GroupController@create_group');
 Route::get('/post/jobs', 'JobController@index'); 
 Route::post ('/search/employes', 'JobController@search_employees'); 
 
-Route::get('/job/details/page/{id}', 'JobController@job_details'); 
+
 Route::post('/job/application/success', 'JobController@job_apply'); 
 
 Route::post('/post/jobs/save', 'JobController@add_new_job'); 
@@ -94,8 +94,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/upload/library', 'LibraryController@library_upload');
     Route::get('/add/library', 'LibraryController@index');
     Route::get('/training/demand', 'TrainingDemandController@index');
+    Route::get('/all/training/demand', 'TrainingDemandController@all_demand_training');
+    Route::get('/training/demand/list/details/{id}', 'TrainingDemandController@all_demand_training_list');
+    Route::post('/vote/for/training', 'TrainingDemandController@vote_training');
     Route::get('/all/unread/messages','MessageController@all_unread_message');
     Route::get('/all/jobs', 'JobController@all_job'); 
+    Route::get('/job/details/page/{id}', 'JobController@job_details'); 
 
 
 });

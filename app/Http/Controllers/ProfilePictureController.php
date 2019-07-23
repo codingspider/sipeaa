@@ -15,18 +15,18 @@ class ProfilePictureController extends Controller
 
     
 
-    $data= $request->old_images;
+   
     $id= $request->user_id;
 
 
     if(Input::hasFile('images'))
                 {
-                    $usersImage = public_path("files/".$data); // get previous image from folder
+                    // $usersImage = public_path("files/".$data); // get previous image from folder
                    
 
-                    if (File::exists($usersImage)) { // unlink or remove previous image from folder
-                        unlink($usersImage);
-                    }
+                    // if (File::exists($usersImage)) { // unlink or remove previous image from folder
+                    //     unlink($usersImage);
+                    // }
                     $image = $request->file('images');
                     $name = time().'.'.$image->getClientOriginalExtension();
                     $destinationPath = public_path('/files');

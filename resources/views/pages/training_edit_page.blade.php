@@ -81,7 +81,8 @@
     <input type="file"  name="images" class="form-control" >
   </div>
 
-  <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+  <input type="hidden" name="user_id" value="{{ CRUDBooster::myId() }}">
+  <input type="hidden" name="id" value="{{ $data->id}}">
   <br>
   <br>
   <button type="submit" class="btn btn-primary">Update Now</button>

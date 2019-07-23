@@ -32,25 +32,18 @@
         <h2 class="name">
           {{ $data->course_title}}
         <small>Trainer <a href="javascript:void(0);">{{$data->uname}}</a></small>
-          <i class="fa fa-star fa-2x text-primary"></i>
-          <i class="fa fa-star fa-2x text-primary"></i>
-          <i class="fa fa-star fa-2x text-primary"></i>
-          <i class="fa fa-star fa-2x text-primary"></i>
-          <i class="fa fa-star fa-2x text-muted"></i>
-          <span class="fa fa-2x"><h5>(109) Votes</h5></span>  
-          <a href="javascript:void(0);">109 customer reviews</a>
+        <small>Registration Fee: <a href="javascript:void(0);">{{$data->reg_fee}}</a></small>
+          
         </h2>
         <h2 class="name">
           <small>{{ $data->description}}</small>
    
         </h2>
         <hr>
-        <h3 class="price-container">
-         <strong>Course Fee:</strong>  ৳ {{ $data->reg_fee}}
-        </h3>
+      
         <div class="certified">
           <ul>
-            <li><a href="javascript:void(0);">Delivery time<span>7 Working Days</span></a></li>
+
             <li><a href="javascript:void(0);">Certified<span>Quality Assured</span></a></li>
           </ul>
         </div>
@@ -73,88 +66,7 @@
 
                 </form>
              </div>
-        <div class="description description-tabs">
-          <ul id="myTab" class="nav nav-pills">
-            <li class=""><a href="#more-information" data-toggle="tab" class="no-margin">Reviews</a>
-              <br>
-              <br>
-              <form method="post" class="well padding-bottom-10" onsubmit="return false;">
-                <textarea rows="2" class="form-control" placeholder="Write a review"></textarea>
-                <div class="margin-top-10">
-                  <br>
-                  <br>
-                  <button type="submit" class="btn btn-sm btn-primary pull-right">
-                    Submit Review
-                  </button>
-                  <a href="javascript:void(0);" class="btn btn-link profile-link-btn" rel="tooltip" data-placement="bottom" title="" data-original-title="Add Location"><i class="fa fa-location-arrow"></i></a>
-                  <a href="javascript:void(0);" class="btn btn-link profile-link-btn" rel="tooltip" data-placement="bottom" title="" data-original-title="Add Voice"><i class="fa fa-microphone"></i></a>
-                  <a href="javascript:void(0);" class="btn btn-link profile-link-btn" rel="tooltip" data-placement="bottom" title="" data-original-title="Add Photo"><i class="fa fa-camera"></i></a>
-                  <a href="javascript:void(0);" class="btn btn-link profile-link-btn" rel="tooltip" data-placement="bottom" title="" data-original-title="Add File"><i class="fa fa-file"></i></a>
-                </div>
-              </form>
-<br>
-<br>
-<br>
-              <div class="chat-body no-padding profile-message">
-                <ul>
-                  <li class="message">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="online">
-                    <span class="message-text"> 
-                      <a href="javascript:void(0);" class="username">
-                        Alisha Molly 
-                        <span class="badge">Purchase Verified</span> 
-                        <span class="pull-right">
-                          <i class="fa fa-star fa-2x text-primary"></i>
-                          <i class="fa fa-star fa-2x text-primary"></i>
-                          <i class="fa fa-star fa-2x text-primary"></i>
-                          <i class="fa fa-star fa-2x text-primary"></i>
-                          <i class="fa fa-star fa-2x text-muted"></i>
-                        </span>
-                      </a> 
-                      Can't divide were divide fish forth fish to. Was can't form the, living life grass darkness very image let unto fowl isn't in blessed fill life yielding above all moved 
-                    </span>
-                    <ul class="list-inline font-xs">
-                      <li>
-                        <a href="javascript:void(0);" class="text-info"><i class="fa fa-thumbs-up"></i> This was helpful (22)</a>
-                      </li>
-                      <li class="pull-right">
-                        <small class="text-muted pull-right ultra-light"> Posted 1 year ago </small>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="message">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="online">
-                    <span class="message-text"> 
-                      <a href="javascript:void(0);" class="username">
-                        Aragon Zarko 
-                        <span class="badge">Purchase Verified</span> 
-                        <span class="pull-right">
-                          <i class="fa fa-star fa-2x text-primary"></i>
-                          <i class="fa fa-star fa-2x text-primary"></i>
-                          <i class="fa fa-star fa-2x text-primary"></i>
-                          <i class="fa fa-star fa-2x text-primary"></i>
-                          <i class="fa fa-star fa-2x text-primary"></i>
-                        </span>
-                      </a> 
-                      Excellent product, love it!
-                    </span>
-                    <ul class="list-inline font-xs">
-                      <li>
-                        <a href="javascript:void(0);" class="text-info"><i class="fa fa-thumbs-up"></i> This was helpful (22)</a>
-                      </li>
-                      <li class="pull-right">
-                        <small class="text-muted pull-right ultra-light"> Posted 1 year ago </small>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-            </li>
-            
-          </ul>
-         
-        </div>
-        <hr>
+    
         <div class="row">
           
          

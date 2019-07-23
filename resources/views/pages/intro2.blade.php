@@ -27,7 +27,7 @@ $collection = DB::table('jobs')->orderBy('id', 'desc')->take(3)->get();
                                         
                         </div>
                     </div>
-                    <div style="background:#d9cef2; border-style: solid;" class="col-md-6" data-appear-animation="fadeInRightShorter">
+                    <div style=" border-style: solid;" class="col-md-6" data-appear-animation="fadeInRightShorter">
                       <div class="slider">
                         <div id="my_car">
                             @foreach($side_events as $value)
@@ -42,7 +42,7 @@ $collection = DB::table('jobs')->orderBy('id', 'desc')->take(3)->get();
                     </div>
                        
                     </div>
-                    <div style="background:#d9cef2; color:aqua" class="col-md-6 order-1 order-md-2 text-center text-md-left mb-5 mb-md-0 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="200">
+                    <div style="border-style: solid;" class="col-md-6 order-1 order-md-2 text-center text-md-left mb-5 mb-md-0 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="200">
                         <h2 class="text-color-dark font-weight-normal text-6 mb-2">Up Coming  <strong class="font-weight-extra-bold">Events On Callendar</strong></h2>
                         <div id='calendar' style="width: 100%; display: inline-block;">
                                 {!! $calendar->calendar() !!}

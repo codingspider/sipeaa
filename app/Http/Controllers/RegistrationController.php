@@ -40,30 +40,15 @@ class RegistrationController extends Controller
 
             return back()->with('danger', 'This email already exists in our database');
         }
-            $data[] = $request->images;
+            
             $user =$request->user_id;
-
-        
-
-            $validate = Validator::make($data, [
-                'images' => 'required|image|mimes:jpeg,png,jpg,doc|max:5048',
-            ]);
-
-
-
-       if ($request->hasFile('images')) {
-            $image = $request->file('images');
-            $name = $image->getClientOriginalName();
-            $destinationPath = public_path('/files');
-            $image->move($destinationPath, $name);
-       }
 
             $data = array();
             $data['name'] = $request->name;
             $data['email'] = $request->user_id;
             $data['password'] = Hash::make($request->password);
             $data['user_type'] = 'employee'; 
-            $data['images'] = $name;
+            
 
 
             $users = DB::table('users')
@@ -105,26 +90,13 @@ class RegistrationController extends Controller
           
             return back()->with('danger', 'This email already exists in our database');
         }
-        $validate = Validator::make($data, [
-            'images' => 'required|image|mimes:jpeg,png,jpg,doc|max:5048',
-        ]);
-
-
-        if ($request->hasFile('images')) {
-            $image = $request->file('images');
-            $name = $image->getClientOriginalName();
-            $destinationPath = public_path('/files');
-            $image->move($destinationPath, $name);
-       }
-
-
+        
         $data = array();
         $data['name'] = $request->first_name;
         $data['email'] = $request->user_id;
         $data['password'] = Hash::make($request->password);
-        $data['images'] = $name;
         $data['user_type'] = 'member'; 
-
+        
 
         $user_id = DB::table('users')
         ->insertGetId($data);

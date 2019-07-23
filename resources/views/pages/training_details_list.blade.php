@@ -18,7 +18,7 @@
             <th>To Date</th>
             <th>Trainer</th>
             <th>Last Date</th>
-            <th>Description</th>
+    
             <th>Action</th>
           </tr>
         </thead>
@@ -36,7 +36,7 @@
           <th>{{$item->to_date}}</th>
           <th>{{$item->uname}}</th>
           <th>{{$item->last_date}}</th>
-          <th>{{$item->description}}</th>
+
           <th><button class="btn btn-danger" type="submit" onclick="window.location.href = '{{ URL::to('training/course/delete/'.$item->id)}}'">Delete</button></th>
           <th><button class="btn btn-info" type="submit" onclick="window.location.href = '{{ URL::to('training/course/edit/'.$item->id)}}'">Edit</button></th>
           </tr>

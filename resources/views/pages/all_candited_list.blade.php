@@ -12,6 +12,7 @@
                         <th scope="col">Applicant Email</th>
                         <th scope="col">Job Title </th>
                         <th scope="col">Expected Salary</th>
+                        <th scope="col">Resume</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -22,6 +23,7 @@
                       <th scope="row">{{ $item->email }}</th>
                       <th scope="row">{{ $item->title }}</th>
                       <th scope="row">{{ $item->exp_salary }}</th>
+                      <th scope="row"> <a href="{{ asset('files/'.$item->cv)}}">{{ $item->cv }}</a></th>
                       
                       </tr>
                       @endforeach

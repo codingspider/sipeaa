@@ -16,6 +16,9 @@ foreach ($data_jobs as  $jobs) {
 
     $job_areas = DB::table('job_categories')->get();
 
+    $id = Auth::id();
+    $cv = DB::table('cv')->where('user_id', $id)->first();
+
 @endphp
 
 @if(session()->has('message'))
@@ -62,22 +65,26 @@ foreach ($data_jobs as  $jobs) {
                 @php
                 use Illuminate\Support\Facades\Auth;
                     $status = DB::table('job_applies')->select('user_id')->where('job_id',$data->id)->first(); 
+                    $user_type = DB::table('users')->where('id',Auth::id())->first(); 
                 @endphp
 
                 <div class="col-md-4 col-md-offset-1">
                     <div class="sidebar-right wgs-box">
-                       @if($status->user_id == Auth::id())
-                       <p class="btn btn-warning">You already applied to this job ! </p> 
-                        @else 
-                        <p class="text-center">
-                          <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#exampleModal">
-                                  Apply Now 
-                          </button>
-                        </p>
+                      @if($user_type->user_type == 'member')
+                        @if($status->user_id == Auth::id())
+                        <p class="btn btn-warning">You already applied to this job ! </p> 
+                          @else 
+                          <p class="text-center">
+                            <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#exampleModal">
+                                    Apply Now 
+                            </button>
+                          </p>
                   
                   <p class="text-center">or </p>
                   <p class="text-center">Send Cv to admin@sipeaa.org </p>
                         @endif 
+                        @else 
+                        @endif
 
                         <!-- End Widget -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -89,6 +96,7 @@ foreach ($data_jobs as  $jobs) {
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
+                              
                <form action="{{ URL::to('/job/application/success') }}" method="POST" onsubmit="document.getElementById('myButton').disabled=true;
 document.getElementById('myButton').value='Submitting, please wait...';">
                                     @csrf
@@ -115,6 +123,8 @@ document.getElementById('myButton').value='Submitting, please wait...';">
                                                   </label>
                                     </div>
                                     <input type="hidden" name="job_id" value="{{ $data->id }}">
+                                    <input type="hidden" name="cv" value="{{ $cv->upload_file }}">
+
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                       <button type="submit" id="myButton" class="btn btn-success">Apply</button>

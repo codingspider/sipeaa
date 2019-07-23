@@ -38,7 +38,7 @@
                                             <div class="form-group row">
                                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('User ID') }}</label>
                     
-                                                <div class="col-md-6">
+                                                <div class="col-md-8">
                                                     <input  type="email" style="border:1px solid #818182" class="form-control{{ $errors->has('user_id') ? ' is-invalid' : '' }}" name="user_id" placeholder="put your your eamil id here" value="{{ old('user_id') }}" required autofocus>
                     
                                                     @if ($errors->has('user_id'))
@@ -51,7 +51,7 @@
                                             <div class="form-group row">
                                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('User Name') }}</label>
                     
-                                                <div class="col-md-6">
+                                                <div class="col-md-8">
                                                     <input  type="text" style="border:1px solid #818182" class="form-control{{ $errors->has('user_name') ? ' is-invalid' : '' }}" name="name" placeholder="your full name" value="{{ old('user_name') }}" required autofocus>
                     
                                                     @if ($errors->has('user_name'))
@@ -69,7 +69,7 @@
                                             <div class="form-group row">
                                                 <label for="password"  class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
                     
-                                                <div class="col-md-6">
+                                                <div class="col-md-8">
                                                     <input id="password" style="border:1px solid #818182" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="input your password" name="password" required>
                     
                                                     @if ($errors->has('password'))
@@ -83,7 +83,7 @@
                                             <div class="form-group row">
                                                 <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
                     
-                                                <div class="col-md-6">
+                                                <div class="col-md-8">
                                                     <input id="password-confirm" style="border:1px solid #818182" type="password" class="form-control" name="password_confirmation" placeholder="please re-enter password" required>
                                                 </div>
                                             </div>
@@ -96,7 +96,7 @@
                     <div class="form-group row">
                         <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Compnay Name') }}</label>
 
-                        <div class="col-md-6">
+                        <div class="col-md-8">
                             <input id="text" type="text" style="border:1px solid #818182" class="form-control{{ $errors->has('co_name') ? ' is-invalid' : '' }}" name="co_name" value="{{ old('co_name') }}" placeholder="company name" required>
 
                             @if ($errors->has('co_name'))
@@ -109,7 +109,7 @@
                     <div class="form-group row">
                         <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Contact Person') }}</label>
 
-                        <div class="col-md-6">
+                        <div class="col-md-8">
                             <input id="text" style="border:1px solid #818182" type="text" class="form-control{{ $errors->has('contact_person') ? ' is-invalid' : '' }}" name="contact_person" value="{{ old('contact_person') }}" placeholder="contact person name" required>
 
                             @if ($errors->has('contact_person'))
@@ -122,7 +122,7 @@
                                             <div class="form-group row">
                                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
                     
-                                                <div class="col-md-6">
+                                                <div class="col-md-8">
                                                     <input id="email" style="border:1px solid #818182" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="contact person email"  required>
                     
                                                     @if ($errors->has('email'))
@@ -137,7 +137,7 @@
                                             <div class="form-group row">
                                                     <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Contact Persons phone') }}</label>
                         
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-8">
                                                         <input style="border:1px solid #818182" id="text" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" placeholder="contact person phone" required>
                         
                                                         @if ($errors->has('phone'))
@@ -150,7 +150,7 @@
                                             <div class="form-group row">
                                                     <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Contact Persons Designation') }}</label>
                         
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-8">
                                                         <input style="border:1px solid #818182" id="text" type="text" class="form-control{{ $errors->has('designation') ? ' is-invalid' : '' }}" name="designation" value="{{ old('designation') }}" placeholder="contact person designation" required>
                         
                                                         @if ($errors->has('designation'))
@@ -159,34 +159,17 @@
                                                             </span>
                                                         @endif
                                                     </div>
-                                                    <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Job Areas  ') }}</label>
                                                     <br>
-                                        <div class="col-md-6">
-                                            <select style="border:1px solid #818182" class="form-control" name="job_areas" data-required="no" data-type="select">
-
-                                                                <option value=""> - select -</option>
-                                            @foreach ($data as $item)
-                                                
-                                                            <option value="{{ $item->id }}">{{ $item->category_name }}</option>
-                                            @endforeach
-                                                                        
-                                                                </select>
-                                                        </div>
+      
                                                 </div>
                                             <div class="form-group row">
                                                 <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Description  ') }}</label>
                 
                                                 <div class="col-md-5">
-                                                        <textarea  style="border:1px solid #818182" name="job_skill" rows="5" cols="40" placeholder="write a short description"></textarea>
+                                                        <textarea  style="border:1px solid #818182" name="job_skill" rows="5" cols="58" placeholder="write a short description"></textarea>
                                                 </div>
                                                 </div>
-                                            <div class="form-group row">
-                                                <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Photo') }}</label>
-                
-                                                <div class="col-md-5">
-                                                        <input style="border:1px solid #818182" type="file" name="images">
-                                                </div>
-                                                </div>
+                       
 
                                             <br>
                                             <div class="form-row">

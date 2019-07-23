@@ -19,12 +19,12 @@ class MemberPictureController extends Controller
     
         if(Input::hasFile('images'))
                     {
-                        $usersImage = public_path("images/".$data); // get previous image from folder
+                        //$usersImage = public_path("images/".$data); // get previous image from folder
                        
     
-                        if (File::exists($usersImage)) { // unlink or remove previous image from folder
-                            unlink($usersImage);
-                        }
+                        // if (File::exists($usersImage)) { // unlink or remove previous image from folder
+                        //     unlink($usersImage);
+                        // }
                         $image = $request->file('images');
                         $name = time().'.'.$image->getClientOriginalExtension();
                         $destinationPath = public_path('/images');

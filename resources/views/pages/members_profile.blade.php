@@ -20,7 +20,7 @@
             ->get();
 
             $cv_details = DB::table('online-cv')->where('user_id', $id)->orderBy('id', 'desc')->first();
-    $users = DB::table('users')->where('approve', 1)->get();
+    $users = DB::table('users')->where('user_type', 'member')->where('id',  '!=', $id)->get();
     $cms_users = DB::table('cms_users')->where('id_cms_privileges', 1)->get();
     
     $unread_messages = DB::table('messages')
@@ -29,7 +29,7 @@
           ->where('sent_to_id', Auth::id())
           ->where('notify_status', 0)
           ->get();
-    $id = Auth::id();
+ 
     
     $user_type = DB::table('users')->where('approve', 1)->where('id', $id)->first();
 

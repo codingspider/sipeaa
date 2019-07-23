@@ -206,19 +206,11 @@
                                                             <label class="font-weight-bold text-dark text-2">Job Skills </label>
                                 
                                                             <div class="col-md-5">
-                                                                <textarea style="border:1px solid #818182" name="job_skill" rows="5" cols="60" placeholder="enter your job skills"></textarea>
+                                                                <textarea style="border:1px solid #818182" name="job_skill" rows="5" cols="80" placeholder="enter your job skills"></textarea>
                                                             </div>
                                                     </div>
                                                 </div>
-                                            <div class="form-row">
-                                                    <div class="form-group col">
-                                                            <label class="font-weight-bold text-dark text-2">Profile Picture </label>
-                                
-                                                            <div class="col-md-5">
-                                                               <input type="file" name="images">
-                                                            </div>
-                                                    </div>
-                                                </div>
+                                   
                                             
                                             <div class="form-row">
                                                 

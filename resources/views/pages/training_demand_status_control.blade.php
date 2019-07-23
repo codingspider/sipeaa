@@ -61,16 +61,16 @@ Total Approve Training: <button class="btn btn-success">{{$approve}}</button> To
     <style>
 section .section-title {
     text-align: center;
-    color: #007b5e;
+    color:black;
     margin-bottom: 10px;
     text-transform: uppercase;
 }
 #tabs{
-	background: blue;
-    color: #eee;
+	background:burlywood;
+    color: #000;
 }
 #tabs h6.section-title{
-    color: #eee;
+    color: #000;
 }
 
 #tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
