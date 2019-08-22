@@ -201,5 +201,13 @@ class MessageController extends Controller
     public function all_message_view (Request $request){
        return 'ok';
       }
+    public function member_message_delete ($id){
+      
+        $update = DB::table('messages')
+        ->where('id',$id)
+        ->delete();
+        return back()->with('message', 'Messages deleted succesfully');
+      }
+     
    
 }

@@ -21,6 +21,7 @@ session_start();
 
 class RegistrationController extends Controller
 {
+    
     public function employee_index()
     {
         return view('pages.employee_registraion');
@@ -32,7 +33,7 @@ class RegistrationController extends Controller
 
     public function employe_store (Request $request){
 
-
+             
         $users = User::where('email', $request->user_id)->get();
 
         # check if email is more than 1

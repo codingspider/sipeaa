@@ -25,9 +25,8 @@ class TrainingCartController extends Controller
 
         $data = DB::table('trainings')
              ->join('trainings_category', 'trainings_category.id', '=', 'trainings.training_cat')
-             ->join('users', 'users.id', '=', 'trainings.trainer_id')
+             ->leftjoin('users', 'users.id', '=', 'trainings.trainer_id')
             ->select('trainings.*', 'trainings_category.name as cname', 'users.name as uname')
-
             ->get();
 
 
@@ -107,6 +106,22 @@ class TrainingCartController extends Controller
          
             }
     
+    }
+
+    public function training_assign_training(Request $request){
+
+    $data = $request->assign_trainer;
+
+     $success = DB::table('trainings')->where('id', $request->id)->update(
+            [
+            'trainer_id' => $data,
+            ]);
+        if ($success) {
+            return back()->with('success','Trainer Assigned !');
+        }else{
+            return back()->with('danger','Something went wrong! please try again');   
+        }
+
     }
         
     

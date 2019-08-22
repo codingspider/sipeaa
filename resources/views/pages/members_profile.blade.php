@@ -29,8 +29,11 @@
           ->where('sent_to_id', Auth::id())
           ->where('notify_status', 0)
           ->get();
- 
-    
+          $data = DB::table('jobs')
+                            ->where('user_id', Auth::id())
+                            ->get();
+    $job_posted = DB::table('jobs')->where('user_id', $id)->get();
+
     $user_type = DB::table('users')->where('approve', 1)->where('id', $id)->first();
 
     $employe_profile = DB::table('users')
@@ -443,10 +446,16 @@
                       <p class="proile-rating">RANKINGS : <span>8/10</span></p>
               <ul class="nav nav-tabs" id="myTab" role="tablist">
                   <li class="nav-item">
-                      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" style="color:blue;" aria-controls="home" aria-selected="true">My Uploaded CV</a>
+                      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" style="color:blue;" aria-controls="home" aria-selected="true">Uploaded CV</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" id="home-tab" data-toggle="tab" href="#apply" role="tab" aria-controls="home" style="color:blue;" aria-selected="true">Applied Job List</a>
+                      <a class="nav-link" id="home-tab" data-toggle="tab" href="#apply" role="tab" aria-controls="home" style="color:blue;" aria-selected="true">Applied Job </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" id="home-tab" data-toggle="tab" href="#posted" role="tab" aria-controls="home" style="color:blue;" aria-selected="true">Posted Job </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" id="home-tab" data-toggle="tab" href="#application" role="tab" aria-controls="home" style="color:blue;" aria-selected="true">Application  </a>
                   </li>
                   
               </ul>
@@ -859,8 +868,8 @@
                           
                   <div class="row">
                       <div class="col-md-12">
-                          <table class="table table-info">
-                              <thead>
+                          <table class="table">
+                              <thead class="thead-dark">
                                 <tr>
                                   <th scope="col">Company Name</th>
                                   <th scope="col">Applied Post</th>
@@ -883,6 +892,83 @@
                       </div>
                   </div>
               </div>
+              <div class="tab-pane fade" id="posted" role="tabpanel" aria-labelledby="profile-tab">
+                          
+                  <div class="row">
+                      <div class="col-md-12">
+                          <table class="table">
+                              <thead class="thead-dark col-md-8">
+                                <tr>
+                                  <th scope="col">Job Title</th>
+                                  <th scope="col">Company </th>
+                                  <th scope="col">Possition </th>
+                                  <th scope="col">Salary</th>
+                                  <th scope="col">Edit</th>
+                                  <th scope="col">Delete</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                @foreach ($job_posted as $item)
+                                    
+                                <tr>
+                                <th scope="row">{{ $item->title}}</th>
+                                <th scope="row">{{ $item->company_name}}</th>
+                                <th scope="row">{{ $item->job_position}}</th>
+                                <th scope="row">{{ $item->salary}}</th>
+                                <th scope="row"><input type="button" value="Edit" onclick="window.location = '{{ URL::to('/posted/job/edit/'.$item->id )}}'" class="btn btn-info"></th>
+                                <th scope="row"><input type="button" value="Delete" onclick="window.location = '{{ URL::to('/posted/job/delete/'.$item->id )}}'" class="btn btn-danger"></th>
+                                 
+                                 
+                                </tr>
+                                @endforeach
+                              
+                                </tr>
+                              </tbody>
+                            </table>
+                      </div>
+                  </div>
+              </div>
+              <div class="tab-pane fade" id="application" role="tabpanel" aria-labelledby="profile-tab">
+                          
+                  <div class="row">
+                      <div class="col-md-12">
+                          <table class="table">
+                              <thead class="thead-dark">
+                                <tr>
+                                  <th scope="col">Job ID</th>
+                                  <th scope="col">Job Title</th>
+                                  <th scope="col">Compnay Name</th>
+                                  <th scope="col">Application Dead line</th>
+                                  <th scope="col">Total Applicant </th>
+                                  <th></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                @foreach ($data as $item)
+        
+                                <tr>
+                                <th scope="row">{{ $item->id }}</th>
+                                <th scope="row">{{ $item->title }}</th>
+                                <th scope="row">{{ $item->company_name }}</th>
+                                <th scope="row">{{ $item->application_deadline }}</th>
+                                <?php  
+        
+                                 $total= DB::table('job_applies')
+                                  ->where('job_id', $item->id)
+                                  ->count();
+                                  ?>
+        
+                                <th scope="row"><a style="color:blue;" class="btn btn-default btn-block" href="{{url('/applied/job/list/view',$item->id)}}">{{$total}}</a>
+                                </th>
+                                </tr>
+                                @endforeach
+                              
+                              </tbody>
+                            </table>   
+                      </div>
+                  </div>
+              </div>
+           
 
           </div>
           <div class="container">
@@ -1002,6 +1088,7 @@
                                           
 
                                           <th> <button class="btn btn-primary" OnClick="DoAction({{ $item->id }});" >View Message </button> </th>
+                                          <th> <button class="btn btn-danger" onclick="window.location = '{{ URL::to('member/message/delete/'.$item->id )}}'" >Delete </button> </th>
                                            
                                           </tr>
                                           @else 
@@ -1011,6 +1098,7 @@
                                               <th>{{ $item->subject }}</th>
                                              
                                               <th> <button class="btn btn-primary" OnClick="DoAction({{ $item->id }});" >View Message </button> </th>
+                                              <th> <button class="btn btn-danger" onclick="window.location = '{{ URL::to('member/message/delete/'.$item->id )}}'" >Delete </button> </th>
                                                <th><li class="fa fa-check"></li></th>
                                               </tr>
                                           @endif 
@@ -1038,7 +1126,7 @@
                                                  $('#body').text(data.body);
                                                  $('#created_at').text(data.created_at);
                                                  if(data.attachment){
-                                                 $('#attachment').html('<img src="files/' + data.attachment + '" width="100" />');
+                                                  $(document).find('#attachment').html('<a type="button" href="files/' + data.attachment + '" class="btn btn-primary"><i class="fa fa-print"></i></a>');
                                                
                                                 }else{
                                                   $('#attachment').text(text);

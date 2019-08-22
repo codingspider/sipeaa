@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class CoursePostinBoardController extends Controller
 {
     public function index(){
+        
         $item = DB::table('users')
         ->join('employee', 'employee.user_id', '=', 'users.id')
            

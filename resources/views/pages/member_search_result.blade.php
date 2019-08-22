@@ -66,12 +66,17 @@
                                     <p  class="text-center"> Select Blood Group </p>
                                     <form method="post" action="{{URL::to('/search/result') }}">
                                         @csrf
-                                    <select  style=" border: 1px solid black; id="search" name="blood_group" onchange="this.form.submit()" class="form-control">
+                                    <select  style=" border: 1px solid black;" id="search" name="blood_group" onchange="this.form.submit()" class="form-control">
                                 
-                                                  <option selected>Select</option>
-                                                  @foreach( $blood as $b )
-                                                  <option value="{{ $b->blood_group }}">{{ $b->blood_group }}</option>
-                                                  @endforeach
+                                            <option selected>Select</option>
+                                            <option value="A">A+</option>
+                                            <option value="A">A-</option>
+                                            <option value="B">B+</option>
+                                            <option value="B">B-</option>
+                                            <option value="AB+">AB+</option>
+                                            <option value="AB">AB-</option>
+                                            <option value="O">O</option>
+                                            <option value="O-">O-</option>
                                                 </select>
                                 </form>
                         
@@ -87,5 +92,15 @@
             </div>
         </div>
     </div>
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 @endsection

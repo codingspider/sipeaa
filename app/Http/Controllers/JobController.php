@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Intervention\Image\ImageManagerStatic as Image;
 use DB;
-use Illuminate\Support\Facades\Redirect;
-use Session;
 use Auth;
+use Session;
+use Illuminate\Http\Request;
+use App\Mail\SendMailableAppliedJob;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redirect;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class JobController extends Controller
 {
@@ -52,8 +54,44 @@ class JobController extends Controller
         return redirect::to('/post/jobs');
 
     }
+    public function update_job_post (Request $request)
+    {
+        if($request->hasFile('images')) {
+
+            $image       = $request->file('images');
+            $filename    = $image->getClientOriginalName();
+        
+            $image_resize = Image::make($image->getRealPath());              
+            $image_resize->resize(200, 200);
+            $image_resize->save(public_path('images/' .$filename));
+
+        
+        }
+
+        DB::table('jobs')->where('id', $request->id)->update([
+            'company_name' => $request->company_name,
+            'title' => $request->job_title,
+            'job_position' => $request->job_position,
+            'job_category_id' => $request->job_category,
+            'job_location_id' => $request->job_location,
+            'job_details' => $request->job_details,
+            'job_type' => $request->optradio,
+            'job_experience' => $request->job_experience,
+            'salary' => $request->salary,
+            'application_deadline' => $request->app_deadline,
+            'application_instruction' => $request->apply_instruction,
+            'no_vacancy' => $request->no_vacancy,
+
+        ]);
+
+        Session::put('message','Job Updated sucessfully');
+        return back ()->with('message','Job Updated sucessfully');
+
+    }
 
     public function job_apply(Request $request){
+
+
        $data['job_id']=$request->job_id;
        $data['user_id']=Auth::id();
        $data['status']=1;
@@ -61,6 +99,9 @@ class JobController extends Controller
        $data['cv']=$request->cv;
        
         $success = DB::table('job_applies')->insert($data);
+
+        Mail::send( new SendMailableAppliedJob ($request));
+        
         if($success){
             return redirect()->back()->with('message', 'Job Applied successfully');
         }else{
@@ -157,6 +198,22 @@ class JobController extends Controller
                             ->where('job_applies.job_id',$job_id)->get();
 
             return view('pages.all_candited_list', compact('data'));
+           
+        }
+
+
+        public function job_edit ($id){ 
+
+           $data= DB::table('jobs')->where('jobs.id',$id)->first();
+
+            return view('pages.job_edit_page', compact('data'));
+           
+        }
+        public function delete_job_post ($id){ 
+
+           $data= DB::table('jobs')->where('jobs.id',$id)->delete();
+
+            return back()->with('message', 'Job Deleted Succesfully');
            
         }
         

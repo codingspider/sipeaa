@@ -70,22 +70,21 @@ foreach ($data_jobs as  $jobs) {
 
                 <div class="col-md-4 col-md-offset-1">
                     <div class="sidebar-right wgs-box">
-                      @if($user_type->user_type == 'member')
+                     
                         @if($status->user_id == Auth::id())
                         <p class="btn btn-warning">You already applied to this job ! </p> 
-                          @else 
-                          <p class="text-center">
-                            <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#exampleModal">
-                                    Apply Now 
-                            </button>
-                          </p>
-                  
-                  <p class="text-center">or </p>
-                  <p class="text-center">Send Cv to admin@sipeaa.org </p>
-                        @endif 
-                        @else 
-                        @endif
-
+                         @else 
+                         <p class="text-center">
+                           <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#exampleModal">
+                                   Apply Now 
+                           </button>
+                         </p>
+                   
+                   <p class="text-center">or </p>
+                   <p class="text-center">Send Cv to admin@sipeaa.org </p>
+                         @endif 
+                
+                 
                         <!-- End Widget -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -125,11 +124,18 @@ document.getElementById('myButton').value='Submitting, please wait...';">
                                     <input type="hidden" name="job_id" value="{{ $data->id }}">
                                     <input type="hidden" name="cv" value="{{ $cv->upload_file }}">
 
+                                    @php
+                                        $email = DB::table('jobs')->where('jobs.id', $data->id)
+                                        ->join('users', 'users.id', '=', 'jobs.user_id')
+                                        ->select('jobs.*', 'users.email')
+                                        ->first();
+                                    @endphp
+                                    <input type="hidden" name="email" value="{{ $email->email }}">
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                       <button type="submit" id="myButton" class="btn btn-success">Apply</button>
                                     </div>
-                                  </form>
+                  </form>
                                   </div>
                                 </div>
                               </div>
@@ -142,10 +148,15 @@ document.getElementById('myButton').value='Submitting, please wait...';">
                                   @csrf
                               <select id="search" name="blood_group" onchange="this.form.submit()" class="form-control">
                           
-                                            <option selected>Select</option>
-                                            @foreach( $blood as $b )
-                                            <option value="{{ $b->blood_group }}">{{ $b->blood_group }}</option>
-                                            @endforeach
+                                  <option selected>Select</option>
+                                  <option value="A">A+</option>
+                                  <option value="A">A-</option>
+                                  <option value="B">B+</option>
+                                  <option value="B">B-</option>
+                                  <option value="AB+">AB+</option>
+                                  <option value="AB">AB-</option>
+                                  <option value="O">O</option>
+                                  <option value="O-">O-</option>
                                           </select>
                           </form>
                               </div>
@@ -173,3 +184,5 @@ document.getElementById('myButton').value='Submitting, please wait...';">
     <!-- End Section -->
 
 @endsection
+
+<option value><a href=".$row['id'].">".$row['name']."</a></option>

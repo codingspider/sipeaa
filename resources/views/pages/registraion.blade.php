@@ -5,6 +5,8 @@
 @section('content')
 @php
     $data = DB::table('job_categories')->get();
+
+    $job_areas = DB::table('job_categories')->get();
 @endphp
 
 
@@ -116,15 +118,16 @@
                                                 <div class="form-group col">
                                                     <label class="font-weight-bold text-dark text-2">Blood Group</label>
                                                     <select style="border:1px solid #818182" name="blood_group" class="form-control" id="sel1">
-                                                            <option value="A+">A+</option>
-                                                            <option value="A-">A-</option>
-                                                            <option value="B+">B+</option>
-                                                            <option value="B-">B-</option>
-                                                            <option value="O+">O+</option>
-                                                            <option value="O-">O-</option>
-                                                            <option value="AB+">AB+</option>
-                                                            <option value="AB-">AB-</option>
-                                                          </select>
+                                                    <option selected>Select</option>
+                                                    <option value="A">A+</option>
+                                                    <option value="A">A-</option>
+                                                    <option value="B">B+</option>
+                                                    <option value="B">B-</option>
+                                                    <option value="AB+">AB+</option>
+                                                    <option value="AB">AB-</option>
+                                                    <option value="O">O</option>
+                                                    <option value="O-">O-</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="form-row">
@@ -224,14 +227,37 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="featured-box featured-box-primary text-left mt-2">
-                                    <div class="box-content">
-                                        <h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">Search</h4>
-                                      <input style="border:1px solid #818182" class="form-control" type="text">
-                                      <br>
-                                      <div>
-                                        <button class="btn btn-primary float-left" type="submit">Search</button>
-                                    </div>
-                                    </div>
+                                        <div>
+                                                <div class="card"></div>
+                                                <p class="text-center"> Select Blood Group </p>
+                                                <form method="post" action="{{URL::to('/search/result') }}">
+                                                    @csrf
+                                                <select id="search" name="blood_group" onchange="this.form.submit()" class="form-control">
+                                            
+                                                        <option selected>Select</option>
+                                                        <option value="A">A+</option>
+                                                        <option value="A">A-</option>
+                                                        <option value="B">B+</option>
+                                                        <option value="B">B-</option>
+                                                        <option value="AB+">AB+</option>
+                                                        <option value="AB">AB-</option>
+                                                        <option value="O">O</option>
+                                                        <option value="O-">O-</option>
+                                                            </select>
+                                                   </form>
+                                                <div class="card"></div>
+                                                <p class="text-center"> Select Job Areas </p>
+                                                <form method="post" action="{{URL::to('/search/result/job/areas') }}">
+                                                    @csrf
+                                                <select id="search" name="job_areas" onchange="this.form.submit()" class="form-control">
+                                            
+                                                              <option selected>Select</option>
+                                                              @foreach( $job_areas as $jobs )
+                                                              <option value="{{ $jobs->id }}">{{ $jobs->category_name }}</option>
+                                                              @endforeach
+                                                            </select>
+                                                          </form>
+                                        </div>
                                    
                                 </div>
                             </div>

@@ -307,12 +307,14 @@
                   </div>
                   <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                       <table class="table">
-                          <thead class="thead-dark">
+                          <thead class="thead-dark col-md-8">
                             <tr>
                               <th scope="col">Job Title</th>
                               <th scope="col">Company </th>
                               <th scope="col">Possition </th>
                               <th scope="col">Salary</th>
+                              <th scope="col">Edit</th>
+                              <th scope="col">Delete</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -323,6 +325,8 @@
                             <th scope="row">{{ $item->company_name}}</th>
                             <th scope="row">{{ $item->job_position}}</th>
                             <th scope="row">{{ $item->salary}}</th>
+                            <th scope="row"><input type="button" value="Edit" onclick="window.location = '{{ URL::to('/posted/job/edit/'.$item->id )}}'" class="btn btn-info"></th>
+                            <th scope="row"><input type="button" value="Delete" onclick="window.location = '{{ URL::to('/posted/job/delete/'.$item->id )}}'" class="btn btn-danger"></th>
                              
                              
                             </tr>

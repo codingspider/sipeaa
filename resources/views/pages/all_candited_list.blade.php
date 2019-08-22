@@ -4,7 +4,8 @@
 
 @section('content')
 <div class="container">
-    <div class="col-md-10">
+    <div class="col-md-12">
+      <h2 class="text-center">Candited list</h2>
             <table class="table">
                     <thead>
                       <tr>
@@ -33,4 +34,24 @@
 
     </div>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 @endsection

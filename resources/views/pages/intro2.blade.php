@@ -11,34 +11,37 @@ $collection = DB::table('jobs')->orderBy('id', 'desc')->take(3)->get();
 
     
 @endphp
+<div class="slider">
+    <div id="owl-demo">
+        @foreach($events as $value)
+          <div class="item"><a href="{{ URL::to('/events/details', $value->id )}}"><img class="responsive" src="{{$value->images}}" alt="Responsive image"></a>
+            <div class="carousel-caption">
+            <a href="{{ URL::to('/events/details', $value->id )}}" target="_blank"><button type="button" style="color:blue" alt="Responsive image" class="btn btn-default">{{ $value->title }}</button></a>
+              </div>
+          </div>
+        @endforeach
+      </div>
+                
+</div>
   <div class="container">
-                <div class="row py-3 my-3">
-                    <div class="col-sm-12">
-                        <div class="slider">
-                            <div id="owl-demo">
-                                @foreach($events as $value)
-                                  <div class="item"><img class="responsive" src="{{$value->images}}" alt="Responsive image">
-                                    <div class="carousel-caption">
-                                    <a href="{{ URL::to('/events/details', $value->id )}}" target="_blank"><button type="button" style="color:blue" alt="Responsive image" class="btn btn-default">{{ $value->title }}</button></a>
-                                      </div>
-                                  </div>
-                                @endforeach
-                              </div>
-                                        
-                        </div>
+                <div class="row">
+                    <div class="col-md-12">
+                      
+                        
                     </div>
                     <div style=" border-style: solid;" class="col-md-6" data-appear-animation="fadeInRightShorter">
                       <div class="slider">
                         <div id="my_car">
                             @foreach($side_events as $value)
-                              <div class="item"><img class="responsive" src="{{$value->images}}" alt="Responsive image">
+                              <div class="item"><a href="{{ URL::to('/side/slider/events/details', $value->id )}}"><img class="responsive" src="{{$value->images}}" alt="Responsive image"></a>
                                 <div class="carousel-caption">
                                 <a href="{{ URL::to('/side/slider/events/details', $value->id )}}" target="_blank"><button type="button" class="btn btn-default">{{ $value->title }}</button></a>
                                   </div>
                               </div>
+                           
                             @endforeach
                           </div>
-                                    
+                                   
                     </div>
                        
                     </div>

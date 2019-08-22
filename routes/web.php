@@ -6,6 +6,7 @@ Route::group(['middleware' => ['MustBeAdmin']], function () {
 Route::get('/training/post', 'TrainingController@index');
 Route::post('/training/post/success', 'TrainingController@add_training');
 Route::get('training/course/list', 'TrainingCartController@training_list');
+Route::post('/assign/trainer/success', 'TrainingCartController@training_assign_training');
 Route::get('training/course/edit/{id}', 'TrainingCartController@training_edit');
 Route::get('/view/course/order/list', 'ShippingOrderController@index');
 Route::get('/blog/admin/assign', 'BlogAdminController@blog_admin_view');
@@ -62,13 +63,10 @@ Route::get('/group', 'GroupController@index');
 Route::post('/creat/group', 'GroupController@create_group'); 
 
 
-Route::get('/post/jobs', 'JobController@index'); 
 Route::post ('/search/employes', 'JobController@search_employees'); 
 
 
-Route::post('/job/application/success', 'JobController@job_apply'); 
 
-Route::post('/post/jobs/save', 'JobController@add_new_job'); 
 
 Route::get('/search/by/location/{id}', 'JobController@search_by_location'); 
 Route::post('/search', 'JobController@search_by_name'); 
@@ -89,7 +87,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/alumni/contribution', 'ContributionController@index');
     Route::get('/members/search', 'MemberController@search');
     Route::post('/search/result', 'MemberController@find'); 
-
     Route::post('search/result/job/areas', 'MemberController@find_job_area'); 
     Route::post('/upload/library', 'LibraryController@library_upload');
     Route::get('/add/library', 'LibraryController@index');
@@ -100,7 +97,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/all/unread/messages','MessageController@all_unread_message');
     Route::get('/all/jobs', 'JobController@all_job'); 
     Route::get('/job/details/page/{id}', 'JobController@job_details'); 
-
+    Route::get('/post/jobs', 'JobController@index'); 
+    Route::get('/posted/job/edit/{id}', 'JobController@job_edit'); 
+    Route::post('/job/application/success', 'JobController@job_apply'); 
+    Route::post('/post/jobs/save', 'JobController@add_new_job'); 
+    Route::post('/post/jobs/update', 'JobController@update_job_post'); 
+    Route::get('/posted/job/delete/{id}', 'JobController@delete_job_post'); 
 
 });
 
@@ -238,6 +240,7 @@ Route::post('/amin/reply/sent', 'AdminMessageView@admin_message_sent');
 
 
 Route::post('/member/message/sent','MessageController@member_sendMessage');
+Route::get('member/message/delete/{id}','MessageController@member_message_delete');
 
 Route::post('/employee/message/sent','MessageController@employee_sendMessage');
 

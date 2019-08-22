@@ -6,6 +6,11 @@
     {{ session()->get('success') }}
 </div>
 @endif
+@php
+
+$users = DB::table('users')->where('approve', 1)
+    ->get();
+@endphp
 <table class="table table-striped w-auto">
 
         <!--Table head-->
@@ -18,7 +23,7 @@
             <th>To Date</th>
             <th>Trainer</th>
             <th>Last Date</th>
-    
+            <th>Assign Trainer</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -36,6 +41,19 @@
           <th>{{$item->to_date}}</th>
           <th>{{$item->uname}}</th>
           <th>{{$item->last_date}}</th>
+          <th>
+              <form action="{{ URL::to('/assign/trainer/success') }}" method="POST">
+                  @csrf
+                  <select style="color:black" onchange="this.form.submit()" name="assign_trainer">
+                       <option value="0">Select---</option>
+                         @foreach ($users as $value)
+                          <option value="{{ $value->id}}">{{ $value->name}}</option>
+                         @endforeach
+                      </select>
+                      <input type="hidden" name="id" value="{{ $item->id}}">
+                </form>
+        </th>
+
 
           <th><button class="btn btn-danger" type="submit" onclick="window.location.href = '{{ URL::to('training/course/delete/'.$item->id)}}'">Delete</button></th>
           <th><button class="btn btn-info" type="submit" onclick="window.location.href = '{{ URL::to('training/course/edit/'.$item->id)}}'">Edit</button></th>

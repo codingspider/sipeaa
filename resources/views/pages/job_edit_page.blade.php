@@ -1,5 +1,5 @@
 @extends('layouts.app2')
-@section('title', 'Job Posts')
+@section('title', 'Job Edit Page')
 
 @section('content')
     @php
@@ -30,29 +30,29 @@
               <div class="col-md-8">
                    <div class="slider">
                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                            <form action="{{ URL::to('/post/jobs/save') }}" method="POST" enctype="multipart/form-data" >
+                            <form action="{{ URL::to('/post/jobs/update') }}" method="POST" enctype="multipart/form-data" >
                                 @csrf
                      
                                     <div class="form-row mb-3">
                                         <div class="col-md-6">
                                             <!-- First name -->
                                             <label for="sel1">Job Title *</label>
-                                            <input type="text" name="job_title" style="border: 1px solid #000;" class="form-control" placeholder="Job Title " required>
+                                            <input type="text" name="job_title" style="border: 1px solid #000;" class="form-control" placeholder="Job Title " value="{{ $data->title}}">
                                         </div>
                                         <div class="col-md-6">
                                             <!-- First name -->
                                             <label for="sel1">Company Name*</label>
-                                            <input type="text" name="company_name" style="border: 1px solid #000;" class="form-control" placeholder="Company name" required>
+                                            <input type="text" name="company_name" style="border: 1px solid #000;" class="form-control" placeholder="Company name" value="{{ $data->company_name}}">
                                         </div>
                                         <div class="col-md-6">
                                             <!-- Last name -->
                                             <label for="sel1">Job Position *</label>
-                                            <input type="text" name="job_position" style="border: 1px solid #000;" class="form-control" placeholder="Job Position" required>
+                                            <input type="text" name="job_position" style="border: 1px solid #000;" class="form-control" placeholder="Job Position" value="{{ $data->job_position}}">
                                         </div>
                                         <div class="col-md-6">
                                             <!-- Last name -->
                                             <label for="sel1">No. of Vacancy *</label>
-                                            <input type="text" name="no_vacancy" style="border: 1px solid #000;" class="form-control mb-4" placeholder="No. of Vacancies" required>
+                                            <input type="text" name="no_vacancy" style="border: 1px solid #000;" class="form-control mb-4" placeholder="No. of Vacancies" value="{{ $data->no_vacancy}}">
                                 
                                         </div>
                                     </div>
@@ -60,13 +60,13 @@
                                    
                                     <!-- Password -->
                                     <label for="sel1">Job Details *</label>
-                                    <textarea class="form-control" name="job_details" rows="4" cols="80" style="border: 1px solid #000;" placeholder="Describe you job details  here..."></textarea>
+                                <textarea class="form-control" name="job_details" rows="4" cols="80" style="border: 1px solid #000;" placeholder="Describe you job details  here...">{{ $data->job_details}}</textarea>
                                     <br>
                                     <label for="sel1">Job Category *</label>
                                      <select name="job_category" style="border: 1px solid #000;" class="form-control" id="sel1">
                                          @foreach ($category as $item)
                                              
-                                     <option value="{{ $item->id }}">{{ $item->category_name }}</option>
+                                         <option value="{{$item->id}}" {{ $item->id == $data->job_category_id? 'selected' : '' }}>{{$item->category_name}}</option>
                                     @endforeach
                                 
                                    
@@ -77,14 +77,14 @@
                                     <br>
                                     <br>
                                     <label for="sel1">Experience & Other Requirements</label>
-                                    <textarea class="form-control" style="border: 1px solid #000;" name="job_experience" rows="4" cols="80" placeholder="Describe you job details  here..."></textarea>
+                                    <textarea class="form-control" style="border: 1px solid #000;" name="job_experience" rows="4" cols="80" placeholder="Describe you job details  here...">{{ $data->job_experience}}</textarea>
                                     <br>
                                     <br>
                                     <label for="sel1">Job Location *</label>
                                     <select style="border: 1px solid #000;" name="job_location" class="form-control" id="sel1">
                                         @foreach ($location as $item)
                                             
-                                    <option value="{{ $item->id }}" >{{ $item->name }}</option>
+                                        <option value="{{$item->id}}" {{ $item->id == $data->job_location_id? 'selected' : '' }}>{{$item->name}}</option>
                                       @endforeach
                                      
                                     </select>
@@ -93,21 +93,21 @@
                                             <div class="col">
                                                     <label for="sel1">Salary Range *</label>
                                                     <!-- Last name -->
-                                                    <input style="border: 1px solid #000;" type="text" name="salary" class="form-control" placeholder="Salary Range" required>
+                                                    <input style="border: 1px solid #000;" type="text" name="salary" class="form-control" placeholder="Salary Range" value="{{ $data->salary}}">
                                                 </div>
                                             <div class="col">
                                                     <label for="sel1">Application Deadline *</label>
                                                     <!-- Last name -->
-                                                    <input style="border: 1px solid #000;" type="date" name="app_deadline" class="form-control" placeholder="Application Deadline" required>
+                                                    <input style="border: 1px solid #000;" type="date" name="app_deadline" class="form-control" placeholder="Application Deadline" value="{{ $data->application_deadline}}">
                                                 </div>
                                 
                                     </div>
                                 
                                         <label for="sel1">Apply Instructions </label>
-                                    <textarea class="form-control" style="border: 1px solid #000;" name="apply_instruction" rows="4" cols="80" placeholder="Describe your Apply Instruction  here..."></textarea>
+                                    <textarea class="form-control" style="border: 1px solid #000;" name="apply_instruction" rows="4" cols="80" placeholder="Describe your Apply Instruction  here...">{{ $data->application_instruction}}</textarea>
                                     <!-- Sign up button -->
                                     <br>
-                                    <input type="hidden" name="user_id" value="{{ $id }}"> 
+                                    <input type="hidden" name="id" value="{{ $data->id }}"> 
                                     <br>
                                     <input style="border: 1px solid #000;" type="file" name="images">
                                     <br>

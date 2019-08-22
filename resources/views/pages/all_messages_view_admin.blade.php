@@ -25,7 +25,9 @@
                 <th scope="col">ID</th>
                 <th scope="col">Sender </th>
                 <th scope="col">Subject </th>
+
                 <th scope="col">Action </th>
+                
                 <th scope="col">Reply</th>
               </tr>
             </thead>
@@ -40,7 +42,9 @@
 
               
               <th>{{ $item->subject }}</th>
+
               <th> <button class="btn btn-primary" OnClick="DoAction({{ $item->id }});" >View Message </button> </th>
+   
               <th> <button class="btn btn-success" OnClick="SendAction({{ $item->sender_id }});" >Reply Message </button> </th>
                
               </tr>
@@ -49,10 +53,12 @@
                   <th>{{ $item->id }}</th>
                   
                   <th >{{ $item->uname }}</th>
-    
-                  
+
                   <th>{{ $item->subject }}</th>
+             
+
                   <th> <button class="btn btn-primary" OnClick="DoAction({{ $item->id }});" >View Message </button> </th>
+
                   <th> <button class="btn btn-success" OnClick="SendAction({{ $item->sender_id }});" >Reply Message </button> </th>
                    <th><li class="fa fa-check"></li></th>
                   </tr>
@@ -76,17 +82,20 @@ function DoAction(id)
          success: function(data){
             if(data){
               var text = "No Files There !";
+              
                      $('#myModal').modal('show');
                      $('#subject').text(data.subject);
                      $('#body').text(data.body);
                      $('#created_at').text(data.created_at);
                      if(data.attachment){
-                     $('#attachment').html('<img src="files/' + data.attachment + '" width="100" />');
+                        
+                    $(document).find('#attachment').html('<a type="button" href="files/' + data.attachment + '" class="btn btn-primary"><i class="fa fa-print"></i></a>');
                    
                     }else{
                       $('#attachment').text(text);
                     }
-         }
+                   
+                }
         }
     });
 }

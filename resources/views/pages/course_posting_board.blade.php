@@ -14,12 +14,15 @@
     <h1 class="font-weight-light text-black">Job Posting Board</h1>
   </div>
 </header>
-
+@php
+    $data = DB::table('users')->where('id', Auth::id())->first()
+@endphp
+@if($data->user_type == 'member')
+<p class="text-center">OOps! this page only for employee</p>
+@else
 <!-- Page Content -->
 <div class="container">
-  <div class="row">
-    
-        
+  <div class="row"> 
     <!-- Team Member 1 -->
     <div class="col-xl-3 col-md-6 mb-4">
       <div class="card border-0 shadow text-center">
@@ -31,15 +34,27 @@
         </div>
       </div>
     </div>
-  
-
-
   </div>
   <!-- /.row -->
-
 </div>
+@endif
 <!-- /.container -->
 </body>
+
+<br>
+<br>
+
+<br>
+<br>
+
+<br>
+<br>
+
+<br>
+<br>
+
+<br>
+<br>
 
 <br>
 <br>

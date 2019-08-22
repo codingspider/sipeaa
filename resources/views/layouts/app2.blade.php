@@ -37,6 +37,7 @@
 		<link rel="stylesheet" href="{{ asset('assets3/css/theme-elements.css') }}">
 		<link rel="stylesheet" href="{{ asset('assets3/css/theme-blog.css') }}">
 		<link rel="stylesheet" href="{{ asset('assets3/css/theme-shop.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets3/css/main.css') }}">
 
 		<!-- Current Page CSS -->
 		<link rel="stylesheet" href="{{ asset('assets3/vendor/rs-plugin/css/settings.css') }}">
@@ -108,7 +109,7 @@
 																$user = \App\User::where(['approve' => 1])->where('user_type', 'member')->get()->count();
 															@endphp
 												
-													Total Active Members: {{ $user }}
+													<strong>Total Active Members: ( {{ $user }}  )</strong>
 													<br>
 														@if($notify > 0)
 													
@@ -165,7 +166,7 @@
 																
                                                                     <li><a class="dropdown-item" href="{{ URL::to('/all/jobs') }}">All Jobs </a></li>
                                                                     <li><a class="dropdown-item" href="{{URL::to('/post/jobs') }}">Job Posting </a></li>
-                                                                    <li><a class="dropdown-item" href="{{ URL::to('/course/posting/board') }}">Job Posting Board </a></li>
+                                                                    
 															</ul>
 														</li>
 														<li class="dropdown dropdown-full-color dropdown-light">
@@ -197,7 +198,7 @@
 																<li><a class="dropdown-item" href="{{URL::to('/training/lists') }}">Training/Workshop </a></li>
 																<li><a class="dropdown-item" href="{{URL::to('/training/demand') }}">Training Demand Form </a></li>
 																<li><a class="dropdown-item" href="{{URL::to('/all/training/demand') }}">All Training Demand </a></li>
-																<li><a class="dropdown-item" href="{{ URL::to('/course/posting/board') }}">Course Posting Board </a></li>
+																<li><a class="dropdown-item" href="{{URL::to('/post/jobs') }}">Job Posting </a></li>
 														</ul>
 														</li>
 													
