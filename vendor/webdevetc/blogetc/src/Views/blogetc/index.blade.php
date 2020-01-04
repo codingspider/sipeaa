@@ -4,7 +4,7 @@
     {{--https://webdevetc.com/laravel/packages/blogetc-blog-system-for-your-laravel-app/help-documentation/laravel-blog-package-blogetc#guide_to_views--}}
 
     <div class='row'>
-        <div class='col-sm-6 blogetc_container'>
+        <div class='col-sm-12 blogetc_container'>
             @if(\Auth::check() && \Auth::user()->canManageBlogEtcPosts())
                 <div class="text-center">
                         <p class='mb-1'>You are logged in as a blog admin user.

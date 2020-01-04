@@ -3,12 +3,34 @@
 require __DIR__.'/../database/migrations/create_groups_tables.php';
 
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Schema;
+use Musonza\Groups\Facades\GroupsFacade;
+use Musonza\Groups\GroupsServiceProvider;
+use Musonza\Groups\Models\Group;
+use Musonza\Groups\Models\Post;
+use Musonza\Groups\Models\User;
+use Orchestra\Database\ConsoleServiceProvider;
+use Orchestra\Testbench\TestCase;
 
-abstract class GroupsTestCase extends \Orchestra\Testbench\TestCase
+abstract class GroupsTestCase extends TestCase
 {
     use DatabaseTransactions;
+
+    /**
+     * @var array
+     */
+    public $comment;
+    public $user;
+    /**
+     * @var Group
+     */
+    public $group;
+    /**
+     * @var Post
+     */
+    public $post;
 
     public function setUp() : void
     {
@@ -39,7 +61,7 @@ abstract class GroupsTestCase extends \Orchestra\Testbench\TestCase
     /**
      * Define environment setup.
      *
-     * @param \Illuminate\Foundation\Application $app
+     * @param Application $app
      *
      * @return void
      */
@@ -54,20 +76,23 @@ abstract class GroupsTestCase extends \Orchestra\Testbench\TestCase
             'database' => ':memory:',
             'prefix'   => '',
         ]);
+
+        $app['config']->set('musonza_groups.user_model', User::class);
+        $app['config']->set('musonza_groups.big_increments', true);
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            \Orchestra\Database\ConsoleServiceProvider::class,
-            \Musonza\Groups\GroupsServiceProvider::class,
+            ConsoleServiceProvider::class,
+            GroupsServiceProvider::class,
         ];
     }
 
     protected function getPackageAliases($app)
     {
         return [
-            'Groups' => \Musonza\Groups\Facades\GroupsFacade::class,
+            'Groups' => GroupsFacade::class,
         ];
     }
 
@@ -85,7 +110,7 @@ abstract class GroupsTestCase extends \Orchestra\Testbench\TestCase
 
     public function createUsers($count = 1)
     {
-        $users = factory('Musonza\Groups\User', $count)->create();
+        $users = factory('Musonza\Groups\Models\User', $count)->create();
 
         if ($count == 1) {
             return $users[0];

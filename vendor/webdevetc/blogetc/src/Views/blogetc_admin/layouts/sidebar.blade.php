@@ -1,11 +1,6 @@
-<h2><a href='{{ URL::to('/home')}}'>SIPEAA</a></h2>
-<p>Welcome to the SIPEAA Blog</p>
+<h2><a href='https://webdevetc.com/'>WebDevEtc.com BlogEtc Admin Panel</a></h2>
+<p>Welcome to the admin panel for your blog posts.</p>
 
-@php
-    $admin = Auth::user()->admin;
-@endphp
-
-@if($admin == 1)
 
 <ul class="list-group mb-3">
     <li class="list-group-item justify-content-between lh-condensed">
@@ -35,7 +30,6 @@
         </div>
 
     </li>
-
 
 
     <li class="list-group-item justify-content-between lh-condensed">
@@ -128,14 +122,3 @@
 
 
 </ul>
-
-@else 
-<div class="list-group ">
-
- 
-    <a href='{{ route('blogetc.admin.create_post') }}'
-       class='list-group-item list-group-item-action  @if(\Request::route()->getName() === 'blogetc.admin.create_post') active @endif  '><i
-                class="fa fa-plus fa-fw" aria-hidden="true"></i>
-        Add Post</a>
-</div>
-@endif 

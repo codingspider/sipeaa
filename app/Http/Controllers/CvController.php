@@ -50,4 +50,27 @@ class CvController extends Controller
 
                 return redirect::back()->with('message','CV deleted sucessfully');
       }
+
+      public function resume_edit()
+            {
+
+                // $collection = DB::table('cv')->where('id', $id)->delete();
+
+                $personaldetails = DB::table('resumes')->whereNotNull('first_name')->first();
+        $address = DB::table('resumes')->whereNotNull('present_add')->get();
+        $career = DB::table('resumes')->whereNotNull('present_sallary')->get();
+        $prefer_jobs = DB::table('resumes')->whereNotNull('job_location')->get();
+        $career_summery = DB::table('resumes')->whereNotNull('summery')->get();
+        $education_level = DB::table('resumes')->whereNotNull('education_level')->get();
+        $training_title = DB::table('resumes2')->whereNotNull('training_title')->get();
+        $certificate = DB::table('resumes2')->whereNotNull('certificate')->get();
+        $employments = DB::table('resumes2')->whereNotNull('com_name')->get();
+        $others_employments = DB::table('resumes2')->whereNotNull('batch')->get();
+        $specials = DB::table('resumes2')->whereNotNull('skill')->get();
+        $languages = DB::table('resumes2')->whereNotNull('language')->get();
+        $reference = DB::table('resumes')->whereNotNull('ref_name')->get();
+        $gender = DB::table('genders')->get();
+
+                return view('pages.edit_resume', compact('personaldetails', 'address', 'career', 'prefer_jobs','career_summery','education_level','training_title','certificate', 'employments', 'others_employments', 'specials', 'languages', 'reference', 'gender')); 
+      }
 }

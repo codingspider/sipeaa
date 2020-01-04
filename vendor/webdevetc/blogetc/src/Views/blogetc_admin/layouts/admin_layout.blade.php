@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Blog Admin - SIPEAA </title>
+    <title>Blog Admin - {{ config('app.name', 'Laravel') }}</title>
 
 
     <!-- jQuery is only used for hide(), show() and slideDown(). All other features use vanilla JS -->
@@ -42,7 +42,7 @@
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-               SIPEAA Blog 
+                {{ config('app.name', 'Laravel') }} WebDevEtc Blog Admin
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"

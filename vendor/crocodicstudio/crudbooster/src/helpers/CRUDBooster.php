@@ -14,6 +14,16 @@ use Validator;
 
 class CRUDBooster
 {
+    /**
+    *	Comma-delimited data output from the child table
+    */
+    public static function echoSelect2Mult($values, $table, $id, $name) {
+        $values = explode(",", $values);
+        return implode(", ", DB::table($table)->whereIn($id, $values)->pluck($name)->toArray());
+        //implode(", ", DB::table("syudo_list_pokemons_types")->whereIn("id", explode(",", $row->type))->pluck("name")->toArray())
+        
+    }
+    
     public static function uploadBase64($value, $id = null)
     {
         if (! self::myId()) {
@@ -364,14 +374,17 @@ class CRUDBooster
 
     public static function getCurrentModule()
     {
-        $modulepath = self::getModulePath();
-        if (Cache::has('moduls_'.$modulepath)) {
-            return Cache::get('moduls_'.$modulepath);
-        } else {
-            $module = DB::table('cms_moduls')->where('path', self::getModulePath())->first();
+	$modulepath = self::getModulePath();
 
-            return $module;
-        }
+	if (Cache::has('moduls_'.$modulepath)) {
+	    return Cache::get('moduls_'.$modulepath);
+	} else {
+
+	    $module = DB::table('cms_moduls')->where('path', self::getModulePath())->first();
+	    
+	    //supply modulpath instead of $module incase where user decides to create form and custom url that does not exist in cms_moduls table.
+	    return ($module)?:$modulepath; 
+	}
     }
 
     public static function getCurrentDashboardId()
@@ -511,12 +524,25 @@ class CRUDBooster
 				function(){  location.href=\"$redirectTo\" });";
     }
 
-    private static function getModulePath()
+    public static function getModulePath()
     {
-        $adminPathSegments = count(explode('/', config('crudbooster.ADMIN_PATH')));
+          // Check to position of admin_path
+          if(config("crudbooster.ADMIN_PATH")) {
+              $adminPathSegments = explode('/', Request::path());
+              $no = 1;
+              foreach($adminPathSegments as $path) {
+                  if($path == config("crudbooster.ADMIN_PATH")) {
+                      $segment = $no+1;
+                      break;
+                  }
+                  $no++;
+              }
+          } else {
+              $segment = 1;
+          }
 
-        return Request::segment(1 + $adminPathSegments);
-    }
+          return Request::segment($segment);
+    }	
 
     public static function mainpath($path = null)
     {
@@ -1035,15 +1061,17 @@ class CRUDBooster
 
     public static function insertLog($description, $details = '')
     {
-        $a = [];
-        $a['created_at'] = date('Y-m-d H:i:s');
-        $a['ipaddress'] = $_SERVER['REMOTE_ADDR'];
-        $a['useragent'] = $_SERVER['HTTP_USER_AGENT'];
-        $a['url'] = Request::url();
-        $a['description'] = $description;
-        $a['details'] = $details;
-        $a['id_cms_users'] = self::myId();
-        DB::table('cms_logs')->insert($a);
+        if (CRUDBooster::getSetting('api_debug_mode')) {
+            $a = [];
+            $a['created_at'] = date('Y-m-d H:i:s');
+            $a['ipaddress'] = $_SERVER['REMOTE_ADDR'];
+            $a['useragent'] = $_SERVER['HTTP_USER_AGENT'];
+            $a['url'] = Request::url();
+            $a['description'] = $description;
+            $a['details'] = $details;
+            $a['id_cms_users'] = self::myId();
+            DB::table('cms_logs')->insert($a);
+        }
     }
 
     public static function referer()

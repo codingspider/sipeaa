@@ -1,3 +1,7 @@
+# August 2019 -
+
+I am currently rewriting a lot of the code base (better quality, better coding standards, etc). Laravel 5.8 is supported on the old version (3.x) - please see packagist. I will release v4 soon.
+
 # WebDevEtc BlogEtc
 ## Easy to install Laravel Package for adding a full blog (with admin backend) to your Laravel app
 ### 5 minutes to install! Quick and easy!

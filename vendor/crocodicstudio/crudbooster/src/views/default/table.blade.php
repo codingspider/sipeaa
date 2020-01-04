@@ -66,8 +66,9 @@
                 $name = $col['name'];
                 $field = $col['field_with'];
                 $width = ($col['width']) ?: "auto";
+				$style = ($col['style']) ?: "";
                 $mainpath = trim(CRUDBooster::mainpath(), '/').$build_query;
-                echo "<th width='$width'>";
+                echo "<th width='$width' $style>";
                 if (isset($sort_column[$field])) {
                     switch ($sort_column[$field]['sorting']) {
                         case 'asc':
@@ -138,8 +139,8 @@
                 <tr>
                     @endif
 
-                    @foreach($hc as $h)
-                        <td>{!! $h !!}</td>
+                    @foreach($hc as $j=>$h)
+                        <td {{ $columns[$j]['style'] or ''}}>{!! $h !!}</td>
                     @endforeach
                 </tr>
                 @endforeach
@@ -161,7 +162,8 @@
                 if ($col['visible'] === FALSE) continue;
                 $colname = $col['label'];
                 $width = ($col['width']) ?: "auto";
-                echo "<th width='$width'>$colname</th>";
+				$style = ($col['style']) ?: "";
+                echo "<th width='$width' $style>$colname</th>";
             }
             ?>
 
@@ -330,13 +332,13 @@ $total = $result->total();
 
                                             <option typeallow='all'
                                                     {{ (CRUDBooster::getTypeFilter($col["field_with"]) == '=')?"selected":"" }} value='='>{{trans("crudbooster.filter_equal_to")}}</option>
-                                            @if(in_array($col['type_data'],['int','integer','double','float','decimal','time']))
+                                            @if(in_array($col['type_data'],['int','integer','smallint','tinyint','mediumint','bigint','double','float','decimal','time']))
                                                 <option {{ (CRUDBooster::getTypeFilter($col["field_with"]) == '>=')?"selected":"" }} value='>='>{{trans("crudbooster.filter_greater_than_or_equal")}}</option>@endif
-                                            @if(in_array($col['type_data'],['int','integer','double','float','decimal','time']))
+                                            @if(in_array($col['type_data'],['int','integer','smallint','tinyint','mediumint','bigint','double','float','decimal','time']))
                                                 <option {{ (CRUDBooster::getTypeFilter($col["field_with"]) == '<=')?"selected":"" }} value='<='>{{trans("crudbooster.filter_less_than_or_equal")}}</option>@endif
-                                            @if(in_array($col['type_data'],['int','integer','double','float','decimal','time']))
+                                            @if(in_array($col['type_data'],['int','integer','smallint','tinyint','mediumint','bigint','double','float','decimal','time']))
                                                 <option {{ (CRUDBooster::getTypeFilter($col["field_with"]) == '<')?"selected":"" }} value='<'>{{trans("crudbooster.filter_less_than")}}</option>@endif
-                                            @if(in_array($col['type_data'],['int','integer','double','float','decimal','time']))
+                                            @if(in_array($col['type_data'],['int','integer','smallint','tinyint','mediumint','bigint','double','float','decimal','time']))
                                                 <option {{ (CRUDBooster::getTypeFilter($col["field_with"]) == '>')?"selected":"" }} value='>'>{{trans("crudbooster.filter_greater_than")}}</option>@endif
                                             <option typeallow='all'
                                                     {{ (CRUDBooster::getTypeFilter($col["field_with"]) == '!=')?"selected":"" }} value='!='>{{trans("crudbooster.filter_not_equal_to")}}</option>
@@ -344,7 +346,7 @@ $total = $result->total();
                                                     {{ (CRUDBooster::getTypeFilter($col["field_with"]) == 'in')?"selected":"" }} value='in'>{{trans("crudbooster.filter_in")}}</option>
                                             <option typeallow='all'
                                                     {{ (CRUDBooster::getTypeFilter($col["field_with"]) == 'not in')?"selected":"" }} value='not in'>{{trans("crudbooster.filter_not_in")}}</option>
-                                            @if(in_array($col['type_data'],['date','time','datetime','int','integer','double','float','decimal','timestamp']))
+                                            @if(in_array($col['type_data'],['date','time','datetime','int','integer','smallint','tinyint','mediumint','bigint','double','float','decimal','timestamp']))
                                                 <option {{ (CRUDBooster::getTypeFilter($col["field_with"]) == 'between')?"selected":"" }} value='between'>{{trans("crudbooster.filter_between")}}</option>@endif
                                             <option {{ (CRUDBooster::getTypeFilter($col["field_with"]) == 'empty')?"selected":"" }} value='empty'>Empty ( or
                                                 Null)
@@ -367,8 +369,8 @@ $total = $result->total();
                                                     <input
                                                             {{ (CRUDBooster::getTypeFilter($col["field_with"]) != 'between')?"disabled":"" }}
                                                             type='text'
-                                                            class='filter-value-between form-control {{ (in_array($col["type_data"],["date","datetime","timestamp"]))?"datepicker":"timepicker" }}'
-                                                            readonly placeholder='{{$col["label"]}} {{trans("crudbooster.filter_from")}}'
+                                                            class='filter-value-between form-control {{ (in_array($col["type_data"],["date","datetime","timestamp"]))?"datepicker":(in_array($col["type_data"],["time"]))?"timepicker":"" }}'
+                                                            {{ (in_array($col["type_data"],["date","datetime","timestamp","time"]))?"readonly":"" }} placeholder='{{$col["label"]}} {{trans("crudbooster.filter_from")}}'
                                                             name='filter_column[{{$col["field_with"]}}][value][]' value='<?php
                                                     $value = CRUDBooster::getValueFilter($col["field_with"]);
                                                     echo (CRUDBooster::getTypeFilter($col["field_with"]) == 'between') ? $value[0] : "";
@@ -381,8 +383,8 @@ $total = $result->total();
                                                     <input
                                                             {{ (CRUDBooster::getTypeFilter($col["field_with"]) != 'between')?"disabled":"" }}
                                                             type='text'
-                                                            class='filter-value-between form-control {{ (in_array($col["type_data"],["date","datetime","timestamp"]))?"datepicker":"timepicker" }}'
-                                                            readonly placeholder='{{$col["label"]}} {{trans("crudbooster.filter_to")}}'
+                                                            class='filter-value-between form-control {{ (in_array($col["type_data"],["date","datetime","timestamp"]))?"datepicker":(in_array($col["type_data"],["time"]))?"timepicker":"" }}'
+                                                            {{ (in_array($col["type_data"],["date","datetime","timestamp","time"]))?"readonly":"" }} placeholder='{{$col["label"]}} {{trans("crudbooster.filter_to")}}'
                                                             name='filter_column[{{$col["field_with"]}}][value][]' value='<?php
                                                     $value = CRUDBooster::getValueFilter($col["field_with"]);
                                                     echo (CRUDBooster::getTypeFilter($col["field_with"]) == 'between') ? $value[1] : "";

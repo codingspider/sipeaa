@@ -9,7 +9,7 @@ return [
     'blog_prefix' => "blog", // used in routes.php. If you want to your http://yoursite.com/latest-news (or anything else), then enter that here. Default: blog
     'admin_prefix' => "blog_admin", // similar to above, but used for the admin panel for the blog. Default: blog_admin
 
-    'use_custom_view_files' => true, // set to false to disable the use of being able to make blog posts include a view from resources/views/custom_blog_posts/*.blade.php. Default: false. Set to true to use this feature. Default: false
+    'use_custom_view_files' => false, // set to false to disable the use of being able to make blog posts include a view from resources/views/custom_blog_posts/*.blade.php. Default: false. Set to true to use this feature. Default: false
 
     'per_page' => 10, // how many posts to show per page on the blog index page. Default: 10
 
@@ -170,7 +170,7 @@ return [
 
 
     'search' => [
-        'search_enabled' => true, // is search enabled? By default this is disabled, but you can easily turn it on.
+        'search_enabled' => false, // is search enabled? By default this is disabled, but you can easily turn it on.
     ],
 
 

@@ -2,9 +2,10 @@
 
 namespace Musonza\Groups\Models;
 
-use Eloquent;
+use Illuminate\Database\Eloquent\Model;
+use Musonza\Groups\Groups;
 
-class GroupRequest extends Eloquent
+class GroupRequest extends Model
 {
     protected $table = 'group_request';
 
@@ -17,6 +18,6 @@ class GroupRequest extends Eloquent
 
     public function sender()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(Groups::userModel(), 'user_id');
     }
 }

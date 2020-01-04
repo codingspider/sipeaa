@@ -20,6 +20,32 @@ Route::get('/messages/','MessageController@all_message');
 
 });
 
+Route::post('/dashboard/personal/details/', 'ResumeController@personal_details');
+Route::post('dashboard/academic/details/edit', 'ResumeController@academic_details_edit');
+Route::post('/dashboard/personal/details/edit', 'ResumeController@personal_details_edit');
+Route::post('/dashboard/addressdetails/details/edit', 'ResumeController@address_details_edit');
+Route::post('/dashboard/career/application/details/edit', 'ResumeController@career_details_edit');
+Route::post('/prefer/jobs/details/edit', 'ResumeController@prefer_details_edit');
+Route::post('/dashboard/academic/training/summary/edit', 'ResumeController@training_details_edit');
+Route::post('/dashboard/employment/details/edit', 'ResumeController@employement_details_edit');
+Route::post('/dashboard/army/edit/submit', 'ResumeController@others_employement_details_edit');
+Route::post('/dashboard/others/information/details/edit', 'ResumeController@others_details_edit');
+Route::post('/dashboard/others/information/reference/edit', 'ResumeController@reference_details_edit');
+//delete routes 
+Route::get('/dashboard/personaldetails/delete/{id}', 'TestController@personaldetails_delete');
+Route::get('/dashboard/academicdetails/delete/{id}', 'TestController@academicdetails_delete');
+Route::get('/dashboard/address/details/delete/{id}', 'TestController@addressdetails_delete');
+Route::get('/dashboard/career/details/delete/{id}', 'TestController@career_details_delete');
+Route::get('/dashboard/prefer/job/details/delete/{id}', 'TestController@prefer_details_delete');
+Route::get('/dashboard/otherrelavant/details/delete/{id}', 'TestController@other_details_delete');
+Route::get('/dashboard/training/delete/{id}', 'TestController@training_details_delete');
+Route::get('/dashboard/certificate/delete/{id}', 'TestController@certificate_details_delete');
+Route::get('/dashboard/employment/delete/{id}', 'TestController@employment_details_delete');
+Route::get('/dashboard/special/delete/{id}', 'TestController@special_details_delete');
+Route::get('/dashboard/others_employ/delete/{id}', 'TestController@special_details_delete');
+Route::get('/dashboard/language/delete/{id}', 'TestController@language_details_delete');
+Route::get('/dashboard/refer/delete/{id}', 'TestController@refer_details_delete');
+
 Route::get('/', 'EventController@index');
 
 Route::get('/home', 'EventController@index');
@@ -196,6 +222,7 @@ Route::get('/employee/profile', 'HomeController@employee_profile');
 Route::post('/upload/cv/online', 'CvController@cv_upload');
 
 Route::get('/delete/cv/{id}', 'CvController@cv_delete');
+Route::get('/edit/resume/online', 'CvController@resume_edit');
 
 
 Route::get('event', function () {
