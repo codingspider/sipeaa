@@ -56,7 +56,7 @@ class CvController extends Controller
 
                 // $collection = DB::table('cv')->where('id', $id)->delete();
 
-                $personaldetails = DB::table('resumes')->whereNotNull('first_name')->first();
+        $personaldetails = DB::table('resumes')->whereNotNull('first_name')->first();
         $address = DB::table('resumes')->whereNotNull('present_add')->get();
         $career = DB::table('resumes')->whereNotNull('present_sallary')->get();
         $prefer_jobs = DB::table('resumes')->whereNotNull('job_location')->get();

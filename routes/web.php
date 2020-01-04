@@ -13,6 +13,7 @@ Route::get('/blog/admin/assign', 'BlogAdminController@blog_admin_view');
 Route::get('/assign/trainer/view', 'TrainingDemandController@assign_trainer_view');
 Route::get('/training/lists/status', 'TrainingDemandController@training_status');
 Route::get('/user/approval', 'RegistrationController@member_approve');
+Route::post('/user/update', 'RegistrationController@user_update');
 Route::get('/employee/approval', 'RegistrationController@employee_approve');
 Route::get('/transaction/manage', 'AccountsController@transactions_control');
 Route::get('/library/authorisation', 'LibraryController@library_authorising');

@@ -194,5 +194,16 @@ class RegistrationController extends Controller
                 
             
     }
+    public function user_update(Request $request){
+        $id = $request->id; 
+
+        $result = DB::table('users')->where('id', $id)
+            ->update([
+                'reg_no' => $request->reg_no,
+                'sipeaa_id' => $request->sipeaa_id,
+            ]);
+
+        return response()->json(['success'=>'Data is successfully added']);
+    }
 
 }

@@ -1,15 +1,20 @@
-<!-- First, extends to the CRUDBooster Layout -->
+
 @extends('crudbooster::admin_template')
 @section('content')
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 
-<table id="table_id" class="display">
-
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous">
+</script>
     <?php
-    $users = DB::table('users')->orderBy('id', 'desc')->where('user_type', 'member')->get();
+    $users = DB::table('users')->orderBy('id', 'desc')->where('user_type', 'member')->paginate(10);
 
     ?>
+        <div class="alert alert-success d-none" id="msg_div">
+              <span id="res_message"></span>
+         </div>
 
+    <table id="table_id" class="table">
 
     <p class="alert-success">
         <?php
@@ -20,12 +25,16 @@
             Session::put('message', null);
         }
             
-            ?>
+            ?></p>
+            <div id="res_message"></div>
         <thead>
             <tr>
                 <th>Name </th>
                 <th>Email</th>
                 <th>User Type</th>         
+                <th>Registration Number</th> 
+                <th>Sipeaa ID </th>    
+                <th></th>        
                 <th>Status</th>
                 <th>Action</th>
                 
@@ -39,7 +48,15 @@
                 <td>{{$item->name}}</td>
                 <td>{{$item->email}}</td> 
                 <td>{{$item->user_type}}</td> 
-             
+
+                <form action="javascript:void(0)" id="myForm">
+                <td><input type="text" id="reg_no" name="reg_no" value="{{ $item->reg_no}}"> </td> 
+                <td><input type="text" id="sipeaa_id" name="sipeaa_id" value="{{ $item->sipeaa_id}}"> </td> 
+                <input type="hidden" name="id" value="{{ $item->id }}">
+                <td><button class="btn btn-primary" id="ajaxSubmit">Submit</button></td> 
+                </form>
+
+                @csrf
                 @if($item->approve == 1)
                 <td><a href="#" class="btn btn-success">Activate</a></td>
                 @else
@@ -65,44 +82,44 @@
                     <input type="hidden" name="name" value="{{$item->name}}"> 
                 <button class="btn btn-info" type="submit"><i class="fa fa-thumbs-down"></i></button>
                 </form> </td>
-                
-                
                     @endif
                 <td><a class="btn btn-info" href="{{ URL::to('/member/profile/details', $item->id)}}"> <i class="fa fa-user"></i></td>
 
-            <td>
-               
-                
-            <form action="{{ URL::to('/user/delete', $item->id)}}" method="post">
-                  @csrf
-                  
-                  <button class="btn btn-danger" type="submit">Delete</button>
-                </form>
-            </td>
-
-                    
+                <td>   
+                <form action="{{ URL::to('/user/delete', $item->id)}}" method="post">
+                      @csrf
+                      
+                      <button class="btn btn-danger" type="submit">Delete</button>
+                    </form>
+                </td>     
             </tr>
                     
                 @endforeach
-                
-          
-           
+
         </tbody>
     </table>
-
-<script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-
+</div>
 
 <script>
-
-$(document).ready( function () {
-    $('#table_id').DataTable();
-} );
-
- </script>
+         jQuery(document).ready(function(){
+            jQuery('#ajaxSubmit').click(function(e){
+               e.preventDefault();
+               $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                  }
+              });
+               jQuery.ajax({
+                  url: "{{ url('/user/update') }}",
+                  method: 'post',
+                  data: {
+                     reg_no: jQuery('#reg_no').val(),
+                     sipeaa_id: jQuery('#sipeaa_id').val(),
+                  },
+                  success: function(result){
+                     console.log(result);
+                  }});
+               });
+            });
+</script>
 @endsection
