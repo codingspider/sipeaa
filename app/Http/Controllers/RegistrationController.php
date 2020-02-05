@@ -201,6 +201,7 @@ class RegistrationController extends Controller
             ->update([
                 'reg_no' => $request->reg_no,
                 'sipeaa_id' => $request->sipeaa_id,
+                'admin' => 1,
             ]);
 
         return response()->json(['success'=>'Data is successfully added']);

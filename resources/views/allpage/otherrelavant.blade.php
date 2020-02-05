@@ -1,5 +1,6 @@
 
-        <form>
+        <form action="{{ URL::to('otherrelavant/information/update') }}" method="POST">
+            {{ csrf_field() }}
           <div class="card-body">
             <input type="hidden" name="_token" id="csrf" value="{{Session::token()}}">
             <div class="form-row">

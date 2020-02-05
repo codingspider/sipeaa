@@ -19,7 +19,8 @@
                 <th>Transaction Id </th>
                 <th>Transaction Date</th>
                 <th>Transaction Amount </th>
-                <th>Transaction By</th>
+                <th>User Name </th>
+                <th>User Email</th>
                 <th>Action</th>
                 
         </tr>
@@ -32,6 +33,7 @@
       <td>{{ $data->transactions_date }}</td>
       <td>{{ $data->transactions_amount }}</td>
       <td>{{ $data->uname }}</td>
+      <td>{{ $data->umail }}</td>
 
         @if($data->transactions_status == 1)
                 <td><a class="btn btn-success" href="{{ URL::to('/cancel', $data->id)}}"> <i class="fa fa-thumbs-up"></i></td>

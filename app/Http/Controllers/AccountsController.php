@@ -63,7 +63,7 @@ class AccountsController extends Controller
 
     	$data = DB::table('transactions')
     	    ->join('users', 'users.id', '=', 'transactions.user_id')
-            ->select('transactions.*', 'users.name as uname') 
+            ->select('transactions.*', 'users.name as uname','users.email as umail') 
     		->where('transactions.id', $id)->first();
 
     	return view('pages.transactions_details', compact('data'));

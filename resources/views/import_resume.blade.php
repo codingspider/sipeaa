@@ -226,7 +226,7 @@
               <div id="collapsefive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                 <div class="card-body">
                 <div align="right">     
-                <button type="button" name="myModal" data-toggle="modal" data-target="#myModaltraining" class="btn btn-info">Add Training Details</button>                                    
+                <button type="button" name="trainingdetails" data-toggle="modal" data-target="#myModaltraining" class="btn btn-info">Add Training Details</button>                                    
                 </div>
                 <div class="container">
                   

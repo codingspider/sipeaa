@@ -9,7 +9,7 @@
                       </div>
                       <div class="modal-body">
                   
-                        <form action="{{ URL::to('/dashboard/academic/details')}}" method="POST">
+                        <form action="{{ URL::to('/academic/details')}}" method="POST">
             {{ csrf_field() }}
             @php
               $data = DB::table('education_levels_cats')->get(); 

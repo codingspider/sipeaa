@@ -1,42 +1,37 @@
 @extends('layouts.app2')
 @section('title', 'Article Board')
 @section('content')
-
-@php
-    $users = DB::table('users')->where('user_type', 'member')->where('admin', 1)->get(); 
-@endphp
 <br>
 <div class="container">
-        <body>
-                <!-- Header -->
-              <header class="text-center py-2 mb-4">
-                <div class="container">
-                  <h1 class="font-weight-light text-black">Meet the Team</h1>
-                </div>
-              </header>
-              
+        <body>             
               <!-- Page Content -->
               <div class="container">
                 <div class="row">
-                  @foreach ($users as $item)
-                      
                   <!-- Team Member 1 -->
-                  <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="col-md-6">
                     <div class="card border-0 shadow text-center">
-                    <img  src="{{ URL::asset('images/'.$item->images)}}" class="mx-auto d-block" style="width:100px; height:100%;" alt="...">
+                    <img  src="{{ URL::asset($president->images)}}" class="mx-auto d-block" style="width:200px; height:100%;" alt="...">
                       <div class="card-body text-center">
                         <h5 class="card-title mb-0"></h5>
-                        <div class="card-text text-black-100"> Name: {{$item->name}}</div>
-                        <p>Email: {{$item->email}}</p>
+                        <p> Name: {{$president->name}}</p>
+                        <p>Sipeaa ID: {{$president->sipeaa_id}}</p>
+                        <p>Registration No: {{$president->reg_no}}</p>
                       </div>
                     </div>
                   </div>
-                  @endforeach
-              
-              
+                        <div class="col-md-6">
+                    <div class="card border-0 shadow text-center">
+                    <img  src="{{ URL::asset($Vice_President->images)}}" class="mx-auto d-block" style="width:200px; height:100%;" alt="...">
+                      <div class="card-body text-center">
+                        <h5 class="card-title mb-0"></h5>
+                       <p> Name: {{$president->name}}</p>
+                        <p>Sipeaa ID: {{$president->sipeaa_id}}</p>
+                        <p>Registration No: {{$president->reg_no}}</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <!-- /.row -->
-              
+                <hr>
               </div>
               <!-- /.container -->
               </body>

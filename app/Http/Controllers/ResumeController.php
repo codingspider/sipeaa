@@ -160,6 +160,19 @@ class ResumeController extends Controller
 
     }
 
+    public function others_relavant_update (Request $request){
+
+        DB::table('resumes')->where('id', $request->id)->update([
+            'summery' =>$request->career_summery,
+            'qualification' =>$request->special_qualification,
+            'keywords' =>$request->keyword,
+            'user_id' => Auth::id() 
+            
+        ]);
+        return back()->with('success', 'Other relavant Details has been added. ');
+
+    }
+
 
 
     public function academic_details (Request $request){

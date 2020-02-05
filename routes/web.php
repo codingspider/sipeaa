@@ -31,6 +31,7 @@ Route::post('/dashboard/academic/training/summary/edit', 'ResumeController@train
 Route::post('/dashboard/employment/details/edit', 'ResumeController@employement_details_edit');
 Route::post('/dashboard/army/edit/submit', 'ResumeController@others_employement_details_edit');
 Route::post('/dashboard/others/information/details/edit', 'ResumeController@others_details_edit');
+
 Route::post('/dashboard/others/information/reference/edit', 'ResumeController@reference_details_edit');
 //delete routes 
 Route::get('/dashboard/personaldetails/delete/{id}', 'TestController@personaldetails_delete');
@@ -102,7 +103,7 @@ Route::get('/about', 'AboutController@index');
 
 
 
-
+ Route::get('/all/training/demand', 'TrainingDemandController@all_demand_training');
 Route::post('/transaction/delete/{id}', 'AccountsController@transactions_delete');
 
 Route::get('/transactions/details/{id}', 'AccountsController@transactions_details');
@@ -118,7 +119,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/upload/library', 'LibraryController@library_upload');
     Route::get('/add/library', 'LibraryController@index');
     Route::get('/training/demand', 'TrainingDemandController@index');
-    Route::get('/all/training/demand', 'TrainingDemandController@all_demand_training');
+   
     Route::get('/training/demand/list/details/{id}', 'TrainingDemandController@all_demand_training_list');
     Route::post('/vote/for/training', 'TrainingDemandController@vote_training');
     Route::get('/all/unread/messages','MessageController@all_unread_message');
@@ -293,7 +294,7 @@ Route::get('/blog/admin/delete/{id}', 'BlogAdminController@blog_admin_delete');
 Route::get('/blog/admin/active/{id}', 'BlogAdminController@blog_admin_active');
 
 
-Route::get('/sipeaa/blog', 'BlogController@index');
+
 Route::get('/sipeaa/blog/post', 'BlogController@blog_post');
 Route::get('article/borad', 'BlogController@article_board');
 
@@ -310,7 +311,7 @@ Route::get('index', 'DisplayDataController@index');
 
 
 
-
+Route::get('/sipeaa/blog', 'BlogController@index');
 
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
@@ -323,3 +324,26 @@ Route::get('/clear-config', function() {
     return "Config is cleared";
 });
 
+Route::post ('edit/academic/details', 'ResumeController@edit_academic_data');
+
+    Route::post('personal/details', 'ResumeController@personal_details');
+    
+    Route::post('address/details', 'ResumeController@address_details');
+    Route::post('career/application/details', 'ResumeController@carrer_details');
+    Route::post('preferred/categories', 'ResumeController@preffer_job_location');
+    Route::post('others/relevant', 'ResumeController@relevant_information');
+    Route::post('academic/details', 'ResumeController@academic_details');
+    Route::post('academic/training/summary', 'ResumeController@training_summary');
+    Route::post('certificatte1/details2', 'ResumeController@certificatte1_details2');
+    Route::post('employment/details', 'ResumeController@employment_details');
+
+    Route::post('others/information/details', 'ResumeController@others_details');
+    Route::post('otherrelavant/information/update', 'ResumeController@others_relavant_update');
+    Route::post('others/information/language', 'ResumeController@others_language');
+    Route::post('others/information/reference', 'ResumeController@others_reference');
+    Route::post('army/submit', 'ResumeController@other_employ_history');
+
+
+    Route::post('photograph/upload', 'ResumeController@photograph_upload');
+
+    Route::post('import', 'DashboardController@import_resume')->name('import');

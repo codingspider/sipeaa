@@ -6,7 +6,7 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
           <div class="modal-body">
-          <form action="{{ URL::to('/dashboard/academic/training/summary')}}" method="POST">
+          <form action="{{ URL::to('/academic/training/summary')}}" method="POST">
             {{ csrf_field() }}
           <div class="form-row">
                 <div class="form-group col-md-6">

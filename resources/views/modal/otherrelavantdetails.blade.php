@@ -6,7 +6,7 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
           <div class="modal-body">
-            <form action="{{ URL::to('/dashboard/others/relevant')}}" method="POST">
+            <form action="{{ URL::to('/others/relevant')}}" method="POST">
               {{ csrf_field()}}
           <div class="card-body">
             <div class="form-row">
